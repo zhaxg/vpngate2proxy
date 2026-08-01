@@ -13,9 +13,9 @@
 
 - **自动连接** — 启动后自动获取节点列表并建立 VPN 连接，连接失败时持续重试
 - **SOCKS5 代理** — 对外提供标准 SOCKS5 代理，支持任意客户端
-- **健康检测** — 定期通过代理访问检测 URL，连续失败自动切换节点
+- **健康检测** — 定期通过代理访问检测 URL，连续失败自动切换节点（仅认 2xx 状态码）
 - **优先节点** — 最多设置 3 个优先节点，优先连接，不可用时自动降级
-- **Web 面板** — 可视化管理界面，实时日志、节点列表、连接记录、设置管理
+- **Web 面板** — Tailwind CSS 暗色主题仪表盘，实时日志、节点列表、连接记录、设置管理
 - **同子网优先** — 切换节点时优先选择同一子网，减少 IP 跳变
 - **连接历史** — 记录每次连接的节点、时长，支持排序和分页
 - **速度测试** — 通过代理测试下载速度
@@ -93,6 +93,8 @@ docker compose up -d
 
 ## 🖥️ 界面预览
 
+> 基于 Tailwind CSS 的暗色主题仪表盘，Space Grotesk 字体，玻璃拟态卡片设计。
+
 | 仪表盘 | 节点列表 |
 |:---:|:---:|
 | ![仪表盘](images/1.png) | ![节点列表](images/2.png) |
@@ -100,6 +102,41 @@ docker compose up -d
 | 连接记录 | 设置 |
 |:---:|:---:|
 | ![连接记录](images/3.png) | ![设置](images/4.png) |
+
+---
+
+## 📝 更新日志
+
+### UI 重构 & Bug 修复 (2026-08-01)
+
+**前端重写：**
+- 从 Bootstrap 迁移到 Tailwind CSS 暗色主题
+- 侧边栏导航 + 玻璃拟态卡片设计
+- Space Grotesk 字体 + 自定义 SVG Logo/Favicon
+- Toast 浮层通知替代模态框（延迟检测、测速）
+- 状态感知按钮（连接/断开/重新连接根据状态切换）
+- 节点列表新增 Score 评分列，千分位格式化
+- 速率自动换算（bps → Kbps/Mbps/Gbps）
+- 国旗 Emoji 自动匹配国家代码
+- 延迟颜色编码（<200ms 绿 / <500ms 黄 / >500ms 红）
+- 日志面板铺满视口高度，内部滚动
+- 所有前端日志带时间戳 [HH:MM:SS]
+- 下拉框自定义样式适配暗色主题
+- 登录页同步暗色主题
+
+**后端修复：**
+- 健康检测只认 2xx HTTP 状态码（之前 503 误判为成功）
+- 隧道预热改用可配置的健康检测地址（不再硬编码 httpbin.org）
+- 延迟检测默认 ping 8.8.8.8（VPN 网关不响应 ICMP）
+- SOCKS5 端口重用：添加 socket.shutdown() + 重试机制
+- Flask 全局异常处理器返回 JSON（不再返回 HTML 错误页）
+- 手动连接失败不再自动重试下一节点
+- 节点延迟检测结果持久化缓存
+- OpenVPN 支持 HTTP 代理连接（http-proxy 配置）
+- res.json() 双重调用修复
+
+**Docker 优化：**
+- Tsinghua apt 镜像 + Aliyun pip 镜像（国内构建加速）
 
 ---
 
@@ -358,7 +395,9 @@ docker compose up -d
 
 ## 致谢
 
+- **[xiaowen-king](https://github.com/xiaowen-king)** — 项目原作者，提供了完整的 VPN 代理网关核心架构
 - [VPN Gate](https://www.vpngate.net/) — 提供公共 VPN 节点服务
 - [OpenVPN](https://openvpn.net/) — VPN 隧道
 - [Flask](https://flask.palletsprojects.com/) — Web 框架
-- [Bootstrap](https://getbootstrap.com/) — 前端 UI 框架
+- [Tailwind CSS](https://tailwindcss.com/) — 前端 UI 框架
+- [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) — 字体
