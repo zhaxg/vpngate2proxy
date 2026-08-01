@@ -1,6 +1,6 @@
-# VPN Gate Proxy
+# VPN Gate 2 Proxy
 
-[![Docker Build](https://github.com/xiaowen-king/vpngate-proxy/actions/workflows/docker-build.yml/badge.svg)](https://github.com/xiaowen-king/vpngate-proxy/actions/workflows/docker-build.yml)
+[![Docker Build](https://github.com/zhaxg/vpngate2proxy/actions/workflows/docker-build.yml/badge.svg)](https://github.com/zhaxg/vpngate2proxy/actions/workflows/docker-build.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 一个基于 Docker 的自动化 VPN 代理网关。自动获取 [VPN Gate](https://www.vpngate.net/) 公共 VPN 节点，建立 OpenVPN 隧道，并通过 SOCKS5 代理对外提供服务。内置 Web 管理面板，支持节点自动切换、健康检测、优先节点等高级功能。
@@ -39,14 +39,14 @@ docker run -d --name vpn-proxy \
   --cap-add=NET_ADMIN --device=/dev/net/tun \
   -p 8080:8080 -p 1080:1080 \
   -v ./data:/data \
-  ghcr.io/xiaowen-king/vpngate-proxy:latest
+  ghcr.io/zhaxg/vpngate2proxy:latest
 ```
 
 ### 方式二：从源码构建
 
 ```bash
-git clone https://github.com/xiaowen-king/vpngate-proxy.git
-cd vpngate-proxy
+git clone https://github.com/zhaxg/vpngate2proxy.git
+cd vpngate2proxy
 docker build -t vpngate-proxy .
 docker run -d --name vpn-proxy \
   --cap-add=NET_ADMIN --device=/dev/net/tun \
@@ -62,7 +62,7 @@ docker run -d --name vpn-proxy \
 ```yaml
 services:
   vpn-proxy:
-    image: ghcr.io/xiaowen-king/vpngate-proxy:latest
+    image: ghcr.io/zhaxg/vpngate2proxy:latest
     container_name: vpn-proxy
     cap_add:
       - NET_ADMIN
