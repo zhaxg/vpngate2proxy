@@ -30,7 +30,8 @@ DEFAULT_CONFIG = {
     "preferred_nodes": [],
     "connection_history_retention_days": 30,
     "socks_max_connections": 200,
-    "reconnect_interval": 30
+    "reconnect_interval": 30,
+    "http_proxy": ""
 }
 
 # 不应通过 API 返回给前端的敏感字段

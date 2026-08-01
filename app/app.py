@@ -50,6 +50,13 @@ app.secret_key = cfg.get("secret_key") or secrets.token_hex(24)
 
 socketio = SocketIO(app, async_mode="eventlet")
 
+@app.errorhandler(Exception)
+def handle_exception(e):
+    """所有未捕获异常返回 JSON 而非 HTML"""
+    import traceback
+    logger.error(f"未捕获异常: {traceback.format_exc()}")
+    return jsonify({"success": False, "error": str(e)}), 500
+
 manager = VpnManager()
 
 def push_log(msg):
@@ -106,7 +113,15 @@ def nodes():
                           "country_long", "country_short", "num_sessions",
                           "uptime", "total_users", "total_traffic",
                           "log_type", "operator", "message")
-        slim_nodes = [{k: n.get(k, "") for k in display_fields} for n in node_list[:limit]]
+        latency_cache = manager.get_latency_cache()
+        slim_nodes = []
+        for n in node_list[:limit]:
+            node = {k: n.get(k, "") for k in display_fields}
+            # 带上缓存的延迟数据
+            ip = node.get("ip", "")
+            if ip in latency_cache:
+                node["latency"] = latency_cache[ip]
+            slim_nodes.append(node)
         return jsonify(slim_nodes)
     except Exception as e:
         manager.log(f"API /api/nodes 异常: {str(e)}")

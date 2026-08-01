@@ -1,16 +1,65 @@
 <!DOCTYPE html>
-<html>
-<head><title>登录</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - VPN Gate 代理面板</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 32 32'%3E%3Cpath fill='%23db2777' d='M14 23h-2V9h6a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4Zm0-7h4v-5h-4Zm14 3L24.32 9H22v14h2V13l3.68 10H30V9h-2zM8 9L6 22L4 9H2l2.52 14h2.96L10 9z'/%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.3.0/index.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp .4s ease-out; }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,.15); }
+            50% { box-shadow: 0 0 40px rgba(16,185,129,.25); }
+        }
+        .glow { animation: glow 3s ease-in-out infinite; }
+    </style>
 </head>
-<body class="bg-light">
-    <div class="container mt-5" style="max-width:400px">
-        <h3 class="mb-3">VPN Gate 自动代理面板</h3>
-        {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
-        <form method="post">
-            <div class="mb-3"><label>请输入密码</label><input type="password" name="password" class="form-control" required></div>
-            <button class="btn btn-primary w-100">登录</button>
-        </form>
+<body class="bg-[#0b0f19] text-gray-200 min-h-screen flex items-center justify-center px-4" style="font-family:'Space Grotesk',system-ui,sans-serif">
+
+    <!-- Background decoration -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-sky-500/5 rounded-full blur-[120px]"></div>
     </div>
+
+    <div class="relative fade-up w-full max-w-sm">
+        <!-- Logo -->
+        <div class="flex flex-col items-center mb-8">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center glow mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 32 32"><path fill="#059669" d="M16 .484C7.182.484 0 7.593 0 16.349c0 5.813 3.146 10.87 7.859 13.604l1.026-6.766a9.42 9.42 0 0 1-2.458-6.292c0-5.198 4.24-9.438 9.505-9.438s9.5 4.24 9.5 9.438c0 2.458-.953 4.646-2.458 6.359L24 30.025c4.786-2.734 8-7.87 8-13.677C32 7.593 24.818.483 16 .483zm-.068 10.875a5.056 5.056 0 0 0-5.063 5.063a4.99 4.99 0 0 0 3.281 4.719l-1.979 10.391h7.521l-1.911-10.391c1.844-.755 3.214-2.531 3.214-4.719a5.056 5.056 0 0 0-5.063-5.063"/></svg>
+            </div>
+            <h1 class="text-xl font-bold text-white tracking-wide">VPN Gate</h1>
+            <p class="text-sm text-gray-500 mt-1">自动代理面板</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-[#111827]/80 backdrop-blur-xl border border-gray-700/40 rounded-2xl p-6 shadow-2xl">
+            {% if error %}
+            <div class="mb-4 px-4 py-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-sm">
+                {{ error }}
+            </div>
+            {% endif %}
+            <form method="post">
+                <label class="block text-xs text-gray-500 mb-2 uppercase tracking-wider">面板密码</label>
+                <input type="password" name="password" required
+                    class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition text-sm"
+                    placeholder="请输入密码">
+                <button type="submit"
+                    class="w-full mt-4 px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition shadow-lg shadow-emerald-600/20 active:scale-[.98]">
+                    登 录
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-[11px] text-gray-600 mt-6">VPN Gate Proxy · Powered by OpenVPN</p>
+    </div>
+
 </body>
 </html>

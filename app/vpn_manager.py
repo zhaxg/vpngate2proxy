@@ -66,6 +66,10 @@ class VpnManager:
         self._state_lock = threading.Lock()
         # 线程启动标志，防止重复创建线程
         self._threads_started = False
+        # 节点延迟缓存：IP → {"latency": ms, "timestamp": time}
+        self._latency_cache = {}
+        self._latency_cache_file = "/data/latency_cache.json"
+        self._load_latency_cache()
 
     @staticmethod
     def _load_config_safe():
@@ -78,7 +82,9 @@ class VpnManager:
     def log(self, message):
         logger.info(message)
         if self._log_callback:
-            self._log_callback(message)
+            import datetime
+            ts = datetime.datetime.now().strftime("%H:%M:%S")
+            self._log_callback(f"[{ts}] {message}")
 
     def set_config(self, cfg):
         import config as cfg_module
@@ -291,6 +297,16 @@ class VpnManager:
         ovpn_content += "\nroute-nopull\n"
         ovpn_content += "\ndata-ciphers AES-256-GCM:AES-128-GCM:AES-128-CBC:CHACHA20-POLY1305\n"
 
+        # 如果配置了 HTTP 代理，让 OpenVPN 通过代理连接 VPN 服务器
+        http_proxy = self.config.get("http_proxy", "")
+        if http_proxy:
+            # 支持 IP:PORT 或 IP PORT 格式
+            parts = http_proxy.replace(" ", ":").split(":")
+            proxy_host = parts[0]
+            proxy_port = parts[1] if len(parts) > 1 else "8080"
+            ovpn_content += f"\nhttp-proxy {proxy_host} {proxy_port}\n"
+            self.log(f"OpenVPN 将通过 HTTP 代理连接: {proxy_host}:{proxy_port}")
+
         ovpn_path = "/tmp/vpn_config.ovpn"
         with open(ovpn_path, "w") as f:
             f.write(ovpn_content)
@@ -312,15 +328,16 @@ class VpnManager:
         connected_flag = False
         start_time = time.time()
         timeout = 25
+        proc = self.vpn_process  # 本地引用，防止并发 disconnect 置 None
 
         while time.time() - start_time < timeout:
-            if self.vpn_process.poll() is not None:
+            if proc is None or proc.poll() is not None:
                 self.log("OpenVPN 进程已退出，连接失败")
                 self._add_failed_ip(ip)
                 self._cleanup_vpn_process()
                 return False
 
-            line = self.vpn_process.stdout.readline()
+            line = proc.stdout.readline()
             if not line:
                 time.sleep(0.1)
                 continue
@@ -460,22 +477,31 @@ class VpnManager:
     def _warmup_tunnel(self, socks_port):
         """隧道预热：通过 SOCKS5 发一个轻量请求，激活 VPN 隧道的 TLS 会话和路由缓存。
         防止浏览器第一个 HTTPS 请求因隧道未完全就绪而失败。"""
-        try:
-            self.log("正在预热 VPN 隧道...")
-            result = subprocess.run(
-                ["curl", "-s", "--socks5", f"127.0.0.1:{socks_port}",
-                 "--max-time", "10", "--connect-timeout", "5",
-                 "-o", "/dev/null", "-w", "%{http_code}",
-                 "http://httpbin.org/ip"],
-                capture_output=True, text=True, timeout=15
-            )
-            if result.returncode == 0:
-                self.log(f"隧道预热成功 (HTTP {result.stdout.strip()})")
-            else:
-                # 预热失败不影响连接状态，只是警告
-                self.log(f"隧道预热未成功: {result.stderr.strip() or '无响应'}")
-        except Exception as e:
-            self.log(f"隧道预热异常（不影响连接）: {e}")
+        # 使用健康检测地址列表，与健康检测保持一致
+        raw_urls = self.config.get("health_check_urls", "")
+        if raw_urls.strip():
+            urls = [u.strip() for u in re.split(r'[,\n]', raw_urls) if u.strip()]
+            urls = [u if u.startswith('http://') or u.startswith('https://') else f'http://{u}' for u in urls]
+        else:
+            urls = ["http://ifconfig.me", "http://ip.sb", "http://icanhazip.com"]
+
+        self.log("正在预热 VPN 隧道...")
+        for url in urls:
+            try:
+                result = subprocess.run(
+                    ["curl", "-s", "--socks5", f"127.0.0.1:{socks_port}",
+                     "--max-time", "10", "--connect-timeout", "5",
+                     "-o", "/dev/null", "-w", "%{http_code}",
+                     url],
+                    capture_output=True, text=True, timeout=15
+                )
+                if result.returncode == 0 and result.stdout.strip().startswith("2"):
+                    self.log(f"隧道预热成功: {url} (HTTP {result.stdout.strip()})")
+                    return
+            except Exception:
+                continue
+        self.log("隧道预热完成（部分地址可能未响应，不影响连接）")
+
 
     def _get_host_ip(self):
         s = None
@@ -492,6 +518,29 @@ class VpnManager:
                     s.close()
                 except Exception:
                     pass
+
+    def _load_latency_cache(self):
+        """加载延迟缓存"""
+        if not os.path.exists(self._latency_cache_file):
+            self._latency_cache = {}
+            return
+        try:
+            with open(self._latency_cache_file, "r", encoding="utf-8") as f:
+                self._latency_cache = json.load(f)
+        except Exception:
+            self._latency_cache = {}
+
+    def _save_latency_cache(self):
+        """保存延迟缓存"""
+        try:
+            import tempfile
+            dir_name = os.path.dirname(self._latency_cache_file) or "."
+            fd, tmp_path = tempfile.mkstemp(dir=dir_name, suffix=".tmp")
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                json.dump(self._latency_cache, f)
+            os.replace(tmp_path, self._latency_cache_file)
+        except Exception as e:
+            self.log(f"保存延迟缓存失败: {e}")
 
     def _load_history(self):
         if not os.path.exists(self.history_file):
@@ -650,12 +699,13 @@ class VpnManager:
                     # 分离 HTTP 状态码和响应体
                     lines = output.rsplit('\n', 1)
                     body = lines[0] if len(lines) > 1 else output
-                    http_code = lines[-1] if len(lines) > 1 else ""
-                    if body.strip():
+                    http_code = lines[-1].strip() if len(lines) > 1 else ""
+                    # 只认 2xx 为健康，4xx/5xx 视为异常
+                    if http_code.startswith("2") and body.strip():
                         self.log(f"健康检测成功: {url} 访问正常 (HTTP {http_code})")
                         return True
                     else:
-                        self.log(f"健康检测尝试 {url} 失败: 连接成功但无响应数据 (HTTP {http_code})")
+                        self.log(f"健康检测尝试 {url} 失败: HTTP {http_code or '未知'}")
                 elif result.returncode == 7:
                     # curl exit code 7 = couldn't connect to host
                     self.log(f"健康检测尝试 {url} 失败: SOCKS5 代理连接失败 (隧道可能断开)")
@@ -999,7 +1049,19 @@ class VpnManager:
             for future in as_completed(futures):
                 ip, lat = future.result()
                 results[ip] = lat
+                # 保存到缓存
+                self._latency_cache[ip] = {
+                    "latency": lat,
+                    "timestamp": time.time()
+                }
+        # 批量保存一次
+        self._save_latency_cache()
         return results
+
+    def get_latency_cache(self):
+        """获取延迟缓存，供前端显示"""
+        return {ip: info["latency"] for ip, info in self._latency_cache.items()
+                if time.time() - info.get("timestamp", 0) < 3600}
 
     def stop(self):
         self._stop_event.set()

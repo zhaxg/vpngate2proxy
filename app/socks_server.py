@@ -55,10 +55,20 @@ class Socks5Server:
     def start(self):
         if self.running:
             return
-        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.server_socket.bind((self.bind_host, self.bind_port))
-        self.server_socket.listen(5)
+        import time as _time
+        for attempt in range(5):
+            try:
+                self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                self.server_socket.bind((self.bind_host, self.bind_port))
+                self.server_socket.listen(5)
+                break
+            except OSError as e:
+                if "Address already in use" in str(e) and attempt < 4:
+                    logger.info(f"端口 {self.bind_port} 被占用，{attempt+1}s 后重试...")
+                    _time.sleep(1)
+                else:
+                    raise
         self.running = True
         self.thread = threading.Thread(target=self._accept_loop, daemon=True)
         self.thread.start()
@@ -68,9 +78,14 @@ class Socks5Server:
         self.running = False
         if self.server_socket:
             try:
+                self.server_socket.shutdown(socket.SHUT_RDWR)
+            except Exception:
+                pass
+            try:
                 self.server_socket.close()
             except Exception:
                 pass
+            self.server_socket = None
         logger.info("SOCKS5 server stopped")
 
     def _accept_loop(self):

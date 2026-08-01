@@ -1,0 +1,14 @@
+services:
+  vpn-proxy:
+    build: .
+    container_name: vpngate
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - "1080:1080"
+      - "7080:8080"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

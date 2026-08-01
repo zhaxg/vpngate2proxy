@@ -1,0 +1,1408 @@
+2026-08-01 13:52:18,824 - INFO - 正在获取节点列表...
+2026-08-01 13:52:18,824 - INFO - API 地址未配置，跳过获取节点
+2026-08-01 13:52:18,825 - INFO - 第 1 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:52:28,827 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:52:28,827 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:52:28,827 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:52:48,827 - INFO - 第 2 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:52:58,831 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:52:58,831 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:52:58,831 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:53:18,829 - INFO - 第 3 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:53:28,835 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:53:28,836 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:53:28,836 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:53:28,836 - INFO - 自动重连连续失败3次，清空IP黑名单以便重新尝试所有节点
+2026-08-01 13:53:48,831 - INFO - 第 4 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:53:58,840 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:53:58,840 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:53:58,841 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:54:18,833 - INFO - 第 5 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:54:28,844 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:54:28,844 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:54:28,844 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:54:48,835 - INFO - 第 6 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:54:58,848 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:54:58,848 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:54:58,848 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:54:58,849 - INFO - 自动重连连续失败3次，清空IP黑名单以便重新尝试所有节点
+2026-08-01 13:55:18,836 - INFO - 第 7 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:55:28,852 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:55:28,853 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:55:28,853 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:55:48,837 - INFO - 第 8 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:55:58,855 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:55:58,856 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:55:58,856 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:56:18,838 - INFO - 第 9 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:56:28,860 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:56:28,861 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:56:28,861 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:56:28,861 - INFO - 自动重连连续失败3次，清空IP黑名单以便重新尝试所有节点
+2026-08-01 13:56:48,839 - INFO - 第 10 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:56:58,863 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:56:58,863 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:56:58,863 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:57:12,542 - INFO - 正在获取节点列表...
+2026-08-01 13:57:43,276 - INFO - 获取节点列表失败: HTTPSConnectionPool(host='www.vpngate.net', port=443): Max retries exceeded with url: /api/iphone/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.vpngate.net', port=443) at 0x7f6699a15090>, 'Connection to www.vpngate.net timed out. (connect timeout=30)'))
+2026-08-01 13:57:43,278 - INFO - 第 1 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:57:53,278 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:57:53,278 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:57:53,279 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:58:13,280 - INFO - 第 2 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:58:23,281 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:58:23,282 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:58:23,282 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:58:43,282 - INFO - 第 3 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:58:53,285 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:58:53,286 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:58:53,286 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:58:53,286 - INFO - 自动重连连续失败3次，清空IP黑名单以便重新尝试所有节点
+2026-08-01 13:59:13,284 - INFO - 第 4 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:59:23,291 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:59:23,291 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:59:23,292 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 13:59:43,286 - INFO - 第 5 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 13:59:53,294 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 13:59:53,295 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 13:59:53,295 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 14:00:13,288 - INFO - 第 6 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 14:00:23,299 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 14:00:23,300 - INFO - 自动连接失败：当前地区没有可用节点
+2026-08-01 14:00:23,300 - INFO - 自动重连失败: 当前地区没有可用节点
+2026-08-01 14:00:23,300 - INFO - 自动重连连续失败3次，清空IP黑名单以便重新尝试所有节点
+2026-08-01 14:00:43,290 - INFO - 第 7 轮所有节点均连接失败，30 秒后重试...
+2026-08-01 14:00:55,482 - INFO - 正在获取节点列表...
+2026-08-01 14:00:56,368 - INFO - 获取到 98 个节点
+2026-08-01 14:00:56,370 - INFO - 第 1 轮：尝试普通节点...
+2026-08-01 14:00:56,872 - INFO - 正在连接到节点: public-vpn-255 (219.100.37.224)
+2026-08-01 14:00:56,881 - INFO - [OpenVPN] 2026-08-01 14:00:56 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:00:56,881 - INFO - [OpenVPN] 2026-08-01 14:00:56 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:00:56,881 - INFO - [OpenVPN] 2026-08-01 14:00:56 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:00:56,882 - INFO - [OpenVPN] 2026-08-01 14:00:56 DCO version: N/A
+2026-08-01 14:00:56,882 - INFO - [OpenVPN] 2026-08-01 14:00:56 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:00:56,884 - INFO - [OpenVPN] 2026-08-01 14:00:56 TCP/UDP: Preserving recently used remote address: [AF_INET]219.100.37.224:443
+2026-08-01 14:00:56,884 - INFO - [OpenVPN] 2026-08-01 14:00:56 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:00:56,884 - INFO - [OpenVPN] 2026-08-01 14:00:56 Attempting to establish TCP connection with [AF_INET]219.100.37.224:443
+2026-08-01 14:01:06,372 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 14:01:06,372 - INFO - 自动连接尝试节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:01:06,373 - INFO - [OpenVPN] 2026-08-01 14:01:06 SIGTERM[hard,init_instance] received, process exiting
+2026-08-01 14:01:06,884 - INFO - 正在连接到节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:01:06,893 - INFO - [OpenVPN] 2026-08-01 14:01:06 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:01:06,893 - INFO - [OpenVPN] 2026-08-01 14:01:06 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:01:06,893 - INFO - [OpenVPN] 2026-08-01 14:01:06 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:01:06,894 - INFO - [OpenVPN] 2026-08-01 14:01:06 DCO version: N/A
+2026-08-01 14:01:06,894 - INFO - [OpenVPN] 2026-08-01 14:01:06 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:01:06,896 - INFO - [OpenVPN] 2026-08-01 14:01:06 TCP/UDP: Preserving recently used remote address: [AF_INET]219.100.37.127:443
+2026-08-01 14:01:06,896 - INFO - [OpenVPN] 2026-08-01 14:01:06 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:01:06,897 - INFO - [OpenVPN] 2026-08-01 14:01:06 Attempting to establish TCP connection with [AF_INET]219.100.37.127:443
+2026-08-01 14:03:04,669 - INFO - 正在获取节点列表...
+2026-08-01 14:03:06,144 - INFO - 获取到 98 个节点
+2026-08-01 14:03:06,147 - INFO - 第 1 轮：尝试普通节点...
+2026-08-01 14:03:06,648 - INFO - 正在连接到节点: public-vpn-255 (219.100.37.224)
+2026-08-01 14:03:06,649 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:06,655 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:06,655 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:06,655 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:06,656 - INFO - 节点 public-vpn-255 连接失败，尝试下一个...
+2026-08-01 14:03:08,158 - INFO - 正在连接到节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:03:08,158 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:08,162 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:08,163 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:08,163 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:08,163 - INFO - 节点 public-vpn-165 连接失败，尝试下一个...
+2026-08-01 14:03:09,664 - INFO - 正在连接到节点: public-vpn-153 (219.100.37.109)
+2026-08-01 14:03:09,666 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:09,672 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:09,673 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:09,673 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:09,673 - INFO - 节点 public-vpn-153 连接失败，尝试下一个...
+2026-08-01 14:03:11,175 - INFO - 正在连接到节点: public-vpn-49 (219.100.37.15)
+2026-08-01 14:03:11,176 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:11,183 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:11,183 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:11,183 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:11,183 - INFO - 节点 public-vpn-49 连接失败，尝试下一个...
+2026-08-01 14:03:12,688 - INFO - 正在连接到节点: public-vpn-253 (219.100.37.207)
+2026-08-01 14:03:12,688 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:12,695 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:12,695 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:12,695 - INFO - 节点 public-vpn-253 连接失败，尝试下一个...
+2026-08-01 14:03:14,198 - INFO - 正在连接到节点: public-vpn-159 (219.100.37.112)
+2026-08-01 14:03:14,199 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:14,205 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:14,205 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:14,306 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:14,306 - INFO - 节点 public-vpn-159 连接失败，尝试下一个...
+2026-08-01 14:03:15,808 - INFO - 正在连接到节点: public-vpn-228 (219.100.37.220)
+2026-08-01 14:03:15,808 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:15,815 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:15,815 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:15,815 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:15,815 - INFO - 节点 public-vpn-228 连接失败，尝试下一个...
+2026-08-01 14:03:16,148 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 14:03:16,148 - INFO - 自动连接尝试节点: public-vpn-78 (219.100.37.53)
+2026-08-01 14:03:16,650 - INFO - 正在连接到节点: public-vpn-78 (219.100.37.53)
+2026-08-01 14:03:16,650 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:16,657 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:16,657 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:16,657 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:16,657 - INFO - 节点 public-vpn-78 连接失败
+2026-08-01 14:03:16,657 - INFO - 自动连接尝试节点: public-vpn-95 (219.100.37.97)
+2026-08-01 14:03:17,158 - INFO - 正在连接到节点: public-vpn-95 (219.100.37.97)
+2026-08-01 14:03:17,159 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:17,166 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:17,167 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:17,167 - INFO - 节点 public-vpn-95 连接失败
+2026-08-01 14:03:17,167 - INFO - 自动连接尝试节点: vpn221030864 (68.107.111.82)
+2026-08-01 14:03:17,317 - INFO - 正在连接到节点: public-vpn-78 (219.100.37.53)
+2026-08-01 14:03:17,318 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:17,324 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:17,325 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:17,325 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:17,325 - INFO - 节点 public-vpn-78 连接失败，尝试下一个...
+2026-08-01 14:03:17,668 - INFO - 正在连接到节点: vpn221030864 (68.107.111.82)
+2026-08-01 14:03:17,669 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:17,676 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:17,676 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:17,676 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:17,676 - INFO - 节点 vpn221030864 连接失败
+2026-08-01 14:03:17,676 - INFO - 自动连接尝试节点: public-vpn-58 (219.100.37.49)
+2026-08-01 14:03:18,178 - INFO - 正在连接到节点: public-vpn-58 (219.100.37.49)
+2026-08-01 14:03:18,178 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:18,185 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:18,185 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:18,185 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:18,185 - INFO - 节点 public-vpn-58 连接失败
+2026-08-01 14:03:18,185 - INFO - 自动连接尝试节点: public-vpn-194 (219.100.37.210)
+2026-08-01 14:03:18,686 - INFO - 正在连接到节点: public-vpn-194 (219.100.37.210)
+2026-08-01 14:03:18,687 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:18,691 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:18,691 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:18,691 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:18,691 - INFO - 节点 public-vpn-194 连接失败
+2026-08-01 14:03:18,692 - INFO - 自动连接尝试节点: vpn122916437 (123.1.20.170)
+2026-08-01 14:03:18,827 - INFO - 正在连接到节点: public-vpn-95 (219.100.37.97)
+2026-08-01 14:03:18,828 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:18,834 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:18,834 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:18,935 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:18,935 - INFO - 节点 public-vpn-95 连接失败，尝试下一个...
+2026-08-01 14:03:19,193 - INFO - 正在连接到节点: vpn122916437 (123.1.20.170)
+2026-08-01 14:03:19,193 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:19,202 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:19,204 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:19,204 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:19,204 - INFO - 节点 vpn122916437 连接失败
+2026-08-01 14:03:19,204 - INFO - 自动连接尝试节点: vpn813516587 (123.1.20.170)
+2026-08-01 14:03:19,706 - INFO - 正在连接到节点: vpn813516587 (123.1.20.170)
+2026-08-01 14:03:19,707 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:19,713 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:19,713 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:19,713 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:19,713 - INFO - 节点 vpn813516587 连接失败
+2026-08-01 14:03:19,713 - INFO - 自动连接尝试节点: public-vpn-242 (219.100.37.186)
+2026-08-01 14:03:20,214 - INFO - 正在连接到节点: public-vpn-242 (219.100.37.186)
+2026-08-01 14:03:20,214 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:20,221 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:20,221 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:20,221 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:20,221 - INFO - 节点 public-vpn-242 连接失败
+2026-08-01 14:03:20,221 - INFO - 自动连接尝试节点: vpn535206436 (183.88.252.47)
+2026-08-01 14:03:20,437 - INFO - 正在连接到节点: vpn221030864 (68.107.111.82)
+2026-08-01 14:03:20,438 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:20,444 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:20,444 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:20,444 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:20,445 - INFO - 节点 vpn221030864 连接失败，尝试下一个...
+2026-08-01 14:03:20,722 - INFO - 正在连接到节点: vpn535206436 (183.88.252.47)
+2026-08-01 14:03:20,723 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:20,729 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:20,729 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:20,830 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:20,830 - INFO - 节点 vpn535206436 连接失败
+2026-08-01 14:03:20,831 - INFO - 自动连接尝试节点: vpn359610091 (103.172.220.133)
+2026-08-01 14:03:21,332 - INFO - 正在连接到节点: vpn359610091 (103.172.220.133)
+2026-08-01 14:03:21,333 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:21,338 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:21,338 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:21,338 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:21,338 - INFO - 节点 vpn359610091 连接失败
+2026-08-01 14:03:21,339 - INFO - 自动连接尝试节点: vpn159547812 (61.85.48.78)
+2026-08-01 14:03:21,839 - INFO - 正在连接到节点: vpn159547812 (61.85.48.78)
+2026-08-01 14:03:21,840 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:21,848 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:21,850 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:21,850 - INFO - 节点 vpn159547812 连接失败
+2026-08-01 14:03:21,850 - INFO - 自动连接尝试节点: public-vpn-227 (219.100.37.185)
+2026-08-01 14:03:21,946 - INFO - 正在连接到节点: public-vpn-58 (219.100.37.49)
+2026-08-01 14:03:21,947 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:21,953 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:21,954 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:21,954 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:21,954 - INFO - 节点 public-vpn-58 连接失败，尝试下一个...
+2026-08-01 14:03:22,352 - INFO - 正在连接到节点: public-vpn-227 (219.100.37.185)
+2026-08-01 14:03:22,352 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:22,359 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:22,359 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:22,359 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:22,359 - INFO - 节点 public-vpn-227 连接失败
+2026-08-01 14:03:22,359 - INFO - 自动连接尝试节点: vpn918071739 (1.244.119.231)
+2026-08-01 14:03:22,860 - INFO - 正在连接到节点: vpn918071739 (1.244.119.231)
+2026-08-01 14:03:22,861 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:22,867 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:22,868 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:22,868 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:22,868 - INFO - 节点 vpn918071739 连接失败
+2026-08-01 14:03:22,868 - INFO - 自动连接尝试节点: vpn448703642 (175.203.99.209)
+2026-08-01 14:03:23,369 - INFO - 正在连接到节点: vpn448703642 (175.203.99.209)
+2026-08-01 14:03:23,369 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:23,377 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:23,378 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:23,378 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:23,378 - INFO - 节点 vpn448703642 连接失败
+2026-08-01 14:03:23,378 - INFO - 自动连接尝试节点: diamondgnd (74.122.88.200)
+2026-08-01 14:03:23,456 - INFO - 正在连接到节点: public-vpn-194 (219.100.37.210)
+2026-08-01 14:03:23,456 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:23,463 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:23,463 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:23,464 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:23,464 - INFO - 节点 public-vpn-194 连接失败，尝试下一个...
+2026-08-01 14:03:23,879 - INFO - 正在连接到节点: diamondgnd (74.122.88.200)
+2026-08-01 14:03:23,879 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:23,886 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:23,886 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:23,887 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:23,887 - INFO - 节点 diamondgnd 连接失败
+2026-08-01 14:03:23,887 - INFO - 自动连接尝试节点: vpn106355895 (1.177.160.25)
+2026-08-01 14:03:24,388 - INFO - 正在连接到节点: vpn106355895 (1.177.160.25)
+2026-08-01 14:03:24,389 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:24,395 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:24,396 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:24,497 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:24,497 - INFO - 节点 vpn106355895 连接失败
+2026-08-01 14:03:24,497 - INFO - 自动连接尝试节点: vpn281431237 (14.192.117.87)
+2026-08-01 14:03:24,966 - INFO - 正在连接到节点: vpn122916437 (123.1.20.170)
+2026-08-01 14:03:24,966 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:24,973 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:24,973 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:24,973 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:24,973 - INFO - 节点 vpn122916437 连接失败，尝试下一个...
+2026-08-01 14:03:24,998 - INFO - 正在连接到节点: vpn281431237 (14.192.117.87)
+2026-08-01 14:03:24,998 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:25,008 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:25,009 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:25,010 - INFO - 节点 vpn281431237 连接失败
+2026-08-01 14:03:25,010 - INFO - 自动连接尝试节点: public-vpn-195 (219.100.37.195)
+2026-08-01 14:03:25,511 - INFO - 正在连接到节点: public-vpn-195 (219.100.37.195)
+2026-08-01 14:03:25,512 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:25,518 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:25,519 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:25,519 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:25,519 - INFO - 节点 public-vpn-195 连接失败
+2026-08-01 14:03:25,519 - INFO - 自动连接尝试节点: public-vpn-202 (219.100.37.197)
+2026-08-01 14:03:26,020 - INFO - 正在连接到节点: public-vpn-202 (219.100.37.197)
+2026-08-01 14:03:26,021 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:26,027 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:26,027 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:26,028 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:26,028 - INFO - 节点 public-vpn-202 连接失败
+2026-08-01 14:03:26,028 - INFO - 自动连接尝试节点: public-vpn-55 (219.100.37.20)
+2026-08-01 14:03:26,474 - INFO - 正在连接到节点: vpn813516587 (123.1.20.170)
+2026-08-01 14:03:26,475 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:26,482 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:26,482 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:26,482 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:26,482 - INFO - 节点 vpn813516587 连接失败，尝试下一个...
+2026-08-01 14:03:26,529 - INFO - 正在连接到节点: public-vpn-55 (219.100.37.20)
+2026-08-01 14:03:26,529 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:26,536 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:26,536 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:26,537 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:26,537 - INFO - 节点 public-vpn-55 连接失败
+2026-08-01 14:03:26,537 - INFO - 自动连接尝试节点: n26 (110.163.147.10)
+2026-08-01 14:03:27,038 - INFO - 正在连接到节点: n26 (110.163.147.10)
+2026-08-01 14:03:27,039 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:27,044 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:27,045 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:27,045 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:27,045 - INFO - 节点 n26 连接失败
+2026-08-01 14:03:27,045 - INFO - 自动连接尝试节点: vpn274400950 (59.0.165.38)
+2026-08-01 14:03:27,546 - INFO - 正在连接到节点: vpn274400950 (59.0.165.38)
+2026-08-01 14:03:27,546 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:27,553 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:27,553 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:27,654 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:27,654 - INFO - 节点 vpn274400950 连接失败
+2026-08-01 14:03:27,654 - INFO - 自动连接尝试节点: public-vpn-114 (219.100.37.60)
+2026-08-01 14:03:27,985 - INFO - 正在连接到节点: public-vpn-242 (219.100.37.186)
+2026-08-01 14:03:27,986 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:27,993 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:27,993 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:27,993 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:27,993 - INFO - 节点 public-vpn-242 连接失败，尝试下一个...
+2026-08-01 14:03:28,155 - INFO - 正在连接到节点: public-vpn-114 (219.100.37.60)
+2026-08-01 14:03:28,156 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:28,160 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:28,160 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:28,160 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:28,160 - INFO - 节点 public-vpn-114 连接失败
+2026-08-01 14:03:28,160 - INFO - 自动连接尝试节点: vpn250920860 (210.198.250.157)
+2026-08-01 14:03:28,661 - INFO - 正在连接到节点: vpn250920860 (210.198.250.157)
+2026-08-01 14:03:28,662 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:28,668 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:28,668 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:28,668 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:28,669 - INFO - 节点 vpn250920860 连接失败
+2026-08-01 14:03:28,669 - INFO - 自动连接尝试节点: vpn451832275 (171.4.220.49)
+2026-08-01 14:03:29,170 - INFO - 正在连接到节点: vpn451832275 (171.4.220.49)
+2026-08-01 14:03:29,171 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:29,177 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:29,178 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:29,178 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:29,178 - INFO - 节点 vpn451832275 连接失败
+2026-08-01 14:03:29,179 - INFO - 自动连接尝试节点: vpn722828815 (180.146.77.101)
+2026-08-01 14:03:29,496 - INFO - 正在连接到节点: vpn535206436 (183.88.252.47)
+2026-08-01 14:03:29,497 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:29,503 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:29,503 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:29,504 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:29,504 - INFO - 节点 vpn535206436 连接失败，尝试下一个...
+2026-08-01 14:03:29,680 - INFO - 正在连接到节点: vpn722828815 (180.146.77.101)
+2026-08-01 14:03:29,680 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:29,687 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:29,687 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:29,687 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:29,688 - INFO - 节点 vpn722828815 连接失败
+2026-08-01 14:03:29,688 - INFO - 自动连接尝试节点: vpn250745126 (211.195.236.113)
+2026-08-01 14:03:30,190 - INFO - 正在连接到节点: vpn250745126 (211.195.236.113)
+2026-08-01 14:03:30,190 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:30,194 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:30,195 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:30,195 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:30,195 - INFO - 节点 vpn250745126 连接失败
+2026-08-01 14:03:30,195 - INFO - 自动连接尝试节点: vpn864131273 (42.115.215.23)
+2026-08-01 14:03:30,696 - INFO - 正在连接到节点: vpn864131273 (42.115.215.23)
+2026-08-01 14:03:30,697 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:30,702 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:30,702 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:30,702 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:30,702 - INFO - 节点 vpn864131273 连接失败
+2026-08-01 14:03:30,703 - INFO - 自动连接尝试节点: vpn755770031 (125.8.119.43)
+2026-08-01 14:03:31,006 - INFO - 正在连接到节点: vpn359610091 (103.172.220.133)
+2026-08-01 14:03:31,007 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:31,015 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:31,015 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:31,016 - INFO - 节点 vpn359610091 连接失败，尝试下一个...
+2026-08-01 14:03:31,203 - INFO - 正在连接到节点: vpn755770031 (125.8.119.43)
+2026-08-01 14:03:31,204 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:31,211 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:31,211 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:31,211 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:31,211 - INFO - 节点 vpn755770031 连接失败
+2026-08-01 14:03:31,212 - INFO - 自动连接尝试节点: vpn446015046 (59.10.232.165)
+2026-08-01 14:03:31,713 - INFO - 正在连接到节点: vpn446015046 (59.10.232.165)
+2026-08-01 14:03:31,713 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:31,720 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:31,720 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:31,720 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:31,720 - INFO - 节点 vpn446015046 连接失败
+2026-08-01 14:03:31,720 - INFO - 自动连接尝试节点: vpn783575401 (119.195.254.240)
+2026-08-01 14:03:32,221 - INFO - 正在连接到节点: vpn783575401 (119.195.254.240)
+2026-08-01 14:03:32,222 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:32,228 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:32,228 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:32,228 - INFO - 节点 vpn783575401 连接失败
+2026-08-01 14:03:32,229 - INFO - 自动连接尝试节点: vpn640956667 (121.136.219.132)
+2026-08-01 14:03:32,518 - INFO - 正在连接到节点: vpn159547812 (61.85.48.78)
+2026-08-01 14:03:32,520 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:32,526 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:32,527 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:32,527 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:32,527 - INFO - 节点 vpn159547812 连接失败，尝试下一个...
+2026-08-01 14:03:32,729 - INFO - 正在连接到节点: vpn640956667 (121.136.219.132)
+2026-08-01 14:03:32,730 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:32,737 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:32,737 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:32,737 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:32,738 - INFO - 节点 vpn640956667 连接失败
+2026-08-01 14:03:32,738 - INFO - 自动连接尝试节点: vpn341413712 (219.211.210.169)
+2026-08-01 14:03:33,239 - INFO - 正在连接到节点: vpn341413712 (219.211.210.169)
+2026-08-01 14:03:33,240 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:33,246 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:33,246 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:33,247 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:33,247 - INFO - 节点 vpn341413712 连接失败
+2026-08-01 14:03:33,247 - INFO - 自动连接尝试节点: vpn676146729 (123.1.111.132)
+2026-08-01 14:03:33,748 - INFO - 正在连接到节点: vpn676146729 (123.1.111.132)
+2026-08-01 14:03:33,749 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:33,755 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:33,755 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:33,756 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:33,756 - INFO - 节点 vpn676146729 连接失败
+2026-08-01 14:03:33,756 - INFO - 自动连接尝试节点: vpn131624878 (124.143.105.110)
+2026-08-01 14:03:34,030 - INFO - 正在连接到节点: public-vpn-227 (219.100.37.185)
+2026-08-01 14:03:34,030 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:34,037 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:34,037 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:34,038 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:34,038 - INFO - 节点 public-vpn-227 连接失败，尝试下一个...
+2026-08-01 14:03:34,257 - INFO - 正在连接到节点: vpn131624878 (124.143.105.110)
+2026-08-01 14:03:34,257 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:34,264 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:34,265 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:34,265 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:34,265 - INFO - 节点 vpn131624878 连接失败
+2026-08-01 14:03:34,265 - INFO - 自动连接尝试节点: vpn110532732 (222.97.185.218)
+2026-08-01 14:03:34,766 - INFO - 正在连接到节点: vpn110532732 (222.97.185.218)
+2026-08-01 14:03:34,767 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:34,774 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:34,774 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:34,775 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:34,775 - INFO - 节点 vpn110532732 连接失败
+2026-08-01 14:03:34,775 - INFO - 自动连接尝试节点: vpn956766286 (14.53.209.118)
+2026-08-01 14:03:35,277 - INFO - 正在连接到节点: vpn956766286 (14.53.209.118)
+2026-08-01 14:03:35,277 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:35,284 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:35,284 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:35,284 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:35,284 - INFO - 节点 vpn956766286 连接失败
+2026-08-01 14:03:35,284 - INFO - 自动连接尝试节点: vpn777651061 (118.159.28.138)
+2026-08-01 14:03:35,539 - INFO - 正在连接到节点: vpn918071739 (1.244.119.231)
+2026-08-01 14:03:35,540 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:35,546 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:35,547 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:35,547 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:35,547 - INFO - 节点 vpn918071739 连接失败，尝试下一个...
+2026-08-01 14:03:35,785 - INFO - 正在连接到节点: vpn777651061 (118.159.28.138)
+2026-08-01 14:03:35,786 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:35,793 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:35,793 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:35,793 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:35,793 - INFO - 节点 vpn777651061 连接失败
+2026-08-01 14:03:35,794 - INFO - 自动连接尝试节点: vpn722645980 (126.119.90.199)
+2026-08-01 14:03:36,295 - INFO - 正在连接到节点: vpn722645980 (126.119.90.199)
+2026-08-01 14:03:36,295 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:36,302 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:36,302 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:36,302 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:36,302 - INFO - 节点 vpn722645980 连接失败
+2026-08-01 14:03:36,303 - INFO - 自动连接尝试节点: vpn658015024 (46.216.25.78)
+2026-08-01 14:03:36,804 - INFO - 正在连接到节点: vpn658015024 (46.216.25.78)
+2026-08-01 14:03:36,804 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:36,811 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:36,811 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:36,812 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:36,812 - INFO - 节点 vpn658015024 连接失败
+2026-08-01 14:03:36,812 - INFO - 自动连接尝试节点: vpn748064328 (58.136.73.129)
+2026-08-01 14:03:37,049 - INFO - 正在连接到节点: vpn448703642 (175.203.99.209)
+2026-08-01 14:03:37,050 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:37,055 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:37,055 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:37,055 - INFO - 节点 vpn448703642 连接失败，尝试下一个...
+2026-08-01 14:03:37,313 - INFO - 正在连接到节点: vpn748064328 (58.136.73.129)
+2026-08-01 14:03:37,314 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:37,319 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:37,319 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:37,320 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:37,320 - INFO - 节点 vpn748064328 连接失败
+2026-08-01 14:03:37,320 - INFO - 自动连接尝试节点: vpn800826779 (126.169.149.98)
+2026-08-01 14:03:37,821 - INFO - 正在连接到节点: vpn800826779 (126.169.149.98)
+2026-08-01 14:03:37,822 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:37,828 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:37,828 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:37,829 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:37,829 - INFO - 节点 vpn800826779 连接失败
+2026-08-01 14:03:37,829 - INFO - 自动连接尝试节点: vpn193283191 (183.88.252.47)
+2026-08-01 14:03:38,330 - INFO - 正在连接到节点: vpn193283191 (183.88.252.47)
+2026-08-01 14:03:38,331 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:03:38,337 - INFO - [OpenVPN] Options error: http-proxy port number not defined
+2026-08-01 14:03:38,337 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:03:38,338 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:03:38,338 - INFO - 节点 vpn193283191 连接失败
+2026-08-01 14:03:38,338 - INFO - 自动连接尝试节点: vpn213483659 (219.100.189.103)
+2026-08-01 14:04:25,721 - INFO - 正在获取节点列表...
+2026-08-01 14:04:28,528 - INFO - 获取到 98 个节点
+2026-08-01 14:04:28,530 - INFO - 第 1 轮：尝试普通节点...
+2026-08-01 14:04:29,031 - INFO - 正在连接到节点: public-vpn-255 (219.100.37.224)
+2026-08-01 14:04:29,032 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:04:29,039 - INFO - [OpenVPN] 2026-08-01 14:04:29 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:04:29,040 - INFO - [OpenVPN] 2026-08-01 14:04:29 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:04:29,040 - INFO - [OpenVPN] 2026-08-01 14:04:29 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:04:29,041 - INFO - [OpenVPN] 2026-08-01 14:04:29 DCO version: N/A
+2026-08-01 14:04:29,042 - INFO - [OpenVPN] 2026-08-01 14:04:29 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:04:29,042 - INFO - [OpenVPN] 2026-08-01 14:04:29 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:29,043 - INFO - [OpenVPN] 2026-08-01 14:04:29 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:04:29,043 - INFO - [OpenVPN] 2026-08-01 14:04:29 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:29,043 - INFO - [OpenVPN] 2026-08-01 14:04:29 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:29,043 - INFO - [OpenVPN] 2026-08-01 14:04:29 Send to HTTP proxy: 'CONNECT 219.100.37.224:443 HTTP/1.0'
+2026-08-01 14:04:29,043 - INFO - [OpenVPN] 2026-08-01 14:04:29 Send to HTTP proxy: 'Host: 219.100.37.224'
+2026-08-01 14:04:29,043 - INFO - [OpenVPN] 2026-08-01 14:04:29 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:04:31,042 - INFO - [OpenVPN] 2026-08-01 14:04:31 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:04:31,042 - INFO - [OpenVPN] 2026-08-01 14:04:31 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:31,259 - INFO - [OpenVPN] 2026-08-01 14:04:31 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=867e5796 4817f7ab
+2026-08-01 14:04:31,627 - INFO - [OpenVPN] 2026-08-01 14:04:31 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:04:31,627 - INFO - [OpenVPN] 2026-08-01 14:04:31 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:04:31,628 - INFO - [OpenVPN] 2026-08-01 14:04:31 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:04:31,628 - INFO - [OpenVPN] 2026-08-01 14:04:31 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:04:32,026 - INFO - [OpenVPN] 2026-08-01 14:04:32 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:04:32,027 - INFO - [OpenVPN] 2026-08-01 14:04:32 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:32,027 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:04:32,027 - INFO - [OpenVPN] 2026-08-01 14:04:32 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:04:32,027 - INFO - [OpenVPN] 2026-08-01 14:04:32 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:04:33,045 - INFO - [OpenVPN] 2026-08-01 14:04:33 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:04:38,288 - INFO - [OpenVPN] 2026-08-01 14:04:38 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:04:38,530 - INFO - 检测到未连接，尝试自动重连...
+2026-08-01 14:04:38,531 - INFO - 自动连接尝试节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:04:38,531 - INFO - [OpenVPN] 2026-08-01 14:04:38 event_wait : Interrupted system call (fd=-1,code=4)
+2026-08-01 14:04:38,532 - INFO - [OpenVPN] 2026-08-01 14:04:38 SIGTERM[hard,] received, process exiting
+2026-08-01 14:04:38,633 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:04:38,634 - INFO - 节点 public-vpn-255 连接失败，尝试下一个...
+2026-08-01 14:04:39,042 - INFO - 正在连接到节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:04:39,043 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:04:39,049 - INFO - [OpenVPN] 2026-08-01 14:04:39 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:04:39,049 - INFO - [OpenVPN] 2026-08-01 14:04:39 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:04:39,049 - INFO - [OpenVPN] 2026-08-01 14:04:39 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:04:39,049 - INFO - [OpenVPN] 2026-08-01 14:04:39 DCO version: N/A
+2026-08-01 14:04:39,050 - INFO - [OpenVPN] 2026-08-01 14:04:39 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:04:39,050 - INFO - [OpenVPN] 2026-08-01 14:04:39 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:39,051 - INFO - [OpenVPN] 2026-08-01 14:04:39 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:04:39,051 - INFO - [OpenVPN] 2026-08-01 14:04:39 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:39,051 - INFO - [OpenVPN] 2026-08-01 14:04:39 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:39,051 - INFO - [OpenVPN] 2026-08-01 14:04:39 Send to HTTP proxy: 'CONNECT 219.100.37.127:443 HTTP/1.0'
+2026-08-01 14:04:39,051 - INFO - [OpenVPN] 2026-08-01 14:04:39 Send to HTTP proxy: 'Host: 219.100.37.127'
+2026-08-01 14:04:39,051 - INFO - [OpenVPN] 2026-08-01 14:04:39 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:04:39,635 - INFO - [OpenVPN] 2026-08-01 14:04:39 SIGTERM[hard,init_instance] received, process exiting
+2026-08-01 14:04:39,736 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:04:39,737 - INFO - 节点 public-vpn-165 连接失败
+2026-08-01 14:04:39,737 - INFO - 自动连接尝试节点: public-vpn-153 (219.100.37.109)
+2026-08-01 14:04:40,146 - INFO - 正在连接到节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:04:40,147 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:04:40,154 - INFO - [OpenVPN] 2026-08-01 14:04:40 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:04:40,154 - INFO - [OpenVPN] 2026-08-01 14:04:40 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:04:40,155 - INFO - [OpenVPN] 2026-08-01 14:04:40 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:04:40,155 - INFO - [OpenVPN] 2026-08-01 14:04:40 DCO version: N/A
+2026-08-01 14:04:40,155 - INFO - [OpenVPN] 2026-08-01 14:04:40 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:04:40,156 - INFO - [OpenVPN] 2026-08-01 14:04:40 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:40,156 - INFO - [OpenVPN] 2026-08-01 14:04:40 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:04:40,156 - INFO - [OpenVPN] 2026-08-01 14:04:40 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:40,157 - INFO - [OpenVPN] 2026-08-01 14:04:40 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:40,157 - INFO - [OpenVPN] 2026-08-01 14:04:40 Send to HTTP proxy: 'CONNECT 219.100.37.127:443 HTTP/1.0'
+2026-08-01 14:04:40,157 - INFO - [OpenVPN] 2026-08-01 14:04:40 Send to HTTP proxy: 'Host: 219.100.37.127'
+2026-08-01 14:04:40,157 - INFO - [OpenVPN] 2026-08-01 14:04:40 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:04:40,238 - INFO - 正在连接到节点: public-vpn-153 (219.100.37.109)
+2026-08-01 14:04:40,238 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:04:40,246 - INFO - [OpenVPN] 2026-08-01 14:04:40 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:04:40,247 - INFO - [OpenVPN] 2026-08-01 14:04:40 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:04:40,247 - INFO - [OpenVPN] 2026-08-01 14:04:40 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:04:40,247 - INFO - [OpenVPN] 2026-08-01 14:04:40 DCO version: N/A
+2026-08-01 14:04:40,247 - INFO - [OpenVPN] 2026-08-01 14:04:40 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:04:40,249 - INFO - [OpenVPN] 2026-08-01 14:04:40 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:40,249 - INFO - [OpenVPN] 2026-08-01 14:04:40 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:04:40,249 - INFO - [OpenVPN] 2026-08-01 14:04:40 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:40,249 - INFO - [OpenVPN] 2026-08-01 14:04:40 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:40,250 - INFO - [OpenVPN] 2026-08-01 14:04:40 Send to HTTP proxy: 'CONNECT 219.100.37.109:443 HTTP/1.0'
+2026-08-01 14:04:40,250 - INFO - [OpenVPN] 2026-08-01 14:04:40 Send to HTTP proxy: 'Host: 219.100.37.109'
+2026-08-01 14:04:40,250 - INFO - [OpenVPN] 2026-08-01 14:04:40 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:04:42,159 - INFO - [OpenVPN] 2026-08-01 14:04:42 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:04:42,159 - INFO - [OpenVPN] 2026-08-01 14:04:42 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:42,251 - INFO - [OpenVPN] 2026-08-01 14:04:42 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:04:42,252 - INFO - [OpenVPN] 2026-08-01 14:04:42 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:42,362 - INFO - [OpenVPN] 2026-08-01 14:04:42 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=7f04a1f2 21ea24b9
+2026-08-01 14:04:42,456 - INFO - [OpenVPN] 2026-08-01 14:04:42 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=c34cb133 893406ca
+2026-08-01 14:04:42,707 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:04:42,708 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:04:42,708 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:04:42,708 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:04:42,803 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:04:42,803 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:04:42,804 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:04:42,804 - INFO - [OpenVPN] 2026-08-01 14:04:42 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:04:43,091 - INFO - [OpenVPN] 2026-08-01 14:04:43 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:04:43,092 - INFO - [OpenVPN] 2026-08-01 14:04:43 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:43,092 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:04:43,092 - INFO - [OpenVPN] 2026-08-01 14:04:43 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:04:43,092 - INFO - [OpenVPN] 2026-08-01 14:04:43 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:04:43,186 - INFO - [OpenVPN] 2026-08-01 14:04:43 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:04:43,187 - INFO - [OpenVPN] 2026-08-01 14:04:43 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:04:43,187 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:04:43,187 - INFO - [OpenVPN] 2026-08-01 14:04:43 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:04:43,187 - INFO - [OpenVPN] 2026-08-01 14:04:43 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:04:44,235 - INFO - [OpenVPN] 2026-08-01 14:04:44 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:04:44,318 - INFO - [OpenVPN] 2026-08-01 14:04:44 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:04:45,434 - INFO - [OpenVPN] 2026-08-01 14:04:45 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.240.72.233 10.240.72.234,dhcp-option DNS 10.240.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.240.72.234,redirect-gateway def1'
+2026-08-01 14:04:45,434 - INFO - 提取到 VPN 网关 IP: 10.240.72.234
+2026-08-01 14:04:45,435 - INFO - [OpenVPN] 2026-08-01 14:04:45 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:04:45,435 - INFO - [OpenVPN] 2026-08-01 14:04:45 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:04:45,436 - INFO - [OpenVPN] 2026-08-01 14:04:45 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:04:45,436 - INFO - [OpenVPN] 2026-08-01 14:04:45 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:04:45,436 - INFO - [OpenVPN] 2026-08-01 14:04:45 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:04:45,436 - INFO - [OpenVPN] 2026-08-01 14:04:45 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:04:45,449 - INFO - [OpenVPN] 2026-08-01 14:04:45 TUN/TAP device tun0 opened
+2026-08-01 14:04:45,450 - INFO - [OpenVPN] 2026-08-01 14:04:45 net_iface_mtu_set: mtu 1500 for tun0
+2026-08-01 14:04:45,450 - INFO - [OpenVPN] 2026-08-01 14:04:45 net_iface_up: set tun0 up
+2026-08-01 14:04:45,450 - INFO - [OpenVPN] 2026-08-01 14:04:45 net_addr_ptp_v4_add: 10.240.72.233 peer 10.240.72.234 dev tun0
+2026-08-01 14:04:45,450 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.240.72.233
+2026-08-01 14:04:45,451 - INFO - [OpenVPN] 2026-08-01 14:04:45 Initialization Sequence Completed
+2026-08-01 14:04:45,451 - INFO - OpenVPN 初始化完成
+2026-08-01 14:04:45,451 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:04:45,475 - INFO - 策略路由已配置: from 10.240.72.233 table 100 (default via 10.240.72.234 dev tun0)
+2026-08-01 14:04:46,019 - INFO - [OpenVPN] 2026-08-01 14:04:46 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.239.78.249 10.239.78.250,dhcp-option DNS 10.239.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.239.78.250,redirect-gateway def1'
+2026-08-01 14:04:46,020 - INFO - 提取到 VPN 网关 IP: 10.239.78.250
+2026-08-01 14:04:46,020 - INFO - [OpenVPN] 2026-08-01 14:04:46 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:04:46,020 - INFO - [OpenVPN] 2026-08-01 14:04:46 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:04:46,020 - INFO - [OpenVPN] 2026-08-01 14:04:46 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:04:46,021 - INFO - [OpenVPN] 2026-08-01 14:04:46 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:04:46,021 - INFO - [OpenVPN] 2026-08-01 14:04:46 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:04:46,021 - INFO - [OpenVPN] 2026-08-01 14:04:46 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:04:46,021 - INFO - [OpenVPN] 2026-08-01 14:04:46 TUN/TAP device tun1 opened
+2026-08-01 14:04:46,021 - INFO - [OpenVPN] 2026-08-01 14:04:46 net_iface_mtu_set: mtu 1500 for tun1
+2026-08-01 14:04:46,021 - INFO - [OpenVPN] 2026-08-01 14:04:46 net_iface_up: set tun1 up
+2026-08-01 14:04:46,022 - INFO - [OpenVPN] 2026-08-01 14:04:46 net_addr_ptp_v4_add: 10.239.78.249 peer 10.239.78.250 dev tun1
+2026-08-01 14:04:46,022 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.239.78.249
+2026-08-01 14:04:46,022 - INFO - [OpenVPN] 2026-08-01 14:04:46 Initialization Sequence Completed
+2026-08-01 14:04:46,022 - INFO - OpenVPN 初始化完成
+2026-08-01 14:04:46,022 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:04:46,047 - INFO - 策略路由已配置: from 10.239.78.249 table 100 (default via 10.239.78.250 dev tun1)
+2026-08-01 14:04:46,476 - INFO - VPN 连接成功，本机 VPN IP: 10.240.72.233, 接口: tun0, 网关: 10.240.72.234
+2026-08-01 14:04:46,477 - INFO - 正在预热 VPN 隧道...
+2026-08-01 14:04:47,047 - INFO - VPN 连接成功，本机 VPN IP: 10.239.78.249, 接口: tun1, 网关: 10.239.78.250
+2026-08-01 14:04:48,225 - INFO - 隧道预热成功 (HTTP 503)
+2026-08-01 14:04:48,594 - INFO - SOCKS5 代理已启动: socks5://172.17.0.2:1080
+2026-08-01 14:04:48,595 - INFO - 已记录连接开始时间: 2026-08-01T06:04:48.595014+00:00
+2026-08-01 14:04:48,595 - INFO - VPN 连接成功建立
+2026-08-01 14:05:50,843 - INFO - 测速失败 (第1次，共3次): curl 退出码: 97
+2026-08-01 14:06:11,362 - INFO - 测速失败 (第2次，共3次): curl 退出码: 97
+2026-08-01 14:06:31,379 - INFO - 测速失败 (第3次，共3次): curl 退出码: 97
+2026-08-01 14:10:54,773 - INFO - 节点 public-vpn-165 (219.100.37.127) 已断开，使用时长: 0:06:06
+2026-08-01 14:10:54,803 - INFO - 策略路由已清理
+2026-08-01 14:10:55,326 - INFO - 正在连接到节点: vpn682395406 (180.233.233.86)
+2026-08-01 14:10:55,327 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:10:55,335 - INFO - [OpenVPN] 2026-08-01 14:10:55 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:10:55,335 - INFO - [OpenVPN] 2026-08-01 14:10:55 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:10:55,335 - INFO - [OpenVPN] 2026-08-01 14:10:55 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:10:55,335 - INFO - [OpenVPN] 2026-08-01 14:10:55 DCO version: N/A
+2026-08-01 14:10:55,336 - INFO - [OpenVPN] 2026-08-01 14:10:55 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:10:55,336 - INFO - [OpenVPN] 2026-08-01 14:10:55 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:10:55,337 - INFO - [OpenVPN] 2026-08-01 14:10:55 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:10:55,337 - INFO - [OpenVPN] 2026-08-01 14:10:55 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:10:55,337 - INFO - [OpenVPN] 2026-08-01 14:10:55 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:10:55,337 - INFO - [OpenVPN] 2026-08-01 14:10:55 Send to HTTP proxy: 'CONNECT 180.233.233.86:1928 HTTP/1.0'
+2026-08-01 14:10:55,337 - INFO - [OpenVPN] 2026-08-01 14:10:55 Send to HTTP proxy: 'Host: 180.233.233.86'
+2026-08-01 14:10:55,337 - INFO - [OpenVPN] 2026-08-01 14:10:55 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:10:57,453 - INFO - [OpenVPN] 2026-08-01 14:10:57 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:10:57,453 - INFO - [OpenVPN] 2026-08-01 14:10:57 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:10:58,033 - INFO - [OpenVPN] 2026-08-01 14:10:58 Connection reset, restarting [0]
+2026-08-01 14:10:58,034 - INFO - [OpenVPN] 2026-08-01 14:10:58 SIGUSR1[soft,connection-reset] received, process restarting
+2026-08-01 14:10:58,034 - INFO - [OpenVPN] 2026-08-01 14:10:58 Restart pause, 1 second(s)
+2026-08-01 14:10:59,033 - INFO - [OpenVPN] 2026-08-01 14:10:59 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:10:59,034 - INFO - [OpenVPN] 2026-08-01 14:10:59 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:10:59,034 - INFO - [OpenVPN] 2026-08-01 14:10:59 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:10:59,034 - INFO - [OpenVPN] 2026-08-01 14:10:59 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:10:59,034 - INFO - [OpenVPN] 2026-08-01 14:10:59 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:10:59,034 - INFO - [OpenVPN] 2026-08-01 14:10:59 Send to HTTP proxy: 'CONNECT 180.233.233.86:1928 HTTP/1.0'
+2026-08-01 14:10:59,034 - INFO - [OpenVPN] 2026-08-01 14:10:59 Send to HTTP proxy: 'Host: 180.233.233.86'
+2026-08-01 14:10:59,035 - INFO - [OpenVPN] 2026-08-01 14:10:59 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:01,036 - INFO - [OpenVPN] 2026-08-01 14:11:01 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:01,036 - INFO - [OpenVPN] 2026-08-01 14:11:01 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:01,265 - INFO - [OpenVPN] 2026-08-01 14:11:01 Connection reset, restarting [0]
+2026-08-01 14:11:01,266 - INFO - [OpenVPN] 2026-08-01 14:11:01 SIGUSR1[soft,connection-reset] received, process restarting
+2026-08-01 14:11:01,266 - INFO - [OpenVPN] 2026-08-01 14:11:01 Restart pause, 1 second(s)
+2026-08-01 14:11:02,266 - INFO - [OpenVPN] 2026-08-01 14:11:02 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:02,266 - INFO - [OpenVPN] 2026-08-01 14:11:02 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:02,267 - INFO - [OpenVPN] 2026-08-01 14:11:02 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:02,267 - INFO - [OpenVPN] 2026-08-01 14:11:02 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:02,267 - INFO - [OpenVPN] 2026-08-01 14:11:02 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:02,268 - INFO - [OpenVPN] 2026-08-01 14:11:02 Send to HTTP proxy: 'CONNECT 180.233.233.86:1928 HTTP/1.0'
+2026-08-01 14:11:02,268 - INFO - [OpenVPN] 2026-08-01 14:11:02 Send to HTTP proxy: 'Host: 180.233.233.86'
+2026-08-01 14:11:02,268 - INFO - [OpenVPN] 2026-08-01 14:11:02 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:04,270 - INFO - [OpenVPN] 2026-08-01 14:11:04 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:04,270 - INFO - [OpenVPN] 2026-08-01 14:11:04 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:04,955 - INFO - [OpenVPN] 2026-08-01 14:11:04 Connection reset, restarting [0]
+2026-08-01 14:11:04,955 - INFO - [OpenVPN] 2026-08-01 14:11:04 SIGUSR1[soft,connection-reset] received, process restarting
+2026-08-01 14:11:04,955 - INFO - [OpenVPN] 2026-08-01 14:11:04 Restart pause, 1 second(s)
+2026-08-01 14:11:05,955 - INFO - [OpenVPN] 2026-08-01 14:11:05 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:05,955 - INFO - [OpenVPN] 2026-08-01 14:11:05 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:05,955 - INFO - [OpenVPN] 2026-08-01 14:11:05 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:05,955 - INFO - [OpenVPN] 2026-08-01 14:11:05 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:05,956 - INFO - [OpenVPN] 2026-08-01 14:11:05 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:05,956 - INFO - [OpenVPN] 2026-08-01 14:11:05 Send to HTTP proxy: 'CONNECT 180.233.233.86:1928 HTTP/1.0'
+2026-08-01 14:11:05,956 - INFO - [OpenVPN] 2026-08-01 14:11:05 Send to HTTP proxy: 'Host: 180.233.233.86'
+2026-08-01 14:11:05,956 - INFO - [OpenVPN] 2026-08-01 14:11:05 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:07,958 - INFO - [OpenVPN] 2026-08-01 14:11:07 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:07,959 - INFO - [OpenVPN] 2026-08-01 14:11:07 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:08,191 - INFO - [OpenVPN] 2026-08-01 14:11:08 Connection reset, restarting [0]
+2026-08-01 14:11:08,192 - INFO - [OpenVPN] 2026-08-01 14:11:08 SIGUSR1[soft,connection-reset] received, process restarting
+2026-08-01 14:11:08,192 - INFO - [OpenVPN] 2026-08-01 14:11:08 Restart pause, 1 second(s)
+2026-08-01 14:11:09,192 - INFO - [OpenVPN] 2026-08-01 14:11:09 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:09,192 - INFO - [OpenVPN] 2026-08-01 14:11:09 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:09,192 - INFO - [OpenVPN] 2026-08-01 14:11:09 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:09,192 - INFO - [OpenVPN] 2026-08-01 14:11:09 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:09,193 - INFO - [OpenVPN] 2026-08-01 14:11:09 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:09,193 - INFO - [OpenVPN] 2026-08-01 14:11:09 Send to HTTP proxy: 'CONNECT 180.233.233.86:1928 HTTP/1.0'
+2026-08-01 14:11:09,193 - INFO - [OpenVPN] 2026-08-01 14:11:09 Send to HTTP proxy: 'Host: 180.233.233.86'
+2026-08-01 14:11:09,193 - INFO - [OpenVPN] 2026-08-01 14:11:09 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:11,195 - INFO - [OpenVPN] 2026-08-01 14:11:11 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:11,195 - INFO - [OpenVPN] 2026-08-01 14:11:11 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:11,415 - INFO - [OpenVPN] 2026-08-01 14:11:11 Connection reset, restarting [0]
+2026-08-01 14:11:11,415 - INFO - [OpenVPN] 2026-08-01 14:11:11 SIGUSR1[soft,connection-reset] received, process restarting
+2026-08-01 14:11:11,416 - INFO - [OpenVPN] 2026-08-01 14:11:11 Restart pause, 2 second(s)
+2026-08-01 14:11:13,415 - INFO - [OpenVPN] 2026-08-01 14:11:13 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:13,416 - INFO - [OpenVPN] 2026-08-01 14:11:13 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:13,416 - INFO - [OpenVPN] 2026-08-01 14:11:13 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:13,417 - INFO - [OpenVPN] 2026-08-01 14:11:13 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:13,417 - INFO - [OpenVPN] 2026-08-01 14:11:13 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:13,417 - INFO - [OpenVPN] 2026-08-01 14:11:13 Send to HTTP proxy: 'CONNECT 180.233.233.86:1928 HTTP/1.0'
+2026-08-01 14:11:13,418 - INFO - [OpenVPN] 2026-08-01 14:11:13 Send to HTTP proxy: 'Host: 180.233.233.86'
+2026-08-01 14:11:13,418 - INFO - [OpenVPN] 2026-08-01 14:11:13 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:15,419 - INFO - [OpenVPN] 2026-08-01 14:11:15 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:15,419 - INFO - [OpenVPN] 2026-08-01 14:11:15 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:15,650 - INFO - [OpenVPN] 2026-08-01 14:11:15 Connection reset, restarting [0]
+2026-08-01 14:11:15,650 - INFO - [OpenVPN] 2026-08-01 14:11:15 SIGUSR1[soft,connection-reset] received, process restarting
+2026-08-01 14:11:15,651 - INFO - [OpenVPN] 2026-08-01 14:11:15 Restart pause, 4 second(s)
+2026-08-01 14:11:19,650 - INFO - [OpenVPN] 2026-08-01 14:11:19 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:19,651 - INFO - [OpenVPN] 2026-08-01 14:11:19 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:19,651 - INFO - [OpenVPN] 2026-08-01 14:11:19 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:19,652 - INFO - [OpenVPN] 2026-08-01 14:11:19 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:19,652 - INFO - [OpenVPN] 2026-08-01 14:11:19 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:19,652 - INFO - [OpenVPN] 2026-08-01 14:11:19 Send to HTTP proxy: 'CONNECT 180.233.233.86:1928 HTTP/1.0'
+2026-08-01 14:11:19,652 - INFO - [OpenVPN] 2026-08-01 14:11:19 Send to HTTP proxy: 'Host: 180.233.233.86'
+2026-08-01 14:11:19,653 - INFO - [OpenVPN] 2026-08-01 14:11:19 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:21,652 - INFO - [OpenVPN] 2026-08-01 14:11:21 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:21,653 - INFO - 获取 VPN IP 失败，无法启动 SOCKS5 代理
+2026-08-01 14:11:23,688 - INFO - 正在连接到节点: public-vpn-255 (219.100.37.224)
+2026-08-01 14:11:23,688 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:11:23,694 - INFO - [OpenVPN] 2026-08-01 14:11:23 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:11:23,695 - INFO - [OpenVPN] 2026-08-01 14:11:23 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:11:23,695 - INFO - [OpenVPN] 2026-08-01 14:11:23 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:11:23,695 - INFO - [OpenVPN] 2026-08-01 14:11:23 DCO version: N/A
+2026-08-01 14:11:23,696 - INFO - [OpenVPN] 2026-08-01 14:11:23 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:23,698 - INFO - [OpenVPN] 2026-08-01 14:11:23 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:23,698 - INFO - [OpenVPN] 2026-08-01 14:11:23 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:23,699 - INFO - [OpenVPN] 2026-08-01 14:11:23 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:23,699 - INFO - [OpenVPN] 2026-08-01 14:11:23 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:23,700 - INFO - [OpenVPN] 2026-08-01 14:11:23 Send to HTTP proxy: 'CONNECT 219.100.37.224:443 HTTP/1.0'
+2026-08-01 14:11:23,700 - INFO - [OpenVPN] 2026-08-01 14:11:23 Send to HTTP proxy: 'Host: 219.100.37.224'
+2026-08-01 14:11:23,700 - INFO - [OpenVPN] 2026-08-01 14:11:23 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:25,702 - INFO - [OpenVPN] 2026-08-01 14:11:25 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:25,703 - INFO - [OpenVPN] 2026-08-01 14:11:25 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:25,912 - INFO - [OpenVPN] 2026-08-01 14:11:25 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=45131feb 45597dcd
+2026-08-01 14:11:26,264 - INFO - [OpenVPN] 2026-08-01 14:11:26 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:11:26,264 - INFO - [OpenVPN] 2026-08-01 14:11:26 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:11:26,265 - INFO - [OpenVPN] 2026-08-01 14:11:26 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:11:26,265 - INFO - [OpenVPN] 2026-08-01 14:11:26 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:11:26,652 - INFO - [OpenVPN] 2026-08-01 14:11:26 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:11:26,652 - INFO - [OpenVPN] 2026-08-01 14:11:26 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:26,653 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:11:26,653 - INFO - [OpenVPN] 2026-08-01 14:11:26 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:11:26,653 - INFO - [OpenVPN] 2026-08-01 14:11:26 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:11:27,694 - INFO - [OpenVPN] 2026-08-01 14:11:27 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:11:32,350 - INFO - [OpenVPN] 2026-08-01 14:11:32 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:11:32,350 - INFO - [OpenVPN] 2026-08-01 14:11:32 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.246.80.45 10.246.80.46,dhcp-option DNS 10.246.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.246.80.46,redirect-gateway def1'
+2026-08-01 14:11:32,350 - INFO - 提取到 VPN 网关 IP: 10.246.80.46
+2026-08-01 14:11:32,351 - INFO - [OpenVPN] 2026-08-01 14:11:32 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:32,351 - INFO - [OpenVPN] 2026-08-01 14:11:32 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:32,351 - INFO - [OpenVPN] 2026-08-01 14:11:32 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:32,351 - INFO - [OpenVPN] 2026-08-01 14:11:32 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:11:32,352 - INFO - [OpenVPN] 2026-08-01 14:11:32 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:11:32,352 - INFO - [OpenVPN] 2026-08-01 14:11:32 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:11:32,352 - INFO - [OpenVPN] 2026-08-01 14:11:32 TUN/TAP device tun1 opened
+2026-08-01 14:11:32,352 - INFO - [OpenVPN] 2026-08-01 14:11:32 net_iface_mtu_set: mtu 1500 for tun1
+2026-08-01 14:11:32,352 - INFO - [OpenVPN] 2026-08-01 14:11:32 net_iface_up: set tun1 up
+2026-08-01 14:11:32,353 - INFO - [OpenVPN] 2026-08-01 14:11:32 net_addr_ptp_v4_add: 10.246.80.45 peer 10.246.80.46 dev tun1
+2026-08-01 14:11:32,353 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.246.80.45
+2026-08-01 14:11:32,353 - INFO - [OpenVPN] 2026-08-01 14:11:32 Initialization Sequence Completed
+2026-08-01 14:11:32,353 - INFO - OpenVPN 初始化完成
+2026-08-01 14:11:32,353 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:11:32,378 - INFO - 策略路由已配置: from 10.246.80.45 table 100 (default via 10.246.80.46 dev tun1)
+2026-08-01 14:11:33,380 - INFO - VPN 连接成功，本机 VPN IP: 10.246.80.45, 接口: tun1, 网关: 10.246.80.46
+2026-08-01 14:11:33,381 - ERROR - Exception on /api/connect [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/app/app/app.py", line 68, in decorated
+    return f(*args, **kwargs)
+  File "/app/app/app.py", line 123, in connect
+    success = manager.connect_node(node)
+  File "/app/app/vpn_manager.py", line 391, in connect_node
+    self.socks_server.start()
+  File "/app/app/socks_server.py", line 60, in start
+    self.server_socket.bind((self.bind_host, self.bind_port))
+OSError: [Errno 98] Address already in use
+2026-08-01 14:11:34,921 - INFO - 策略路由已清理
+2026-08-01 14:11:35,463 - INFO - 正在连接到节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:11:35,463 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:11:35,471 - INFO - [OpenVPN] 2026-08-01 14:11:35 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:11:35,471 - INFO - [OpenVPN] 2026-08-01 14:11:35 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:11:35,471 - INFO - [OpenVPN] 2026-08-01 14:11:35 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:11:35,472 - INFO - [OpenVPN] 2026-08-01 14:11:35 DCO version: N/A
+2026-08-01 14:11:35,472 - INFO - [OpenVPN] 2026-08-01 14:11:35 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:35,473 - INFO - [OpenVPN] 2026-08-01 14:11:35 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:35,473 - INFO - [OpenVPN] 2026-08-01 14:11:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:35,473 - INFO - [OpenVPN] 2026-08-01 14:11:35 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:35,473 - INFO - [OpenVPN] 2026-08-01 14:11:35 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:35,473 - INFO - [OpenVPN] 2026-08-01 14:11:35 Send to HTTP proxy: 'CONNECT 219.100.37.127:443 HTTP/1.0'
+2026-08-01 14:11:35,474 - INFO - [OpenVPN] 2026-08-01 14:11:35 Send to HTTP proxy: 'Host: 219.100.37.127'
+2026-08-01 14:11:35,474 - INFO - [OpenVPN] 2026-08-01 14:11:35 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:37,476 - INFO - [OpenVPN] 2026-08-01 14:11:37 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:37,476 - INFO - [OpenVPN] 2026-08-01 14:11:37 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:37,671 - INFO - [OpenVPN] 2026-08-01 14:11:37 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=aa47ec6d 231b75c7
+2026-08-01 14:11:38,005 - INFO - [OpenVPN] 2026-08-01 14:11:38 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:11:38,006 - INFO - [OpenVPN] 2026-08-01 14:11:38 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:11:38,006 - INFO - [OpenVPN] 2026-08-01 14:11:38 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:11:38,006 - INFO - [OpenVPN] 2026-08-01 14:11:38 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:11:38,376 - INFO - [OpenVPN] 2026-08-01 14:11:38 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:11:38,377 - INFO - [OpenVPN] 2026-08-01 14:11:38 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:38,377 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:11:38,377 - INFO - [OpenVPN] 2026-08-01 14:11:38 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:11:38,378 - INFO - [OpenVPN] 2026-08-01 14:11:38 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:11:39,508 - INFO - [OpenVPN] 2026-08-01 14:11:39 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:11:40,447 - INFO - [OpenVPN] 2026-08-01 14:11:40 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.240.81.61 10.240.81.62,dhcp-option DNS 10.240.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.240.81.62,redirect-gateway def1'
+2026-08-01 14:11:40,447 - INFO - 提取到 VPN 网关 IP: 10.240.81.62
+2026-08-01 14:11:40,448 - INFO - [OpenVPN] 2026-08-01 14:11:40 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:40,448 - INFO - [OpenVPN] 2026-08-01 14:11:40 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:40,448 - INFO - [OpenVPN] 2026-08-01 14:11:40 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:40,448 - INFO - [OpenVPN] 2026-08-01 14:11:40 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:11:40,448 - INFO - [OpenVPN] 2026-08-01 14:11:40 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:11:40,449 - INFO - [OpenVPN] 2026-08-01 14:11:40 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:11:40,449 - INFO - [OpenVPN] 2026-08-01 14:11:40 TUN/TAP device tun1 opened
+2026-08-01 14:11:40,450 - INFO - [OpenVPN] 2026-08-01 14:11:40 net_iface_mtu_set: mtu 1500 for tun1
+2026-08-01 14:11:40,450 - INFO - [OpenVPN] 2026-08-01 14:11:40 net_iface_up: set tun1 up
+2026-08-01 14:11:40,450 - INFO - [OpenVPN] 2026-08-01 14:11:40 net_addr_ptp_v4_add: 10.240.81.61 peer 10.240.81.62 dev tun1
+2026-08-01 14:11:40,450 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.240.81.61
+2026-08-01 14:11:40,450 - INFO - [OpenVPN] 2026-08-01 14:11:40 Initialization Sequence Completed
+2026-08-01 14:11:40,451 - INFO - OpenVPN 初始化完成
+2026-08-01 14:11:40,451 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:11:40,475 - INFO - 策略路由已配置: from 10.240.81.61 table 100 (default via 10.240.81.62 dev tun1)
+2026-08-01 14:11:41,478 - INFO - VPN 连接成功，本机 VPN IP: 10.240.81.61, 接口: tun1, 网关: 10.240.81.62
+2026-08-01 14:11:41,478 - ERROR - Exception on /api/connect [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/app/app/app.py", line 68, in decorated
+    return f(*args, **kwargs)
+  File "/app/app/app.py", line 123, in connect
+    success = manager.connect_node(node)
+  File "/app/app/vpn_manager.py", line 391, in connect_node
+    self.socks_server.start()
+  File "/app/app/socks_server.py", line 60, in start
+    self.server_socket.bind((self.bind_host, self.bind_port))
+OSError: [Errno 98] Address already in use
+2026-08-01 14:11:41,497 - INFO - 自动连接尝试节点: public-vpn-153 (219.100.37.109)
+2026-08-01 14:11:41,518 - INFO - 策略路由已清理
+2026-08-01 14:11:42,061 - INFO - 正在连接到节点: public-vpn-153 (219.100.37.109)
+2026-08-01 14:11:42,061 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:11:42,069 - INFO - [OpenVPN] 2026-08-01 14:11:42 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:11:42,069 - INFO - [OpenVPN] 2026-08-01 14:11:42 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:11:42,069 - INFO - [OpenVPN] 2026-08-01 14:11:42 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:11:42,070 - INFO - [OpenVPN] 2026-08-01 14:11:42 DCO version: N/A
+2026-08-01 14:11:42,070 - INFO - [OpenVPN] 2026-08-01 14:11:42 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:11:42,071 - INFO - [OpenVPN] 2026-08-01 14:11:42 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:42,071 - INFO - [OpenVPN] 2026-08-01 14:11:42 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:11:42,071 - INFO - [OpenVPN] 2026-08-01 14:11:42 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:42,071 - INFO - [OpenVPN] 2026-08-01 14:11:42 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:42,072 - INFO - [OpenVPN] 2026-08-01 14:11:42 Send to HTTP proxy: 'CONNECT 219.100.37.109:443 HTTP/1.0'
+2026-08-01 14:11:42,072 - INFO - [OpenVPN] 2026-08-01 14:11:42 Send to HTTP proxy: 'Host: 219.100.37.109'
+2026-08-01 14:11:42,072 - INFO - [OpenVPN] 2026-08-01 14:11:42 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:11:44,074 - INFO - [OpenVPN] 2026-08-01 14:11:44 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:11:44,074 - INFO - [OpenVPN] 2026-08-01 14:11:44 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:44,280 - INFO - [OpenVPN] 2026-08-01 14:11:44 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=21c743a0 b0afa4c5
+2026-08-01 14:11:44,625 - INFO - [OpenVPN] 2026-08-01 14:11:44 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:11:44,626 - INFO - [OpenVPN] 2026-08-01 14:11:44 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:11:44,626 - INFO - [OpenVPN] 2026-08-01 14:11:44 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:11:44,627 - INFO - [OpenVPN] 2026-08-01 14:11:44 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:11:45,004 - INFO - [OpenVPN] 2026-08-01 14:11:45 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:11:45,005 - INFO - [OpenVPN] 2026-08-01 14:11:45 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:11:45,005 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:11:45,005 - INFO - [OpenVPN] 2026-08-01 14:11:45 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:11:45,006 - INFO - [OpenVPN] 2026-08-01 14:11:45 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:11:46,162 - INFO - [OpenVPN] 2026-08-01 14:11:46 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:11:47,026 - INFO - [OpenVPN] 2026-08-01 14:11:47 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.239.87.113 10.239.87.114,dhcp-option DNS 10.239.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.239.87.114,redirect-gateway def1'
+2026-08-01 14:11:47,026 - INFO - 提取到 VPN 网关 IP: 10.239.87.114
+2026-08-01 14:11:47,027 - INFO - [OpenVPN] 2026-08-01 14:11:47 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:47,027 - INFO - [OpenVPN] 2026-08-01 14:11:47 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:47,028 - INFO - [OpenVPN] 2026-08-01 14:11:47 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:11:47,028 - INFO - [OpenVPN] 2026-08-01 14:11:47 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:11:47,028 - INFO - [OpenVPN] 2026-08-01 14:11:47 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:11:47,028 - INFO - [OpenVPN] 2026-08-01 14:11:47 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:11:47,029 - INFO - [OpenVPN] 2026-08-01 14:11:47 TUN/TAP device tun1 opened
+2026-08-01 14:11:47,029 - INFO - [OpenVPN] 2026-08-01 14:11:47 net_iface_mtu_set: mtu 1500 for tun1
+2026-08-01 14:11:47,029 - INFO - [OpenVPN] 2026-08-01 14:11:47 net_iface_up: set tun1 up
+2026-08-01 14:11:47,029 - INFO - [OpenVPN] 2026-08-01 14:11:47 net_addr_ptp_v4_add: 10.239.87.113 peer 10.239.87.114 dev tun1
+2026-08-01 14:11:47,029 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.239.87.113
+2026-08-01 14:11:47,029 - INFO - [OpenVPN] 2026-08-01 14:11:47 Initialization Sequence Completed
+2026-08-01 14:11:47,029 - INFO - OpenVPN 初始化完成
+2026-08-01 14:11:47,029 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:11:47,054 - INFO - 策略路由已配置: from 10.239.87.113 table 100 (default via 10.239.87.114 dev tun1)
+2026-08-01 14:11:48,055 - INFO - VPN 连接成功，本机 VPN IP: 10.239.87.113, 接口: tun1, 网关: 10.239.87.114
+2026-08-01 14:11:48,056 - ERROR - Exception on /api/auto_connect [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/app/app/app.py", line 68, in decorated
+    return f(*args, **kwargs)
+  File "/app/app/app.py", line 176, in auto_connect
+    success, msg = manager.auto_connect_next()
+  File "/app/app/vpn_manager.py", line 916, in auto_connect_next
+    if self.connect_node(node):
+  File "/app/app/vpn_manager.py", line 391, in connect_node
+    self.socks_server.start()
+  File "/app/app/socks_server.py", line 60, in start
+    self.server_socket.bind((self.bind_host, self.bind_port))
+OSError: [Errno 98] Address already in use
+2026-08-01 14:12:33,010 - INFO - 策略路由已清理
+2026-08-01 14:12:34,562 - INFO - 自动连接尝试节点: public-vpn-49 (219.100.37.15)
+2026-08-01 14:12:35,063 - INFO - 正在连接到节点: public-vpn-49 (219.100.37.15)
+2026-08-01 14:12:35,063 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:12:35,070 - INFO - [OpenVPN] 2026-08-01 14:12:35 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:12:35,070 - INFO - [OpenVPN] 2026-08-01 14:12:35 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:12:35,070 - INFO - [OpenVPN] 2026-08-01 14:12:35 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:12:35,070 - INFO - [OpenVPN] 2026-08-01 14:12:35 DCO version: N/A
+2026-08-01 14:12:35,070 - INFO - [OpenVPN] 2026-08-01 14:12:35 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:12:35,071 - INFO - [OpenVPN] 2026-08-01 14:12:35 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:12:35,071 - INFO - [OpenVPN] 2026-08-01 14:12:35 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:12:35,072 - INFO - [OpenVPN] 2026-08-01 14:12:35 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:12:35,072 - INFO - [OpenVPN] 2026-08-01 14:12:35 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:12:35,072 - INFO - [OpenVPN] 2026-08-01 14:12:35 Send to HTTP proxy: 'CONNECT 219.100.37.15:443 HTTP/1.0'
+2026-08-01 14:12:35,072 - INFO - [OpenVPN] 2026-08-01 14:12:35 Send to HTTP proxy: 'Host: 219.100.37.15'
+2026-08-01 14:12:35,072 - INFO - [OpenVPN] 2026-08-01 14:12:35 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:12:37,074 - INFO - [OpenVPN] 2026-08-01 14:12:37 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:12:37,074 - INFO - [OpenVPN] 2026-08-01 14:12:37 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:12:37,282 - INFO - [OpenVPN] 2026-08-01 14:12:37 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=bb2598cf c6f3913b
+2026-08-01 14:12:37,627 - INFO - [OpenVPN] 2026-08-01 14:12:37 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:12:37,628 - INFO - [OpenVPN] 2026-08-01 14:12:37 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:12:37,628 - INFO - [OpenVPN] 2026-08-01 14:12:37 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:12:37,629 - INFO - [OpenVPN] 2026-08-01 14:12:37 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:12:38,011 - INFO - [OpenVPN] 2026-08-01 14:12:38 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:12:38,011 - INFO - [OpenVPN] 2026-08-01 14:12:38 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:12:38,011 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:12:38,011 - INFO - [OpenVPN] 2026-08-01 14:12:38 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:12:38,012 - INFO - [OpenVPN] 2026-08-01 14:12:38 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:12:39,214 - INFO - [OpenVPN] 2026-08-01 14:12:39 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:12:40,223 - INFO - [OpenVPN] 2026-08-01 14:12:40 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.233.162.161 10.233.162.162,dhcp-option DNS 10.233.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.233.162.162,redirect-gateway def1'
+2026-08-01 14:12:40,224 - INFO - 提取到 VPN 网关 IP: 10.233.162.162
+2026-08-01 14:12:40,224 - INFO - [OpenVPN] 2026-08-01 14:12:40 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:12:40,224 - INFO - [OpenVPN] 2026-08-01 14:12:40 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:12:40,224 - INFO - [OpenVPN] 2026-08-01 14:12:40 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:12:40,224 - INFO - [OpenVPN] 2026-08-01 14:12:40 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:12:40,225 - INFO - [OpenVPN] 2026-08-01 14:12:40 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:12:40,225 - INFO - [OpenVPN] 2026-08-01 14:12:40 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:12:40,226 - INFO - [OpenVPN] 2026-08-01 14:12:40 TUN/TAP device tun1 opened
+2026-08-01 14:12:40,226 - INFO - [OpenVPN] 2026-08-01 14:12:40 net_iface_mtu_set: mtu 1500 for tun1
+2026-08-01 14:12:40,226 - INFO - [OpenVPN] 2026-08-01 14:12:40 net_iface_up: set tun1 up
+2026-08-01 14:12:40,226 - INFO - [OpenVPN] 2026-08-01 14:12:40 net_addr_ptp_v4_add: 10.233.162.161 peer 10.233.162.162 dev tun1
+2026-08-01 14:12:40,226 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.233.162.161
+2026-08-01 14:12:40,226 - INFO - [OpenVPN] 2026-08-01 14:12:40 Initialization Sequence Completed
+2026-08-01 14:12:40,227 - INFO - OpenVPN 初始化完成
+2026-08-01 14:12:40,227 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:12:40,252 - INFO - 策略路由已配置: from 10.233.162.161 table 100 (default via 10.233.162.162 dev tun1)
+2026-08-01 14:12:41,254 - INFO - VPN 连接成功，本机 VPN IP: 10.233.162.161, 接口: tun1, 网关: 10.233.162.162
+2026-08-01 14:12:41,254 - ERROR - Exception on /api/auto_connect [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/app/app/app.py", line 68, in decorated
+    return f(*args, **kwargs)
+  File "/app/app/app.py", line 176, in auto_connect
+    success, msg = manager.auto_connect_next()
+  File "/app/app/vpn_manager.py", line 916, in auto_connect_next
+    if self.connect_node(node):
+  File "/app/app/vpn_manager.py", line 391, in connect_node
+    self.socks_server.start()
+  File "/app/app/socks_server.py", line 60, in start
+    self.server_socket.bind((self.bind_host, self.bind_port))
+OSError: [Errno 98] Address already in use
+2026-08-01 14:13:58,177 - INFO - 策略路由已清理
+2026-08-01 14:13:58,709 - INFO - 正在连接到节点: vpn859116338 (118.218.227.187)
+2026-08-01 14:13:58,710 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:13:58,718 - INFO - [OpenVPN] 2026-08-01 14:13:58 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:13:58,718 - INFO - [OpenVPN] Options error: --http-proxy MUST be used in TCP Client mode (i.e. --proto tcp-client)
+2026-08-01 14:13:58,718 - INFO - [OpenVPN] Use --help for more information.
+2026-08-01 14:13:58,819 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:14:00,841 - INFO - 正在连接到节点: public-vpn-255 (219.100.37.224)
+2026-08-01 14:14:00,842 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:14:00,849 - INFO - [OpenVPN] 2026-08-01 14:14:00 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:14:00,850 - INFO - [OpenVPN] 2026-08-01 14:14:00 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:14:00,850 - INFO - [OpenVPN] 2026-08-01 14:14:00 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:14:00,850 - INFO - [OpenVPN] 2026-08-01 14:14:00 DCO version: N/A
+2026-08-01 14:14:00,850 - INFO - [OpenVPN] 2026-08-01 14:14:00 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:14:00,851 - INFO - [OpenVPN] 2026-08-01 14:14:00 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:00,851 - INFO - [OpenVPN] 2026-08-01 14:14:00 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:14:00,852 - INFO - [OpenVPN] 2026-08-01 14:14:00 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:00,852 - INFO - [OpenVPN] 2026-08-01 14:14:00 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:00,852 - INFO - [OpenVPN] 2026-08-01 14:14:00 Send to HTTP proxy: 'CONNECT 219.100.37.224:443 HTTP/1.0'
+2026-08-01 14:14:00,852 - INFO - [OpenVPN] 2026-08-01 14:14:00 Send to HTTP proxy: 'Host: 219.100.37.224'
+2026-08-01 14:14:00,852 - INFO - [OpenVPN] 2026-08-01 14:14:00 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:14:02,854 - INFO - [OpenVPN] 2026-08-01 14:14:02 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:14:02,854 - INFO - [OpenVPN] 2026-08-01 14:14:02 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:03,065 - INFO - [OpenVPN] 2026-08-01 14:14:03 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=f3b7310a 14379145
+2026-08-01 14:14:03,423 - INFO - [OpenVPN] 2026-08-01 14:14:03 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:14:03,423 - INFO - [OpenVPN] 2026-08-01 14:14:03 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:14:03,424 - INFO - [OpenVPN] 2026-08-01 14:14:03 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:14:03,424 - INFO - [OpenVPN] 2026-08-01 14:14:03 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:14:03,819 - INFO - [OpenVPN] 2026-08-01 14:14:03 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:14:03,819 - INFO - [OpenVPN] 2026-08-01 14:14:03 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:03,820 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:14:03,820 - INFO - [OpenVPN] 2026-08-01 14:14:03 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:14:03,821 - INFO - [OpenVPN] 2026-08-01 14:14:03 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:14:05,001 - INFO - [OpenVPN] 2026-08-01 14:14:05 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:14:09,397 - INFO - [OpenVPN] 2026-08-01 14:14:09 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:14:10,476 - INFO - [OpenVPN] 2026-08-01 14:14:10 AUTH: Received control message: AUTH_FAILED
+2026-08-01 14:14:10,476 - INFO - [OpenVPN] 2026-08-01 14:14:10 SIGTERM[soft,auth-failure] received, process exiting
+2026-08-01 14:14:10,577 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:14:12,607 - INFO - 正在连接到节点: public-vpn-165 (219.100.37.127)
+2026-08-01 14:14:12,607 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:14:12,612 - INFO - [OpenVPN] 2026-08-01 14:14:12 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:14:12,612 - INFO - [OpenVPN] 2026-08-01 14:14:12 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:14:12,612 - INFO - [OpenVPN] 2026-08-01 14:14:12 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:14:12,613 - INFO - [OpenVPN] 2026-08-01 14:14:12 DCO version: N/A
+2026-08-01 14:14:12,613 - INFO - [OpenVPN] 2026-08-01 14:14:12 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:14:12,614 - INFO - [OpenVPN] 2026-08-01 14:14:12 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:12,614 - INFO - [OpenVPN] 2026-08-01 14:14:12 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:14:12,614 - INFO - [OpenVPN] 2026-08-01 14:14:12 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:12,614 - INFO - [OpenVPN] 2026-08-01 14:14:12 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:12,615 - INFO - [OpenVPN] 2026-08-01 14:14:12 Send to HTTP proxy: 'CONNECT 219.100.37.127:443 HTTP/1.0'
+2026-08-01 14:14:12,615 - INFO - [OpenVPN] 2026-08-01 14:14:12 Send to HTTP proxy: 'Host: 219.100.37.127'
+2026-08-01 14:14:12,615 - INFO - [OpenVPN] 2026-08-01 14:14:12 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:14:14,616 - INFO - [OpenVPN] 2026-08-01 14:14:14 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:14:14,617 - INFO - [OpenVPN] 2026-08-01 14:14:14 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:14,822 - INFO - [OpenVPN] 2026-08-01 14:14:14 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=e4d3f01e b39c3550
+2026-08-01 14:14:15,174 - INFO - [OpenVPN] 2026-08-01 14:14:15 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:14:15,175 - INFO - [OpenVPN] 2026-08-01 14:14:15 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:14:15,175 - INFO - [OpenVPN] 2026-08-01 14:14:15 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:14:15,175 - INFO - [OpenVPN] 2026-08-01 14:14:15 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:14:15,564 - INFO - [OpenVPN] 2026-08-01 14:14:15 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:14:15,565 - INFO - [OpenVPN] 2026-08-01 14:14:15 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:14:15,565 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:14:15,565 - INFO - [OpenVPN] 2026-08-01 14:14:15 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:14:15,566 - INFO - [OpenVPN] 2026-08-01 14:14:15 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:14:16,747 - INFO - [OpenVPN] 2026-08-01 14:14:16 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:14:21,085 - INFO - [OpenVPN] 2026-08-01 14:14:21 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:14:21,085 - INFO - [OpenVPN] 2026-08-01 14:14:21 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.240.84.149 10.240.84.150,dhcp-option DNS 10.240.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.240.84.150,redirect-gateway def1'
+2026-08-01 14:14:21,086 - INFO - 提取到 VPN 网关 IP: 10.240.84.150
+2026-08-01 14:14:21,086 - INFO - [OpenVPN] 2026-08-01 14:14:21 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:14:21,086 - INFO - [OpenVPN] 2026-08-01 14:14:21 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:14:21,087 - INFO - [OpenVPN] 2026-08-01 14:14:21 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:14:21,087 - INFO - [OpenVPN] 2026-08-01 14:14:21 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:14:21,087 - INFO - [OpenVPN] 2026-08-01 14:14:21 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:14:21,087 - INFO - [OpenVPN] 2026-08-01 14:14:21 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:14:21,087 - INFO - [OpenVPN] 2026-08-01 14:14:21 TUN/TAP device tun1 opened
+2026-08-01 14:14:21,088 - INFO - [OpenVPN] 2026-08-01 14:14:21 net_iface_mtu_set: mtu 1500 for tun1
+2026-08-01 14:14:21,088 - INFO - [OpenVPN] 2026-08-01 14:14:21 net_iface_up: set tun1 up
+2026-08-01 14:14:21,088 - INFO - [OpenVPN] 2026-08-01 14:14:21 net_addr_ptp_v4_add: 10.240.84.149 peer 10.240.84.150 dev tun1
+2026-08-01 14:14:21,088 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.240.84.149
+2026-08-01 14:14:21,089 - INFO - [OpenVPN] 2026-08-01 14:14:21 Initialization Sequence Completed
+2026-08-01 14:14:21,089 - INFO - OpenVPN 初始化完成
+2026-08-01 14:14:21,089 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:14:21,114 - INFO - 策略路由已配置: from 10.240.84.149 table 100 (default via 10.240.84.150 dev tun1)
+2026-08-01 14:14:22,115 - INFO - VPN 连接成功，本机 VPN IP: 10.240.84.149, 接口: tun1, 网关: 10.240.84.150
+2026-08-01 14:14:22,116 - ERROR - Exception on /api/connect [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/app/app/app.py", line 68, in decorated
+    return f(*args, **kwargs)
+  File "/app/app/app.py", line 123, in connect
+    success = manager.connect_node(node)
+  File "/app/app/vpn_manager.py", line 391, in connect_node
+    self.socks_server.start()
+  File "/app/app/socks_server.py", line 60, in start
+    self.server_socket.bind((self.bind_host, self.bind_port))
+OSError: [Errno 98] Address already in use
+2026-08-01 14:15:39,807 - INFO - 自动连接尝试节点: public-vpn-253 (219.100.37.207)
+2026-08-01 14:15:39,829 - INFO - 策略路由已清理
+2026-08-01 14:15:40,392 - INFO - 正在连接到节点: public-vpn-253 (219.100.37.207)
+2026-08-01 14:15:40,392 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:15:40,400 - INFO - [OpenVPN] 2026-08-01 14:15:40 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:15:40,400 - INFO - [OpenVPN] 2026-08-01 14:15:40 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:15:40,400 - INFO - [OpenVPN] 2026-08-01 14:15:40 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:15:40,400 - INFO - [OpenVPN] 2026-08-01 14:15:40 DCO version: N/A
+2026-08-01 14:15:40,400 - INFO - [OpenVPN] 2026-08-01 14:15:40 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:15:40,401 - INFO - [OpenVPN] 2026-08-01 14:15:40 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:40,401 - INFO - [OpenVPN] 2026-08-01 14:15:40 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:15:40,402 - INFO - [OpenVPN] 2026-08-01 14:15:40 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:40,402 - INFO - [OpenVPN] 2026-08-01 14:15:40 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:40,402 - INFO - [OpenVPN] 2026-08-01 14:15:40 Send to HTTP proxy: 'CONNECT 219.100.37.207:443 HTTP/1.0'
+2026-08-01 14:15:40,402 - INFO - [OpenVPN] 2026-08-01 14:15:40 Send to HTTP proxy: 'Host: 219.100.37.207'
+2026-08-01 14:15:40,402 - INFO - [OpenVPN] 2026-08-01 14:15:40 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:15:42,404 - INFO - [OpenVPN] 2026-08-01 14:15:42 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:15:42,404 - INFO - [OpenVPN] 2026-08-01 14:15:42 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:42,603 - INFO - [OpenVPN] 2026-08-01 14:15:42 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=95873f4c 8ea21185
+2026-08-01 14:15:42,942 - INFO - [OpenVPN] 2026-08-01 14:15:42 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:15:42,943 - INFO - [OpenVPN] 2026-08-01 14:15:42 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:15:42,943 - INFO - [OpenVPN] 2026-08-01 14:15:42 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:15:42,944 - INFO - [OpenVPN] 2026-08-01 14:15:42 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:15:43,317 - INFO - [OpenVPN] 2026-08-01 14:15:43 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:15:43,318 - INFO - [OpenVPN] 2026-08-01 14:15:43 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:43,318 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:15:43,318 - INFO - [OpenVPN] 2026-08-01 14:15:43 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:15:43,318 - INFO - [OpenVPN] 2026-08-01 14:15:43 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:15:44,540 - INFO - [OpenVPN] 2026-08-01 14:15:44 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:15:46,039 - INFO - 自动连接尝试节点: public-vpn-159 (219.100.37.112)
+2026-08-01 14:15:46,040 - INFO - [OpenVPN] 2026-08-01 14:15:46 event_wait : Interrupted system call (fd=-1,code=4)
+2026-08-01 14:15:46,040 - INFO - [OpenVPN] 2026-08-01 14:15:46 SIGTERM[hard,] received, process exiting
+2026-08-01 14:15:46,141 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:15:46,141 - INFO - 节点 public-vpn-253 连接失败
+2026-08-01 14:15:46,142 - INFO - 自动连接尝试节点: public-vpn-159 (219.100.37.112)
+2026-08-01 14:15:46,551 - INFO - 正在连接到节点: public-vpn-159 (219.100.37.112)
+2026-08-01 14:15:46,552 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:15:46,559 - INFO - [OpenVPN] 2026-08-01 14:15:46 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:15:46,559 - INFO - [OpenVPN] 2026-08-01 14:15:46 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:15:46,560 - INFO - [OpenVPN] 2026-08-01 14:15:46 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:15:46,560 - INFO - [OpenVPN] 2026-08-01 14:15:46 DCO version: N/A
+2026-08-01 14:15:46,560 - INFO - [OpenVPN] 2026-08-01 14:15:46 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:15:46,561 - INFO - [OpenVPN] 2026-08-01 14:15:46 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:46,562 - INFO - [OpenVPN] 2026-08-01 14:15:46 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:15:46,562 - INFO - [OpenVPN] 2026-08-01 14:15:46 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:46,562 - INFO - [OpenVPN] 2026-08-01 14:15:46 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:46,562 - INFO - [OpenVPN] 2026-08-01 14:15:46 Send to HTTP proxy: 'CONNECT 219.100.37.112:443 HTTP/1.0'
+2026-08-01 14:15:46,562 - INFO - [OpenVPN] 2026-08-01 14:15:46 Send to HTTP proxy: 'Host: 219.100.37.112'
+2026-08-01 14:15:46,562 - INFO - [OpenVPN] 2026-08-01 14:15:46 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:15:46,642 - INFO - 正在连接到节点: public-vpn-159 (219.100.37.112)
+2026-08-01 14:15:46,643 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:15:46,650 - INFO - [OpenVPN] 2026-08-01 14:15:46 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:15:46,650 - INFO - [OpenVPN] 2026-08-01 14:15:46 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:15:46,650 - INFO - [OpenVPN] 2026-08-01 14:15:46 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:15:46,650 - INFO - [OpenVPN] 2026-08-01 14:15:46 DCO version: N/A
+2026-08-01 14:15:46,651 - INFO - [OpenVPN] 2026-08-01 14:15:46 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:15:46,652 - INFO - [OpenVPN] 2026-08-01 14:15:46 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:46,652 - INFO - [OpenVPN] 2026-08-01 14:15:46 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:15:46,652 - INFO - [OpenVPN] 2026-08-01 14:15:46 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:46,652 - INFO - [OpenVPN] 2026-08-01 14:15:46 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:46,652 - INFO - [OpenVPN] 2026-08-01 14:15:46 Send to HTTP proxy: 'CONNECT 219.100.37.112:443 HTTP/1.0'
+2026-08-01 14:15:46,652 - INFO - [OpenVPN] 2026-08-01 14:15:46 Send to HTTP proxy: 'Host: 219.100.37.112'
+2026-08-01 14:15:46,653 - INFO - [OpenVPN] 2026-08-01 14:15:46 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:15:48,564 - INFO - [OpenVPN] 2026-08-01 14:15:48 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:15:48,564 - INFO - [OpenVPN] 2026-08-01 14:15:48 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:48,654 - INFO - [OpenVPN] 2026-08-01 14:15:48 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:15:48,655 - INFO - [OpenVPN] 2026-08-01 14:15:48 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:48,777 - INFO - [OpenVPN] 2026-08-01 14:15:48 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=b861aa8e cf203ae9
+2026-08-01 14:15:48,846 - INFO - [OpenVPN] 2026-08-01 14:15:48 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=ed29db42 fddbfec6
+2026-08-01 14:15:49,128 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:15:49,129 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:15:49,129 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:15:49,129 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:15:49,184 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:15:49,185 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:15:49,185 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:15:49,186 - INFO - [OpenVPN] 2026-08-01 14:15:49 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:15:49,519 - INFO - [OpenVPN] 2026-08-01 14:15:49 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:15:49,519 - INFO - [OpenVPN] 2026-08-01 14:15:49 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:49,520 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:15:49,520 - INFO - [OpenVPN] 2026-08-01 14:15:49 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:15:49,520 - INFO - [OpenVPN] 2026-08-01 14:15:49 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:15:49,550 - INFO - [OpenVPN] 2026-08-01 14:15:49 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:15:49,550 - INFO - [OpenVPN] 2026-08-01 14:15:49 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:49,551 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:15:49,551 - INFO - [OpenVPN] 2026-08-01 14:15:49 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:15:49,551 - INFO - [OpenVPN] 2026-08-01 14:15:49 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:15:50,571 - INFO - [OpenVPN] 2026-08-01 14:15:50 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:15:50,585 - INFO - [OpenVPN] 2026-08-01 14:15:50 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:15:51,613 - INFO - [OpenVPN] 2026-08-01 14:15:51 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.239.92.185 10.239.92.186,dhcp-option DNS 10.239.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.239.92.186,redirect-gateway def1'
+2026-08-01 14:15:51,613 - INFO - 提取到 VPN 网关 IP: 10.239.92.186
+2026-08-01 14:15:51,614 - INFO - [OpenVPN] 2026-08-01 14:15:51 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:15:51,614 - INFO - [OpenVPN] 2026-08-01 14:15:51 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:15:51,615 - INFO - [OpenVPN] 2026-08-01 14:15:51 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:15:51,615 - INFO - [OpenVPN] 2026-08-01 14:15:51 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:15:51,615 - INFO - [OpenVPN] 2026-08-01 14:15:51 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:15:51,615 - INFO - [OpenVPN] 2026-08-01 14:15:51 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:15:51,616 - INFO - [OpenVPN] 2026-08-01 14:15:51 TUN/TAP device tun1 opened
+2026-08-01 14:15:51,616 - INFO - [OpenVPN] 2026-08-01 14:15:51 net_iface_mtu_set: mtu 1500 for tun1
+2026-08-01 14:15:51,616 - INFO - [OpenVPN] 2026-08-01 14:15:51 net_iface_up: set tun1 up
+2026-08-01 14:15:51,616 - INFO - [OpenVPN] 2026-08-01 14:15:51 net_addr_ptp_v4_add: 10.239.92.185 peer 10.239.92.186 dev tun1
+2026-08-01 14:15:51,616 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.239.92.185
+2026-08-01 14:15:51,616 - INFO - [OpenVPN] 2026-08-01 14:15:51 Initialization Sequence Completed
+2026-08-01 14:15:51,617 - INFO - OpenVPN 初始化完成
+2026-08-01 14:15:51,617 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:15:51,641 - INFO - 策略路由已配置: from 10.239.92.185 table 100 (default via 10.239.92.186 dev tun1)
+2026-08-01 14:15:52,642 - INFO - VPN 连接成功，本机 VPN IP: 10.239.92.185, 接口: tun1, 网关: 10.239.92.186
+2026-08-01 14:15:52,643 - ERROR - Exception on /api/auto_connect [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/app/app/app.py", line 68, in decorated
+    return f(*args, **kwargs)
+  File "/app/app/app.py", line 176, in auto_connect
+    success, msg = manager.auto_connect_next()
+  File "/app/app/vpn_manager.py", line 916, in auto_connect_next
+    if self.connect_node(node):
+  File "/app/app/vpn_manager.py", line 391, in connect_node
+    self.socks_server.start()
+  File "/app/app/socks_server.py", line 60, in start
+    self.server_socket.bind((self.bind_host, self.bind_port))
+OSError: [Errno 98] Address already in use
+2026-08-01 14:15:55,792 - INFO - [OpenVPN] 2026-08-01 14:15:55 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:15:56,347 - INFO - [OpenVPN] 2026-08-01 14:15:56 AUTH: Received control message: AUTH_FAILED
+2026-08-01 14:15:56,348 - INFO - [OpenVPN] 2026-08-01 14:15:56 SIGTERM[soft,auth-failure] received, process exiting
+2026-08-01 14:15:56,449 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:15:56,449 - INFO - 节点 public-vpn-159 连接失败
+2026-08-01 14:15:56,450 - INFO - 自动连接尝试节点: public-vpn-228 (219.100.37.220)
+2026-08-01 14:15:56,472 - INFO - 策略路由已清理
+2026-08-01 14:15:56,973 - INFO - 正在连接到节点: public-vpn-228 (219.100.37.220)
+2026-08-01 14:15:56,974 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:15:56,983 - INFO - [OpenVPN] 2026-08-01 14:15:56 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:15:56,983 - INFO - [OpenVPN] 2026-08-01 14:15:56 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:15:56,983 - INFO - [OpenVPN] 2026-08-01 14:15:56 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:15:56,984 - INFO - [OpenVPN] 2026-08-01 14:15:56 DCO version: N/A
+2026-08-01 14:15:56,984 - INFO - [OpenVPN] 2026-08-01 14:15:56 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:15:56,986 - INFO - [OpenVPN] 2026-08-01 14:15:56 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:56,986 - INFO - [OpenVPN] 2026-08-01 14:15:56 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:15:56,987 - INFO - [OpenVPN] 2026-08-01 14:15:56 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:56,987 - INFO - [OpenVPN] 2026-08-01 14:15:56 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:56,987 - INFO - [OpenVPN] 2026-08-01 14:15:56 Send to HTTP proxy: 'CONNECT 219.100.37.220:443 HTTP/1.0'
+2026-08-01 14:15:56,987 - INFO - [OpenVPN] 2026-08-01 14:15:56 Send to HTTP proxy: 'Host: 219.100.37.220'
+2026-08-01 14:15:56,988 - INFO - [OpenVPN] 2026-08-01 14:15:56 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:15:58,988 - INFO - [OpenVPN] 2026-08-01 14:15:58 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:15:58,988 - INFO - [OpenVPN] 2026-08-01 14:15:58 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:59,188 - INFO - [OpenVPN] 2026-08-01 14:15:59 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=cbdc68c6 a076dd68
+2026-08-01 14:15:59,526 - INFO - [OpenVPN] 2026-08-01 14:15:59 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:15:59,526 - INFO - [OpenVPN] 2026-08-01 14:15:59 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:15:59,526 - INFO - [OpenVPN] 2026-08-01 14:15:59 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:15:59,526 - INFO - [OpenVPN] 2026-08-01 14:15:59 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:15:59,907 - INFO - [OpenVPN] 2026-08-01 14:15:59 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:15:59,907 - INFO - [OpenVPN] 2026-08-01 14:15:59 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:15:59,908 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:15:59,908 - INFO - [OpenVPN] 2026-08-01 14:15:59 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:15:59,908 - INFO - [OpenVPN] 2026-08-01 14:15:59 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:16:00,952 - INFO - [OpenVPN] 2026-08-01 14:16:00 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:16:05,194 - INFO - [OpenVPN] 2026-08-01 14:16:05 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:16:08,388 - INFO - [OpenVPN] 2026-08-01 14:16:08 AUTH: Received control message: AUTH_FAILED
+2026-08-01 14:16:08,388 - INFO - [OpenVPN] 2026-08-01 14:16:08 SIGTERM[soft,auth-failure] received, process exiting
+2026-08-01 14:16:08,489 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:16:08,490 - INFO - 节点 public-vpn-228 连接失败
+2026-08-01 14:16:08,490 - INFO - 自动连接尝试节点: public-vpn-78 (219.100.37.53)
+2026-08-01 14:16:08,991 - INFO - 正在连接到节点: public-vpn-78 (219.100.37.53)
+2026-08-01 14:16:08,992 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:16:08,999 - INFO - [OpenVPN] 2026-08-01 14:16:08 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:16:09,000 - INFO - [OpenVPN] 2026-08-01 14:16:08 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:16:09,000 - INFO - [OpenVPN] 2026-08-01 14:16:08 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:16:09,000 - INFO - [OpenVPN] 2026-08-01 14:16:08 DCO version: N/A
+2026-08-01 14:16:09,000 - INFO - [OpenVPN] 2026-08-01 14:16:08 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:16:09,001 - INFO - [OpenVPN] 2026-08-01 14:16:09 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:09,001 - INFO - [OpenVPN] 2026-08-01 14:16:09 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:16:09,002 - INFO - [OpenVPN] 2026-08-01 14:16:09 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:09,002 - INFO - [OpenVPN] 2026-08-01 14:16:09 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:09,002 - INFO - [OpenVPN] 2026-08-01 14:16:09 Send to HTTP proxy: 'CONNECT 219.100.37.53:443 HTTP/1.0'
+2026-08-01 14:16:09,002 - INFO - [OpenVPN] 2026-08-01 14:16:09 Send to HTTP proxy: 'Host: 219.100.37.53'
+2026-08-01 14:16:09,002 - INFO - [OpenVPN] 2026-08-01 14:16:09 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:16:11,005 - INFO - [OpenVPN] 2026-08-01 14:16:11 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:16:11,007 - INFO - [OpenVPN] 2026-08-01 14:16:11 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:11,212 - INFO - [OpenVPN] 2026-08-01 14:16:11 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=f8991360 4bdd4b25
+2026-08-01 14:16:11,567 - INFO - [OpenVPN] 2026-08-01 14:16:11 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:16:11,567 - INFO - [OpenVPN] 2026-08-01 14:16:11 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:16:11,567 - INFO - [OpenVPN] 2026-08-01 14:16:11 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:16:11,567 - INFO - [OpenVPN] 2026-08-01 14:16:11 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:16:11,957 - INFO - [OpenVPN] 2026-08-01 14:16:11 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:16:11,958 - INFO - [OpenVPN] 2026-08-01 14:16:11 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:11,958 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:16:11,958 - INFO - [OpenVPN] 2026-08-01 14:16:11 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:16:11,958 - INFO - [OpenVPN] 2026-08-01 14:16:11 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:16:13,206 - INFO - [OpenVPN] 2026-08-01 14:16:13 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:16:18,660 - INFO - [OpenVPN] 2026-08-01 14:16:18 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:16:18,678 - INFO - [OpenVPN] 2026-08-01 14:16:18 AUTH: Received control message: AUTH_FAILED
+2026-08-01 14:16:18,679 - INFO - [OpenVPN] 2026-08-01 14:16:18 SIGTERM[soft,auth-failure] received, process exiting
+2026-08-01 14:16:18,780 - INFO - OpenVPN 进程已退出，连接失败
+2026-08-01 14:16:18,781 - INFO - 节点 public-vpn-78 连接失败
+2026-08-01 14:16:18,781 - INFO - 自动连接尝试节点: public-vpn-95 (219.100.37.97)
+2026-08-01 14:16:19,282 - INFO - 正在连接到节点: public-vpn-95 (219.100.37.97)
+2026-08-01 14:16:19,283 - INFO - OpenVPN 将通过 HTTP 代理连接: 192.168.132.86:7892
+2026-08-01 14:16:19,288 - INFO - [OpenVPN] 2026-08-01 14:16:19 Note: cipher 'AES-128-CBC' in --data-ciphers is not supported by ovpn-dco, disabling data channel offload.
+2026-08-01 14:16:19,288 - INFO - [OpenVPN] 2026-08-01 14:16:19 OpenVPN 2.6.14 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+2026-08-01 14:16:19,288 - INFO - [OpenVPN] 2026-08-01 14:16:19 library versions: OpenSSL 3.5.6 7 Apr 2026, LZO 2.10
+2026-08-01 14:16:19,288 - INFO - [OpenVPN] 2026-08-01 14:16:19 DCO version: N/A
+2026-08-01 14:16:19,288 - INFO - [OpenVPN] 2026-08-01 14:16:19 WARNING: No server certificate verification method has been enabled.  See http://openvpn.net/howto.html#mitm for more info.
+2026-08-01 14:16:19,289 - INFO - [OpenVPN] 2026-08-01 14:16:19 TCP/UDP: Preserving recently used remote address: [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:19,289 - INFO - [OpenVPN] 2026-08-01 14:16:19 Socket Buffers: R=[131072->131072] S=[16384->16384]
+2026-08-01 14:16:19,290 - INFO - [OpenVPN] 2026-08-01 14:16:19 Attempting to establish TCP connection with [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:19,290 - INFO - [OpenVPN] 2026-08-01 14:16:19 TCP connection established with [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:19,290 - INFO - [OpenVPN] 2026-08-01 14:16:19 Send to HTTP proxy: 'CONNECT 219.100.37.97:443 HTTP/1.0'
+2026-08-01 14:16:19,290 - INFO - [OpenVPN] 2026-08-01 14:16:19 Send to HTTP proxy: 'Host: 219.100.37.97'
+2026-08-01 14:16:19,290 - INFO - [OpenVPN] 2026-08-01 14:16:19 HTTP proxy returned: 'HTTP/1.0 200 Connection established'
+2026-08-01 14:16:21,296 - INFO - [OpenVPN] 2026-08-01 14:16:21 TCPv4_CLIENT link local: (not bound)
+2026-08-01 14:16:21,296 - INFO - [OpenVPN] 2026-08-01 14:16:21 TCPv4_CLIENT link remote: [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:21,486 - INFO - [OpenVPN] 2026-08-01 14:16:21 TLS: Initial packet from [AF_INET]192.168.132.86:7892, sid=2dc9b1c8 968112e9
+2026-08-01 14:16:21,821 - INFO - [OpenVPN] 2026-08-01 14:16:21 VERIFY OK: depth=3, C=US, O=Internet Security Research Group, CN=ISRG Root X1
+2026-08-01 14:16:21,822 - INFO - [OpenVPN] 2026-08-01 14:16:21 VERIFY OK: depth=2, C=US, O=ISRG, CN=Root YR
+2026-08-01 14:16:21,822 - INFO - [OpenVPN] 2026-08-01 14:16:21 VERIFY OK: depth=1, C=US, O=Let's Encrypt, CN=YR2
+2026-08-01 14:16:21,823 - INFO - [OpenVPN] 2026-08-01 14:16:21 VERIFY OK: depth=0, CN=opengw.net
+2026-08-01 14:16:22,191 - INFO - [OpenVPN] 2026-08-01 14:16:22 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519
+2026-08-01 14:16:22,191 - INFO - [OpenVPN] 2026-08-01 14:16:22 [opengw.net] Peer Connection Initiated with [AF_INET]192.168.132.86:7892
+2026-08-01 14:16:22,191 - INFO - TLS 握手成功，等待配置...
+2026-08-01 14:16:22,191 - INFO - [OpenVPN] 2026-08-01 14:16:22 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1
+2026-08-01 14:16:22,192 - INFO - [OpenVPN] 2026-08-01 14:16:22 TLS: tls_multi_process: initial untrusted session promoted to trusted
+2026-08-01 14:16:23,437 - INFO - [OpenVPN] 2026-08-01 14:16:23 SENT CONTROL [opengw.net]: 'PUSH_REQUEST' (status=1)
+2026-08-01 14:16:25,532 - INFO - [OpenVPN] 2026-08-01 14:16:25 PUSH: Received control message: 'PUSH_REPLY,ping 3,ping-restart 10,ifconfig 10.239.93.81 10.239.93.82,dhcp-option DNS 10.239.254.254,dhcp-option DNS 8.8.8.8,route-gateway 10.239.93.82,redirect-gateway def1'
+2026-08-01 14:16:25,532 - INFO - 提取到 VPN 网关 IP: 10.239.93.82
+2026-08-01 14:16:25,533 - INFO - [OpenVPN] 2026-08-01 14:16:25 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:16:25,533 - INFO - [OpenVPN] 2026-08-01 14:16:25 Options error: option 'dhcp-option' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:16:25,533 - INFO - [OpenVPN] 2026-08-01 14:16:25 Options error: option 'redirect-gateway' cannot be used in this context ([PUSH-OPTIONS])
+2026-08-01 14:16:25,534 - INFO - [OpenVPN] 2026-08-01 14:16:25 OPTIONS IMPORT: --ifconfig/up options modified
+2026-08-01 14:16:25,534 - INFO - [OpenVPN] 2026-08-01 14:16:25 OPTIONS IMPORT: route-related options modified
+2026-08-01 14:16:25,534 - INFO - [OpenVPN] 2026-08-01 14:16:25 Using peer cipher 'AES-128-CBC'
+2026-08-01 14:16:25,534 - INFO - [OpenVPN] 2026-08-01 14:16:25 TUN/TAP device tun2 opened
+2026-08-01 14:16:25,534 - INFO - [OpenVPN] 2026-08-01 14:16:25 net_iface_mtu_set: mtu 1500 for tun2
+2026-08-01 14:16:25,534 - INFO - [OpenVPN] 2026-08-01 14:16:25 net_iface_up: set tun2 up
+2026-08-01 14:16:25,535 - INFO - [OpenVPN] 2026-08-01 14:16:25 net_addr_ptp_v4_add: 10.239.93.81 peer 10.239.93.82 dev tun2
+2026-08-01 14:16:25,535 - INFO - 从 OpenVPN 日志获取到 VPN IP: 10.239.93.81
+2026-08-01 14:16:25,535 - INFO - [OpenVPN] 2026-08-01 14:16:25 Initialization Sequence Completed
+2026-08-01 14:16:25,535 - INFO - OpenVPN 初始化完成
+2026-08-01 14:16:25,535 - INFO - 正在从系统获取 VPN 接口信息...
+2026-08-01 14:16:25,560 - INFO - 策略路由已配置: from 10.239.93.81 table 100 (default via 10.239.93.82 dev tun2)
+2026-08-01 14:16:26,561 - INFO - VPN 连接成功，本机 VPN IP: 10.239.93.81, 接口: tun2, 网关: 10.239.93.82
+2026-08-01 14:16:26,561 - ERROR - Exception on /api/auto_connect [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/app/app/app.py", line 68, in decorated
+    return f(*args, **kwargs)
+  File "/app/app/app.py", line 176, in auto_connect
+    success, msg = manager.auto_connect_next()
+  File "/app/app/vpn_manager.py", line 916, in auto_connect_next
+    if self.connect_node(node):
+  File "/app/app/vpn_manager.py", line 391, in connect_node
+    self.socks_server.start()
+  File "/app/app/socks_server.py", line 60, in start
+    self.server_socket.bind((self.bind_host, self.bind_port))
+OSError: [Errno 98] Address already in use

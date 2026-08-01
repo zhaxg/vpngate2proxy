@@ -3,1148 +3,1475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Gate 自动代理面板</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>VPN Gate 代理面板</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 32 32'%3E%3Cpath fill='%23db2777' d='M14 23h-2V9h6a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4Zm0-7h4v-5h-4Zm14 3L24.32 9H22v14h2V13l3.68 10H30V9h-2zM8 9L6 22L4 9H2l2.52 14h2.96L10 9z'/%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.3.0/index.min.css" rel="stylesheet">
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <style>
-        .log-area { height: 817px; overflow-y: auto; background: #222; color: #0f0; font-family: monospace; padding: 10px; }
-        .status-card { margin-bottom: 15px; }
-        .modal-log-area { height: 200px; overflow-y: auto; background: #1e1e1e; color: #0f0; font-family: monospace; padding: 10px; font-size: 0.85rem; }
-        #history-table.loading {pointer-events: none;opacity: 0.6;}
-        .pagination-info { font-size: 0.9rem; color: #666; }
+        /* ---- Scrollbar ---- */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+        /* ---- Pulse animation for connected status ---- */
+        @keyframes dot-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
+            50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+        }
+        .dot-pulse { animation: dot-pulse 2s ease-in-out infinite; }
+
+        /* ---- Glass card ---- */
+        .glass {
+            background: rgba(15,23,42,.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(51,65,85,.45);
+        }
+
+        /* ---- Tab panel fade-in ---- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .tab-panel { animation: fadeUp .22s ease-out; }
+
+        /* ---- Toast ---- */
+        #toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+        .toast-item {
+            pointer-events: auto;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(75,85,81,.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,.4);
+            animation: toastIn .25s ease-out;
+            transition: opacity .3s, transform .3s;
+            max-width: 360px;
+            word-break: break-word;
+        }
+        .toast-item.info    { background: rgba(14,116,144,.85); color: #e0f2fe; }
+        .toast-item.success { background: rgba(22,163,74,.85); color: #dcfce7; }
+        .toast-item.warning { background: rgba(180,83,9,.85); color: #fef3c7; }
+        .toast-item.danger  { background: rgba(225,29,72,.85); color: #ffe4e6; }
+        .toast-item.fade-out { opacity: 0; transform: translateX(20px); }
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(40px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ---- Custom select ---- */
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px !important;
+            cursor: pointer;
+        }
+        select option {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 8px;
+        }
+
+        /* ---- Log area ---- */
+        .log-area {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            background: #020617;
+            color: #4ade80;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(51,65,85,.35);
+        }
+        .modal-log-area {
+            height: 200px;
+            overflow-y: auto;
+            background: #020617;
+            color: #4ade80;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(51,65,85,.35);
+        }
+
+        /* ---- Sidebar active indicator ---- */
+        .nav-active {
+            background: rgba(16,185,129,.12);
+            color: #34d399;
+        }
+
+        /* ---- Mobile sidebar overlay ---- */
+        @media (max-width: 768px) {
+            #sidebar { transform: translateX(-100%); transition: transform .25s ease; }
+            #sidebar.open { transform: translateX(0); }
+            #sidebar-overlay { display: none; }
+            #sidebar.open ~ #sidebar-overlay { display: block; }
+        }
+
+        /* ---- Table row hover ---- */
+        .row-hover:hover { background: rgba(51,65,85,.2); }
+
+        /* ---- History loading overlay ---- */
+        #history-table.loading { pointer-events: none; opacity: .5; }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">VPN Gate 自动代理面板</span>
+<body class="bg-[#0b0f19] text-gray-200 min-h-screen flex" style="font-family:'Space Grotesk',system-ui,sans-serif">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside id="sidebar" class="fixed md:sticky top-0 left-0 z-40 w-60 h-screen flex flex-col bg-[#0f172a]/90 backdrop-blur-xl border-r border-gray-800/60 transition-transform md:translate-x-0">
+        <!-- Logo -->
+        <div class="px-5 py-6 flex items-center gap-3 border-b border-gray-800/50">
+            <div class="w-9 h-9 rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 32 32"><path fill="#059669" d="M16 .484C7.182.484 0 7.593 0 16.349c0 5.813 3.146 10.87 7.859 13.604l1.026-6.766a9.42 9.42 0 0 1-2.458-6.292c0-5.198 4.24-9.438 9.505-9.438s9.5 4.24 9.5 9.438c0 2.458-.953 4.646-2.458 6.359L24 30.025c4.786-2.734 8-7.87 8-13.677C32 7.593 24.818.483 16 .483zm-.068 10.875a5.056 5.056 0 0 0-5.063 5.063a4.99 4.99 0 0 0 3.281 4.719l-1.979 10.391h7.521l-1.911-10.391c1.844-.755 3.214-2.531 3.214-4.719a5.056 5.056 0 0 0-5.063-5.063"/></svg>
+            </div>
             <div>
-                <a href="/logout" class="btn btn-outline-light btn-sm">退出</a>
+                <div class="text-sm font-bold text-white tracking-wide">VPN Gate</div>
+                <div class="text-[11px] text-gray-500">自动代理面板</div>
             </div>
         </div>
-    </nav>
-    <div class="container mt-4">
-        <ul class="nav nav-tabs" id="mainTab" role="tablist">
-            <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#dashboard">仪表盘</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#nodes">节点列表</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#history">连接记录</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#settings">设置</button></li>
-        </ul>
-        <div class="tab-content mt-3">
-            <!-- 仪表盘 -->
-            <div class="tab-pane fade show active" id="dashboard">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card status-card">
-                            <div class="card-header">连接状态</div>
-                            <div class="card-body">
-                                <p><strong>状态：</strong><span id="status-text">未连接</span></p>
-                                <p><strong>节点：</strong><span id="node-name">-</span></p>
-                                <p><strong>IP：</strong><span id="node-ip">-</span></p>
-                                <p><strong>归属地：</strong><span id="node-location">-</span></p>
-                                <p>
-                                    <strong>SOCKS5：</strong>
-                                    <code id="socks-link">-</code>
-                                    <button id="copy-socks-btn" class="btn btn-sm btn-outline-secondary ms-2" title="复制地址" disabled>复制地址</button>
-                                </p>
-                                <p>
-                                    <strong>已连接时长：</strong><span id="connected-duration">-</span>
-                                </p>
-                                <p>
-                                    <strong>节点延迟：</strong><span id="latency-value">-</span> ms
-                                </p>
-                                <p>
-                                    <strong>下载速度：</strong><span id="speed-value">-</span> Mbps
-                                </p>
-                                <p>
-                                    <button id="disconnect-btn" class="btn btn-danger btn-sm">断开连接</button>
-                                    <button id="connect-btn" class="btn btn-success btn-sm">连接</button>
-                                    <button id="reconnect-btn" class="btn btn-warning btn-sm">重新连接</button>
-                                    <button id="latency-btn" class="btn btn-info btn-sm ms-2">检测延迟</button>
-                                    <button id="speedtest-btn" class="btn btn-info btn-sm ms-2">测速</button>
-                                </p>
+
+        <!-- Nav -->
+        <nav class="flex-1 px-3 py-4 space-y-1">
+            <button data-tab="dashboard" onclick="switchTab('dashboard')" class="nav-item nav-active w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all hover:bg-gray-800/40">
+                <svg class="w-[18px] h-[18px] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v5a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 13a1 1 0 011-1h4a1 1 0 011 1v6a1 1 0 01-1 1h-4a1 1 0 01-1-1v-6z"/></svg>
+                仪表盘
+            </button>
+            <button data-tab="nodes" onclick="switchTab('nodes')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-400 transition-all hover:bg-gray-800/40 hover:text-gray-200">
+                <svg class="w-[18px] h-[18px] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                节点列表
+            </button>
+            <button data-tab="history" onclick="switchTab('history')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-400 transition-all hover:bg-gray-800/40 hover:text-gray-200">
+                <svg class="w-[18px] h-[18px] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                连接记录
+            </button>
+            <button data-tab="settings" onclick="switchTab('settings')" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-400 transition-all hover:bg-gray-800/40 hover:text-gray-200">
+                <svg class="w-[18px] h-[18px] opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                系统设置
+            </button>
+        </nav>
+
+        <!-- Footer -->
+        <div class="px-4 py-4 border-t border-gray-800/50 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span id="sidebar-status-dot" class="w-2 h-2 rounded-full bg-gray-600"></span>
+                <span class="text-[11px] text-gray-500">v1.0</span>
+            </div>
+            <a href="/logout" class="text-[11px] text-gray-500 hover:text-gray-300 transition-colors">退出登录 →</a>
+        </div>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div id="sidebar-overlay" onclick="document.getElementById('sidebar').classList.remove('open');this.classList.add('hidden')" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="flex-1 min-h-screen overflow-y-auto">
+        <!-- Mobile top bar -->
+        <div class="md:hidden sticky top-0 z-20 flex items-center gap-3 px-4 py-3 bg-[#0b0f19]/90 backdrop-blur border-b border-gray-800/50">
+            <button onclick="document.getElementById('sidebar').classList.toggle('open')" class="text-gray-400 hover:text-white p-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <span class="text-sm font-semibold text-gray-300">VPN Gate 代理面板</span>
+        </div>
+
+        <div class="p-4 md:p-6 lg:p-8 max-w-[1400px] mx-auto">
+
+            <!-- ======================== DASHBOARD ======================== -->
+            <div id="panel-dashboard" class="tab-panel h-[calc(100vh-8rem)] flex flex-col gap-4 overflow-hidden">
+                <!-- Stat cards -->
+                <div class="shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_2.5fr_1fr_1fr] gap-4">
+                    <!-- Connection Status -->
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center">
+                                <span id="status-icon" class="w-3 h-3 rounded-full bg-gray-500"></span>
                             </div>
-                        </div>
-                        <div class="card status-card">
-                            <div class="card-header">IP 检测结果</div>
-                            <div class="card-body" id="ip-info">暂无</div>
+                            <div>
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wider">连接状态</div>
+                                <div id="status-text" class="text-base font-semibold text-gray-300">未连接</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">实时日志</div>
-                            <div class="card-body p-0">
-                                <div id="log-panel" class="log-area"></div>
+                    <!-- SOCKS5 -->
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
                             </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wider">SOCKS5 代理</div>
+                                <div class="flex items-center gap-2">
+                                    <code id="socks-link" class="text-sm font-mono text-gray-300 truncate">-</code>
+                                    <button id="copy-socks-btn" class="shrink-0 text-[10px] px-2 py-0.5 rounded-md bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-gray-200 transition disabled:opacity-30" disabled>复制</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Latency -->
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wider">节点延迟</div>
+                                <div class="text-base font-semibold text-gray-300"><span id="latency-value">-</span> <span class="text-xs text-gray-500 font-normal">ms</span></div>
+                            </div>
+                            <button id="latency-btn" class="shrink-0 px-2.5 py-1 rounded-lg bg-gray-700/60 hover:bg-gray-600 text-gray-400 hover:text-gray-200 text-[11px] font-medium transition">检测</button>
+                        </div>
+                    </div>
+                    <!-- Speed -->
+                    <div class="glass rounded-2xl p-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-violet-500/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wider">下载速度</div>
+                                <div class="text-base font-semibold text-gray-300"><span id="speed-value">-</span> <span class="text-xs text-gray-500 font-normal">Mbps</span></div>
+                            </div>
+                            <button id="speedtest-btn" class="shrink-0 px-2.5 py-1 rounded-lg bg-gray-700/60 hover:bg-gray-600 text-gray-400 hover:text-gray-200 text-[11px] font-medium transition">测速</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Left: Node Info + Actions -->
+                    <div class="lg:col-span-1 space-y-4 flex flex-col min-h-0">
+                        <!-- Node detail card -->
+                        <div class="glass rounded-2xl p-5 space-y-3">
+                            <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">当前节点</h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between"><span class="text-gray-500">节点</span><span id="node-name" class="text-gray-300 font-medium">-</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">IP</span><span id="node-ip" class="text-gray-300 font-mono text-xs">-</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">归属地</span><span id="node-location" class="text-gray-300">-</span></div>
+                                <div class="flex justify-between"><span class="text-gray-500">已连接</span><span id="connected-duration" class="text-gray-300 font-mono text-xs">-</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Action buttons -->
+                        <div class="glass rounded-2xl p-5 space-y-3">
+                            <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">操作</h3>
+                            <div class="grid grid-cols-1 gap-2">
+                                <button id="connect-btn" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium transition">连接</button>
+                                <div id="connected-actions" class="hidden grid grid-cols-2 gap-2">
+                                    <button id="disconnect-btn" class="px-3 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition">断开</button>
+                                    <button id="reconnect-btn" class="px-3 py-2 rounded-xl bg-amber-600/80 hover:bg-amber-500 text-white text-sm font-medium transition">重新连接</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IP Info -->
+                        <div class="glass rounded-2xl p-5 space-y-3 flex-1 flex flex-col">
+                            <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">IP 检测</h3>
+                            <div id="ip-info" class="text-sm text-gray-400 space-y-1 flex-1 overflow-y-auto">暂无</div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Log Panel -->
+                    <div class="lg:col-span-2 flex flex-col min-h-0">
+                        <div class="glass rounded-2xl p-5 flex-1 flex flex-col min-h-0">
+                            <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">实时日志</h3>
+                            <div id="log-panel" class="log-area flex-1 min-h-0"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- 节点列表 -->
-            <div class="tab-pane fade" id="nodes">
-                <div class="mb-3">
-                    <select id="region-filter" class="form-select w-auto d-inline">
+
+            <!-- ======================== NODES ======================== -->
+            <div id="panel-nodes" class="tab-panel hidden m-4 space-y-4">
+                <!-- Filter bar -->
+                <div class="glass rounded-2xl p-4 flex flex-wrap items-center gap-3">
+                    <select id="region-filter" class="bg-gray-800/60 border border-gray-700/50 rounded-xl px-3 py-2 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/40">
                         <option value="all">所有地区</option>
                     </select>
-                    <button id="refresh-btn" class="btn btn-primary">刷新列表</button>
-                    <button id="test-latency-btn" class="btn btn-info ms-2">测试所有节点延迟</button>
-                    <span id="refresh-status" class="ms-2 text-muted"></span>
+                    <button id="refresh-btn" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium transition">刷新列表</button>
+                    <button id="test-latency-btn" class="px-4 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-200 text-sm font-medium transition">测试所有节点延迟</button>
+                    <span id="refresh-status" class="text-xs text-gray-500"></span>
                 </div>
-                <div id="node-stats" class="mb-2 text-muted small"></div>
-                <div class="mb-2 text-muted small">延迟检测仅供参考，节点可能会禁止ping导致延迟检测超时，节点列表的延迟检测是直接ping节点ip，仪表盘延迟检测是通过连接后的隧道ping的，这会导致两边延迟检测数值不一致</div>
-                <table class="table table-bordered table-striped">
-                    <thead><tr><th>序号</th><th>国家</th><th>IP</th><th>速率</th><th>会话数</th><th>延迟（ms）</th><th>操作</th></tr></thead>
-                    <tbody id="node-table"></tbody>
-                </table>
-            </div>
-            <!-- 历史连接记录 -->
-            <div class="tab-pane fade" id="history">
-                <div class="mb-3">
-                    <button id="refresh-history-btn" class="btn btn-primary">刷新记录</button>
-                    <span id="history-refresh-status" class="ms-2 text-muted"></span>
-                </div>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>节点名称</th>
-                            <th>IP</th>
-                            <th>国家</th>
-                            <th class="sortable" data-sort="start_time">开始连接时间 ↕</th>
-                            <th>结束连接时间</th>
-                            <th class="sortable" data-sort="duration">连接时长 ↕</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody id="history-table"></tbody>
-                </table>
-                <div id="history-pagination" class="d-flex align-items-center justify-content-between mt-2">
-                    <div class="pagination-info" id="history-page-info"></div>
-                    <div>
-                        <button id="history-prev-btn" class="btn btn-sm btn-outline-primary" disabled>上一页</button>
-                        <span id="history-page-num" class="mx-2">1</span>
-                        <button id="history-next-btn" class="btn btn-sm btn-outline-primary" disabled>下一页</button>
+                <!-- Stats & tips -->
+                <div id="node-stats" class="text-xs text-gray-500"></div>
+                <div class="text-[11px] text-gray-600 leading-relaxed">延迟检测仅供参考，部分节点可能禁止 ping 导致超时。仪表盘延迟通过 VPN 隧道检测，节点列表延迟直接 ping 节点 IP，数值可能不一致。</div>
+                <!-- Table -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700/50 text-gray-500 text-xs uppercase tracking-wider">
+                                    <th class="py-3 px-4 text-left font-medium">#</th>
+                                    <th class="py-3 px-4 text-left font-medium">国家</th>
+                                    <th class="py-3 px-4 text-left font-medium">IP</th>
+                                    <th class="py-3 px-4 text-left font-medium">评分</th>
+                                    <th class="py-3 px-4 text-left font-medium">速率</th>
+                                    <th class="py-3 px-4 text-left font-medium">会话数</th>
+                                    <th class="py-3 px-4 text-left font-medium">延迟 (ms)</th>
+                                    <th class="py-3 px-4 text-left font-medium">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="node-table" class="divide-y divide-gray-800/50"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <!-- 设置 -->
-            <div class="tab-pane fade" id="settings">
-                <form id="settings-form">
-                    <div class="mb-3">
-                        <label>面板密码</label>
-                        <input type="password" class="form-control" id="cfg-password" placeholder="留空则不修改">
-                        <small class="text-muted">面板登录密码，保存立即生效（显示******表示已设置）</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>API 地址</label>
-                        <input class="form-control" id="cfg-api-url">
-                        <small class="text-muted">获取节点的API地址，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>SOCKS 端口</label>
-                        <input type="number" class="form-control" id="cfg-socks-port">
-                        <small class="text-muted">SOCKS代理的端口，重启生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>SOCKS 最大并发连接数</label>
-                        <input type="number" class="form-control" id="cfg-socks-max-connections" min="10" max="1000" value="200">
-                        <small class="text-muted">并发连接数上限，重启生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>面板端口</label>
-                        <input type="number" class="form-control" id="cfg-web-port">
-                        <small class="text-muted">面板端口，重启生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>VPN 用户名</label>
-                        <input class="form-control" id="cfg-vpn-user">
-                        <small class="text-muted">连接节点的用户名，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>VPN 密码</label>
-                        <input type="password" class="form-control" id="cfg-vpn-pass" placeholder="留空则不修改">
-                        <small class="text-muted">连接节点的密码，保存立即生效（显示******表示已设置）</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>默认连接地区</label>
-                        <select id="cfg-region" class="form-select">
-                            <option value="all">所有地区</option>
-                        </select>
-                        <span id="cfg-region-current" class="text-muted ms-2 small"></span>
-                        <small class="text-muted">连接节点默认地区，保存立即生效，需要重新连接</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>优先连接同IP段节点</label>
-                        <select id="cfg-prefer-same-subnet" class="form-select">
-                            <option value="false">关闭</option>
-                            <option value="true">开启</option>
-                        </select>
-                        <small class="text-muted">节点失效后优先连接同一子网的节点，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>子网前缀长度</label>
-                        <input type="number" class="form-control" id="cfg-subnet-prefix-length" min="8" max="32" value="24">
-                        <small class="text-muted">/24 表示前三段相同，/16 表示前两段相同，直接填写数字，无需加"/"保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>节点数据上限</label>
-                        <input type="number" class="form-control" id="cfg-node-limit" min="1" max="1000">
-                        <small class="text-muted">从API获取的节点数量上限，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>检测数量上限</label>
-                        <input type="number" class="form-control" id="cfg-check-limit" min="1" max="500">
-                        <small class="text-muted">预连接节点检测数量上限，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>自动更新节点间隔 (分钟)</label>
-                        <input type="number" class="form-control" id="cfg-auto-update-interval" min="0" max="1440" placeholder="0">
-                        <small class="text-muted">设置后浏览器和后端会按此间隔自动刷新全量节点，0 表示关闭，保存立即生效。</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>健康检测失败阈值</label>
-                        <input type="number" class="form-control" id="cfg-health-fail-threshold" min="1" max="10" value="3">
-                        <small class="text-muted">连续失败多少次后自动切换节点（建议 2~5），保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>健康检测间隔 (秒)</label>
-                        <input type="number" class="form-control" id="cfg-health-check-interval" min="5" max="300" value="10">
-                        <small class="text-muted">每次健康检测的间隔时间，建议 10~30 秒，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>自定义健康检测地址</label>
-                        <textarea class="form-control" id="cfg-health-check-urls" rows="3" placeholder="使用URL的方式进行健康检测，留空默认访问的检测地址为：http://httpbin.org，http://ifconfig.me，http://www.google.com"></textarea>
-                        <small class="text-muted">可自定义多个，使用英文逗号隔开或者一行一个，格式为：http://xxxx.xxx，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>健康检测超时 (秒)</label>
-                        <input type="number" class="form-control" id="cfg-health-check-timeout" min="3" max="60" value="8">
-                        <small class="text-muted">curl 请求的最大等待时间，建议 8~20 秒，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>未连接时重连间隔 (秒)</label>
-                        <input type="number" class="form-control" id="cfg-reconnect-interval" min="10" max="600" value="30">
-                        <small class="text-muted">断开后每隔多少秒尝试重连，建议 30~120 秒，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>延迟检测地址</label>
-                        <input type="text" class="form-control" id="cfg-latency-check-target" placeholder="留空则使用 VPN 网关 IP">
-                        <small class="text-muted">输入 IP 或域名，点击仪表盘"检测延迟"时会 ping 此地址，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>测速文件地址</label>
-                        <input type="text" class="form-control" id="cfg-speedtest-url">
-                        <small class="text-muted">用于测试下载速度的文件URL，默认链接为1MB大小，可通过修改"1mb.test"来改变大小，可以设置为：1mb.test、10mb.test、100mb.test，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>测速重试次数</label>
-                        <input type="number" class="form-control" id="cfg-speedtest-retry" min="0" max="10" value="3">
-                        <small class="text-muted">测速失败重试次数，保存立即生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>日志保存天数</label>
-                        <input type="number" class="form-control" id="cfg-log-retention-days" min="1" max="90" value="3">
-                        <small class="text-muted">日志文件保留的天数，重启生效</small>
-                    </div>
-                    <div class="mb-3">
-                        <label>连接记录保留天数</label>
-                        <input type="number" class="form-control" id="cfg-history-retention-days" min="1" max="365" value="30">
-                        <small class="text-muted">超过天数的记录会被自动清理，保存立即生效</small>
-                    </div>
-                    <button type="submit" class="btn btn-success">保存</button>
-                    <button type="button" id="restart-btn" class="btn btn-danger ms-2">保存并重启服务</button>
-                    <span id="settings-msg" class="ms-3"></span>
-                </form>
-                <hr>
-                <div class="card">
-                    <div class="card-header">系统信息</div>
-                    <div class="card-body" id="system-info">加载中...</div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- 连接进度模态框 -->
-    <div class="modal fade" id="connectModal" tabindex="-1" aria-labelledby="connectModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="connectModalLabel">连接节点</h5>
-                    <button type="button" class="btn-close" id="modal-close-btn" aria-label="Close"></button>
+            <!-- ======================== HISTORY ======================== -->
+            <div id="panel-history" class="tab-panel hidden m-4 space-y-4">
+                <div class="glass rounded-2xl p-4 flex items-center gap-3">
+                    <button id="refresh-history-btn" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium transition">刷新记录</button>
+                    <span id="history-refresh-status" class="text-xs text-gray-500"></span>
                 </div>
-                <div class="modal-body">
-                    <p id="modal-status-text">正在连接...</p>
+                <div class="glass rounded-2xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-700/50 text-gray-500 text-xs uppercase tracking-wider">
+                                    <th class="py-3 px-4 text-left font-medium">#</th>
+                                    <th class="py-3 px-4 text-left font-medium">节点名称</th>
+                                    <th class="py-3 px-4 text-left font-medium">IP</th>
+                                    <th class="py-3 px-4 text-left font-medium">国家</th>
+                                    <th class="py-3 px-4 text-left font-medium cursor-pointer hover:text-gray-300 sortable" data-sort="start_time">开始连接 ↕</th>
+                                    <th class="py-3 px-4 text-left font-medium">结束连接</th>
+                                    <th class="py-3 px-4 text-left font-medium cursor-pointer hover:text-gray-300 sortable" data-sort="duration">连接时长 ↕</th>
+                                    <th class="py-3 px-4 text-left font-medium">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-table" class="divide-y divide-gray-800/50"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div id="history-pagination" class="flex items-center justify-between">
+                    <div id="history-page-info" class="text-xs text-gray-500"></div>
+                    <div class="flex items-center gap-2">
+                        <button id="history-prev-btn" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 text-xs transition disabled:opacity-30" disabled>← 上一页</button>
+                        <span id="history-page-num" class="text-xs text-gray-400 px-2">1</span>
+                        <button id="history-next-btn" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 text-xs transition disabled:opacity-30" disabled>下一页 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== SETTINGS ======================== -->
+            <div id="panel-settings" class="tab-panel hidden m-4 space-y-6">
+                <form id="settings-form" class="space-y-6">
+                    <!-- Basic -->
+                    <div class="glass rounded-2xl p-6 space-y-4">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> 基本设置
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">面板密码</label>
+                                <input type="password" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-password" placeholder="留空则不修改">
+                                <span class="text-[11px] text-gray-600 mt-1 block">登录密码，保存立即生效</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">API 地址</label>
+                                <input class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-api-url">
+                                <span class="text-[11px] text-gray-600 mt-1 block">获取节点的 API 地址，保存立即生效</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">面板端口</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-web-port">
+                                <span class="text-[11px] text-gray-600 mt-1 block">面板端口，重启生效</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">默认连接地区</label>
+                                <select id="cfg-region" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition">
+                                    <option value="all">所有地区</option>
+                                </select>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span id="cfg-region-current" class="text-[11px] text-gray-600"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOCKS5 -->
+                    <div class="glass rounded-2xl p-6 space-y-4">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> SOCKS5 代理
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">SOCKS 端口</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-socks-port">
+                                <span class="text-[11px] text-gray-600 mt-1 block">重启生效</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">最大并发连接数</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-socks-max-connections" min="10" max="1000">
+                                <span class="text-[11px] text-gray-600 mt-1 block">重启生效</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VPN -->
+                    <div class="glass rounded-2xl p-6 space-y-4">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span> VPN 设置
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">VPN 用户名</label>
+                                <input class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-vpn-user">
+                                <span class="text-[11px] text-gray-600 mt-1 block">保存立即生效</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">VPN 密码</label>
+                                <input type="password" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-vpn-pass" placeholder="留空则不修改">
+                                <span class="text-[11px] text-gray-600 mt-1 block">保存立即生效</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">优先连接同 IP 段</label>
+                                <select id="cfg-prefer-same-subnet" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition">
+                                    <option value="false">关闭</option>
+                                    <option value="true">开启</option>
+                                </select>
+                                <span class="text-[11px] text-gray-600 mt-1 block">节点失效后优先连接同一子网的节点</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">子网前缀长度</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-subnet-prefix-length" min="8" max="32">
+                                <span class="text-[11px] text-gray-600 mt-1 block">/24 = 前三段相同，/16 = 前两段相同</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node settings -->
+                    <div class="glass rounded-2xl p-6 space-y-4">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> 节点设置
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">节点数据上限</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-node-limit" min="1" max="1000">
+                                <span class="text-[11px] text-gray-600 mt-1 block">从 API 获取的节点数量上限</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">检测数量上限</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-check-limit" min="1" max="500">
+                                <span class="text-[11px] text-gray-600 mt-1 block">预连接节点检测数量上限</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">自动更新节点间隔 (分钟)</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-auto-update-interval" min="0" max="1440" placeholder="0">
+                                <span class="text-[11px] text-gray-600 mt-1 block">0 = 关闭</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">未连接重连间隔 (秒)</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-reconnect-interval" min="10" max="600">
+                                <span class="text-[11px] text-gray-600 mt-1 block">建议 30~120 秒</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Check -->
+                    <div class="glass rounded-2xl p-6 space-y-4">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span> 健康检测
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">失败阈值</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-health-fail-threshold" min="1" max="10">
+                                <span class="text-[11px] text-gray-600 mt-1 block">连续失败多少次后自动切换</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">检测间隔 (秒)</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-health-check-interval" min="5" max="300">
+                                <span class="text-[11px] text-gray-600 mt-1 block">建议 10~30 秒</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">检测超时 (秒)</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-health-check-timeout" min="3" max="60">
+                                <span class="text-[11px] text-gray-600 mt-1 block">建议 8~20 秒</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1.5">自定义健康检测地址</label>
+                            <textarea class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-health-check-urls" rows="2" placeholder="留空默认：httpbin.org, ifconfig.me, google.com"></textarea>
+                            <span class="text-[11px] text-gray-600 mt-1 block">多个地址用逗号分隔或一行一个</span>
+                        </div>
+                    </div>
+
+                    <!-- Speedtest -->
+                    <div class="glass rounded-2xl p-6 space-y-4">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> 测速设置
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">测速文件地址</label>
+                                <input type="text" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-speedtest-url">
+                                <span class="text-[11px] text-gray-600 mt-1 block">可修改 1mb.test 为 10mb.test / 100mb.test</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">重试次数</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-speedtest-retry" min="0" max="10">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">延迟检测地址</label>
+                                <input type="text" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-latency-check-target" placeholder="留空使用 VPN 网关 IP">
+                                <span class="text-[11px] text-gray-600 mt-1 block">如 8.8.8.8，留空则 ping VPN 网关</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data management -->
+                    <div class="glass rounded-2xl p-6 space-y-4">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span> 数据管理
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">日志保存天数</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-log-retention-days" min="1" max="90">
+                                <span class="text-[11px] text-gray-600 mt-1 block">重启生效</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500 mb-1.5">连接记录保留天数</label>
+                                <input type="number" class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition" id="cfg-history-retention-days" min="1" max="365">
+                                <span class="text-[11px] text-gray-600 mt-1 block">超过天数的记录自动清理</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save buttons -->
+                    <div class="flex items-center gap-3">
+                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium transition shadow-lg shadow-emerald-600/20">保存设置</button>
+                        <button type="button" id="restart-btn" class="px-6 py-2.5 rounded-xl bg-rose-600/80 hover:bg-rose-500 text-white text-sm font-medium transition">保存并重启服务</button>
+                        <span id="settings-msg" class="text-sm ml-2"></span>
+                    </div>
+                </form>
+
+                <!-- System info -->
+                <div class="glass rounded-2xl p-6 space-y-3">
+                    <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span> 系统信息
+                    </h3>
+                    <div id="system-info" class="text-sm text-gray-400 space-y-1">加载中...</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===================== CONNECT MODAL ===================== -->
+    <div id="connectModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="relative bg-[#111827] border border-gray-700/50 rounded-2xl shadow-2xl w-full max-w-2xl">
+                <div class="flex items-center justify-between px-6 py-4 border-b border-gray-800/50">
+                    <h3 id="connectModalLabel" class="text-base font-semibold text-gray-200">连接节点</h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-300 transition p-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <p id="modal-status-text" class="text-sm text-gray-300 mb-3">正在连接...</p>
                     <div id="modal-log-panel" class="modal-log-area"></div>
                 </div>
-                <div class="modal-footer" id="connectModalFooter">
-                    <button type="button" class="btn btn-secondary" id="modal-cancel-btn">关闭</button>
+                <div id="connectModalFooter" class="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-800/50">
+                    <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300 text-sm transition">关闭</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 全局自定义消息/确认模态框 -->
-    <div class="modal fade" id="globalModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="globalModalTitle"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- ===================== GLOBAL MODAL ===================== -->
+    <div id="globalModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="globalModalHide()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="relative bg-[#111827] border border-gray-700/50 rounded-2xl shadow-2xl w-full max-w-md">
+                <div class="flex items-center justify-between px-6 py-4 border-b border-gray-800/50">
+                    <h3 id="globalModalTitle" class="text-base font-semibold text-gray-200"></h3>
+                    <button onclick="globalModalHide()" class="text-gray-500 hover:text-gray-300 transition p-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
-                <div class="modal-body" id="globalModalBody"></div>
-                <div class="modal-footer" id="globalModalFooter"></div>
+                <div class="p-6">
+                    <p id="globalModalBody" class="text-sm text-gray-300"></p>
+                </div>
+                <div id="globalModalFooter" class="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-800/50"></div>
             </div>
         </div>
     </div>
 
+    <!-- ===================== TOAST CONTAINER ===================== -->
+    <div id="toast-container"></div>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
     <script>
-        const socket = io();
-        const logPanel = document.getElementById("log-panel");
-        const modalLogPanel = document.getElementById("modal-log-panel");
-        const connectModal = new bootstrap.Modal(document.getElementById("connectModal"));
-        const globalModal = new bootstrap.Modal(document.getElementById("globalModal"));
-        let isConnecting = false;
-        let modalVisible = false;
-        let allNodesCache = [];
-        let displayedNodes = [];
-        let isRefreshing = false;
-        let configRegion = "all";
-        let fetchIntervalTimer = null;
-        let connectedSince = null;
-        let localTimer = null;
+    // ========== Globals ==========
+    const socket = io();
+    const logPanel = document.getElementById("log-panel");
+    const modalLogPanel = document.getElementById("modal-log-panel");
+    let isConnecting = false;
+    let modalVisible = false;
+    let allNodesCache = [];
+    let displayedNodes = [];
+    let isRefreshing = false;
+    let configRegion = "all";
+    let fetchIntervalTimer = null;
+    let connectedSince = null;
+    let localTimer = null;
+    const MAX_LOG_LINES = 2000;
 
-        // ========== 日志面板限制：防止 DOM 无限增长导致浏览器崩溃 ==========
-        const MAX_LOG_LINES = 2000;
+    // ========== Toast Notification ==========
+    function showToast(message, type = "info", duration = 3000) {
+        const container = document.getElementById("toast-container");
+        const el = document.createElement("div");
+        el.className = `toast-item ${type}`;
+        el.textContent = message;
+        container.appendChild(el);
+        setTimeout(() => {
+            el.classList.add("fade-out");
+            setTimeout(() => el.remove(), 300);
+        }, duration);
+    }
 
-        function appendLogLine(panel, text, color) {
-            const div = document.createElement("div");
-            if (color) div.style.color = color;
-            div.textContent = text;  // 使用 textContent 防止 XSS
-            panel.appendChild(div);
-            // 超过上限时移除旧的 DOM 元素
-            while (panel.children.length > MAX_LOG_LINES) {
-                panel.removeChild(panel.firstChild);
+    // ========== Tab Switching ==========
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        const panel = document.getElementById('panel-' + tabName);
+        if (panel) {
+            panel.classList.remove('hidden');
+            // Re-trigger animation
+            panel.style.animation = 'none';
+            panel.offsetHeight; // force reflow
+            panel.style.animation = '';
+        }
+        document.querySelectorAll('[data-tab]').forEach(btn => {
+            if (btn.dataset.tab === tabName) {
+                btn.classList.add('nav-active');
+                btn.classList.remove('text-gray-400');
+            } else {
+                btn.classList.remove('nav-active');
+                btn.classList.add('text-gray-400');
             }
-        }
-        // ====================================================================
+        });
+        // Close mobile sidebar
+        document.getElementById('sidebar').classList.remove('open');
+        // Trigger data loads
+        if (tabName === 'nodes') refreshNodes();
+        if (tabName === 'history') loadHistory();
+    }
 
-        function showMessage(title, message, type = "info") {
-            document.getElementById("globalModalTitle").textContent = title;
-            document.getElementById("globalModalBody").textContent = message;
-            document.getElementById("globalModalFooter").innerHTML = `<button type="button" class="btn btn-${type === "danger" ? "danger" : "primary"}" data-bs-dismiss="modal">确定</button>`;
-            globalModal.show();
-        }
+    // ========== Custom Modals (no Bootstrap) ==========
+    const connectModalEl = document.getElementById('connectModal');
+    const globalModalEl = document.getElementById('globalModal');
 
-        function showConfirm(title, message, callback) {
-            document.getElementById("globalModalTitle").textContent = title;
-            document.getElementById("globalModalBody").textContent = message;
-            document.getElementById("globalModalFooter").innerHTML = `
-                <button type="button" class="btn btn-secondary" id="confirmNo">取消</button>
-                <button type="button" class="btn btn-primary" id="confirmYes">确定</button>
-            `;
-            globalModal.show();
-            document.getElementById("confirmYes").onclick = () => { globalModal.hide(); callback(true); };
-            document.getElementById("confirmNo").onclick = () => { globalModal.hide(); callback(false); };
-        }
+    function globalModalHide() {
+        globalModalEl.classList.add('hidden');
+    }
 
-        function isLogPanelAtBottom() {
-            const panel = document.getElementById("log-panel");
-            return panel.scrollHeight - panel.clientHeight - panel.scrollTop < 30;
-        }
+    function showMessage(title, message, type = "info") {
+        document.getElementById("globalModalTitle").textContent = title;
+        document.getElementById("globalModalBody").textContent = message;
+        const colorClass = type === "danger" ? "bg-rose-600 hover:bg-rose-500" : type === "success" ? "bg-emerald-600 hover:bg-emerald-500" : "bg-sky-600 hover:bg-sky-500";
+        document.getElementById("globalModalFooter").innerHTML =
+            `<button onclick="globalModalHide()" class="px-4 py-2 rounded-xl ${colorClass} text-white text-sm transition">确定</button>`;
+        globalModalEl.classList.remove('hidden');
+    }
 
-        // ========== 加载历史日志 ==========
-        async function loadHistoricalLogs() {
-            try {
-                const res = await fetch("/api/logs");
-                if (!res.ok) return;
-                const logs = await res.json();
-                logPanel.innerHTML = "";
-                logs.forEach(line => {
-                    appendLogLine(logPanel, line);
+    function showConfirm(title, message, callback) {
+        document.getElementById("globalModalTitle").textContent = title;
+        document.getElementById("globalModalBody").textContent = message;
+        document.getElementById("globalModalFooter").innerHTML = `
+            <button onclick="globalModalHide();window._confirmCb&&window._confirmCb(false)" class="px-4 py-2 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300 text-sm transition">取消</button>
+            <button onclick="globalModalHide();window._confirmCb&&window._confirmCb(true)" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm transition">确定</button>`;
+        window._confirmCb = callback;
+        globalModalEl.classList.remove('hidden');
+    }
+
+    // ========== Log Panel ==========
+    function appendLogLine(panel, text, color) {
+        const div = document.createElement("div");
+        if (color) div.style.color = color;
+        div.textContent = text;
+        panel.appendChild(div);
+        while (panel.children.length > MAX_LOG_LINES) {
+            panel.removeChild(panel.firstChild);
+        }
+    }
+
+    function isLogPanelAtBottom() {
+        return logPanel.scrollHeight - logPanel.clientHeight - logPanel.scrollTop < 30;
+    }
+
+    async function loadHistoricalLogs() {
+        try {
+            const res = await fetch("/api/logs");
+            if (!res.ok) return;
+            const logs = await res.json();
+            logPanel.innerHTML = "";
+            logs.forEach(line => appendLogLine(logPanel, line));
+            logPanel.scrollTop = logPanel.scrollHeight;
+        } catch(e) { console.error("加载历史日志失败:", e); }
+    }
+
+    socket.on("log", (data) => {
+        const atBottom = isLogPanelAtBottom();
+        appendLogLine(logPanel, data.message);
+        if (atBottom) logPanel.scrollTop = logPanel.scrollHeight;
+        if (modalVisible) {
+            appendLogLine(modalLogPanel, data.message);
+            modalLogPanel.scrollTop = modalLogPanel.scrollHeight;
+        }
+    });
+
+    // ========== Country Flag Emoji ==========
+    function countryFlag(code) {
+        if (!code || code.length !== 2) return '🌐';
+        return String.fromCodePoint(...code.toUpperCase().split('').map(c => 0x1F1E6 - 65 + c.charCodeAt(0)));
+    }
+
+    // ========== Status Update ==========
+    async function updateStatus() {
+        try {
+            const res = await fetch("/api/status");
+            const data = await res.json();
+            const isConnected = data.connected;
+            document.getElementById("status-text").textContent = isConnected ? "已连接" : "未连接";
+            document.getElementById("status-text").className = isConnected ? "text-base font-semibold text-emerald-400" : "text-base font-semibold text-gray-400";
+
+            // Status icon
+            const icon = document.getElementById("status-icon");
+            icon.className = isConnected ? "w-3 h-3 rounded-full bg-emerald-400 dot-pulse" : "w-3 h-3 rounded-full bg-gray-500";
+
+            // Sidebar status dot
+            const sideDot = document.getElementById("sidebar-status-dot");
+            sideDot.className = isConnected ? "w-2 h-2 rounded-full bg-emerald-400 dot-pulse" : "w-2 h-2 rounded-full bg-gray-600";
+
+            document.getElementById("node-name").textContent = data.node_info?.hostname || "-";
+            document.getElementById("node-ip").textContent = data.node_info?.ip || "-";
+            document.getElementById("node-location").textContent = data.node_info?.country_long || "-";
+
+            // Toggle connect/disconnect/reconnect buttons based on state
+            document.getElementById("connect-btn").classList.toggle("hidden", isConnected);
+            document.getElementById("connected-actions").classList.toggle("hidden", !isConnected);
+
+            const socksLink = data.socks || "-";
+            document.getElementById("socks-link").textContent = socksLink;
+
+            const newConnectedSince = data.connected_since || null;
+            if (newConnectedSince !== connectedSince) {
+                connectedSince = newConnectedSince;
+                if (connectedSince) startLocalTimer();
+                else { stopLocalTimer(); document.getElementById("connected-duration").textContent = "-"; }
+            }
+
+            const copyBtn = document.getElementById("copy-socks-btn");
+            copyBtn.disabled = !(isConnected && socksLink !== "-");
+
+            const ipInfo = document.getElementById("ip-info");
+            if (data.ip_info && Object.keys(data.ip_info).length > 0) {
+                ipInfo.innerHTML = "";
+                Object.entries(data.ip_info).forEach(([k,v]) => {
+                    const div = document.createElement("div");
+                    div.className = "flex justify-between py-0.5";
+                    div.innerHTML = `<span class="text-gray-500">${escapeHtml(k)}</span><span class="text-gray-300 font-mono text-xs">${escapeHtml(v)}</span>`;
+                    ipInfo.appendChild(div);
                 });
-                logPanel.scrollTop = logPanel.scrollHeight;
-            } catch(e) {
-                console.error("加载历史日志失败:", e);
+            } else {
+                ipInfo.textContent = "暂无";
             }
-        }
+        } catch(e) { console.error(e); }
+    }
+    setInterval(updateStatus, 3000);
+    updateStatus();
 
-        socket.on("log", (data) => {
-            const atBottom = isLogPanelAtBottom();
-            appendLogLine(logPanel, data.message);
-            if (atBottom) {
-                logPanel.scrollTop = logPanel.scrollHeight;
+    // ========== Copy SOCKS ==========
+    document.getElementById("copy-socks-btn").addEventListener("click", () => {
+        const socks = document.getElementById("socks-link").textContent;
+        if (!socks || socks === "-") return;
+        const btn = document.getElementById("copy-socks-btn");
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(socks).then(() => {
+                btn.textContent = "✓";
+                setTimeout(() => { btn.textContent = "复制"; }, 2000);
+            }).catch(() => fallbackCopy(socks, btn));
+        } else {
+            fallbackCopy(socks, btn);
+        }
+    });
+
+    function fallbackCopy(text, btn) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed"; textarea.style.opacity = 0;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try { document.execCommand("copy"); btn.textContent = "✓"; }
+        catch (err) { showMessage("复制失败", "请手动复制：" + text, "danger"); }
+        finally { document.body.removeChild(textarea); setTimeout(() => { btn.textContent = "复制"; }, 2000); }
+    }
+
+    // ========== Duration Timer ==========
+    function startLocalTimer() {
+        stopLocalTimer();
+        if (!connectedSince) return;
+        localTimer = setInterval(() => {
+            const start = new Date(connectedSince);
+            const diff = Math.floor((new Date() - start) / 1000);
+            const h = Math.floor(diff / 3600);
+            const m = Math.floor((diff % 3600) / 60);
+            const s = diff % 60;
+            document.getElementById("connected-duration").textContent = `${h}时${m}分${s}秒`;
+        }, 1000);
+    }
+
+    function stopLocalTimer() {
+        if (localTimer) { clearInterval(localTimer); localTimer = null; }
+    }
+
+    // ========== Region Options ==========
+    function buildRegionOptions(selectedVal = null) {
+        const regions = new Set();
+        allNodesCache.forEach(n => {
+            if (n.country_short) regions.add(JSON.stringify({short: n.country_short, long: n.country_long}));
+        });
+        const sorted = Array.from(regions).map(JSON.parse).sort((a,b) => a.short.localeCompare(b.short));
+        let html = '<option value="all">所有地区</option>';
+        sorted.forEach(r => {
+            const selAttr = selectedVal && selectedVal === r.short ? " selected" : "";
+            html += `<option value="${r.short}"${selAttr}>${countryFlag(r.short)} ${r.long} (${r.short})</option>`;
+        });
+        return html;
+    }
+
+    function updateCurrentRegionText() {
+        const currentVal = configRegion || "all";
+        let displayText = "当前默认：";
+        if (currentVal === "all") { displayText += "所有地区"; }
+        else {
+            const node = allNodesCache.find(n => n.country_short === currentVal);
+            displayText += node ? `${node.country_long} (${node.country_short})` : currentVal;
+        }
+        document.getElementById("cfg-region-current").textContent = displayText;
+    }
+
+    function populateRegionFilter() {
+        const select = document.getElementById("region-filter");
+        const currentVal = select.value || localStorage.getItem("selectedRegion") || "all";
+        select.innerHTML = buildRegionOptions(currentVal);
+    }
+
+    function updateSettingsRegionDropdown() {
+        const select = document.getElementById("cfg-region");
+        const selVal = configRegion || "all";
+        select.innerHTML = buildRegionOptions(selVal);
+        updateCurrentRegionText();
+    }
+
+    // ========== Number & Speed Formatting ==========
+    function formatNumber(n) {
+        return Number(n).toLocaleString('en-US');
+    }
+
+    function formatSpeed(bps) {
+        const val = parseInt(bps) || 0;
+        const units = ['bps', 'Kbps', 'Mbps', 'Gbps', 'Tbps'];
+        let i = 0;
+        let v = val;
+        while (v >= 1000 && i < units.length - 1) { v /= 1000; i++; }
+        return i === 0 ? v + ' ' + units[i] : v.toFixed(1) + ' ' + units[i];
+    }
+
+    // ========== Escape HTML ==========
+    function escapeHtml(str) {
+        if (!str) return "";
+        const div = document.createElement("div");
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    // ========== Node Table ==========
+    function latencyClass(ms) {
+        if (ms === null || ms === undefined || ms < 0) return 'text-gray-500';
+        if (ms < 200) return 'text-emerald-400';
+        if (ms < 500) return 'text-amber-400';
+        return 'text-rose-400';
+    }
+
+    function renderNodeTable(nodes) {
+        const tbody = document.getElementById("node-table");
+        let html = "";
+        nodes.forEach((n, idx) => {
+            const latText = (n.latency !== undefined && n.latency !== null && n.latency >= 0) ? n.latency : "-";
+            const latCls = latencyClass(n.latency);
+            const flag = countryFlag(n.country_short);
+            const scoreVal = n.score || 0;
+            html += `<tr class="row-hover transition" id="node-row-${escapeHtml(n.ip)}">
+                <td class="py-3 px-4 text-gray-500 text-xs">${idx+1}</td>
+                <td class="py-3 px-4">${flag} <span class="text-gray-300">${escapeHtml(n.country_long)}</span> <span class="text-gray-600 text-xs">(${escapeHtml(n.country_short)})</span></td>
+                <td class="py-3 px-4 font-mono text-xs text-gray-400">${escapeHtml(n.ip)}</td>
+                <td class="py-3 px-4 font-mono text-xs text-gray-300">${formatNumber(scoreVal)}</td>
+                <td class="py-3 px-4 text-gray-400 text-xs">${formatSpeed(n.speed)}</td>
+                <td class="py-3 px-4 text-gray-400 text-xs">${escapeHtml(n.num_sessions)}</td>
+                <td class="py-3 px-4 latency-cell font-mono text-xs ${latCls}" data-ip="${escapeHtml(n.ip)}">${latText}</td>
+                <td class="py-3 px-4">
+                    <button class="px-3 py-1 rounded-lg bg-emerald-600/80 hover:bg-emerald-500 text-white text-xs font-medium transition connect-btn" data-ip="${escapeHtml(n.ip)}" ${isConnecting ? 'disabled' : ''}>连接</button>
+                </td>
+            </tr>`;
+        });
+        tbody.innerHTML = html || `<tr><td colspan='8' class='py-8 text-center text-gray-600'>无节点数据</td></tr>`;
+    }
+
+    function updateStats(nodes) {
+        const statsDiv = document.getElementById("node-stats");
+        if (!nodes.length) { statsDiv.textContent = ""; return; }
+        const total = nodes.length;
+        const countryCount = {};
+        nodes.forEach(n => {
+            const key = n.country_long + " (" + n.country_short + ")";
+            countryCount[key] = (countryCount[key] || 0) + 1;
+        });
+        const countryStr = Object.entries(countryCount).map(([k,v]) => `${k}: ${v}`).join(" · ");
+        statsDiv.textContent = `总节点: ${total} | ${countryStr}`;
+    }
+
+    function setConnecting(state) {
+        isConnecting = state;
+        document.querySelectorAll(".connect-btn").forEach(btn => { btn.disabled = state; });
+        document.querySelectorAll(".connect-btn-history").forEach(btn => { btn.disabled = state; });
+    }
+
+    // ========== Nodes API ==========
+    async function updateAllNodesCache() {
+        try {
+            const res = await fetch("/api/nodes?region=all");
+            if (res.ok) {
+                allNodesCache = await res.json();
+                populateRegionFilter();
+                updateSettingsRegionDropdown();
             }
+        } catch(e) { console.error(e); }
+    }
+
+    function stopFetchTimer() { if (fetchIntervalTimer) { clearInterval(fetchIntervalTimer); fetchIntervalTimer = null; } }
+    function startFetchTimer(intervalMinutes) {
+        stopFetchTimer();
+        const minutes = parseInt(intervalMinutes);
+        if (!minutes || minutes <= 0) return;
+        fetchIntervalTimer = setInterval(async () => {
+            await updateAllNodesCache();
+            const nodesTab = document.getElementById("panel-nodes");
+            if (!nodesTab.classList.contains("hidden")) {
+                try {
+                    const region = document.getElementById("region-filter").value;
+                    const res = await fetch(`/api/nodes?region=${encodeURIComponent(region)}`);
+                    if (res.ok) {
+                        const nodes = await res.json();
+                        displayedNodes = nodes;
+                        renderNodeTable(nodes);
+                        updateStats(nodes);
+                    }
+                } catch(e) {}
+            }
+        }, minutes * 60 * 1000);
+    }
+
+    async function refreshNodes() {
+        if (isRefreshing) return;
+        const btn = document.getElementById("refresh-btn");
+        const status = document.getElementById("refresh-status");
+        btn.disabled = true;
+        isRefreshing = true;
+        status.textContent = "获取中...";
+        const region = document.getElementById("region-filter").value;
+        localStorage.setItem("selectedRegion", region);
+        try {
+            const res = await fetch(`/api/nodes?region=${encodeURIComponent(region)}`);
+            if (res.status === 401 || res.redirected) throw new Error("登录已过期，请刷新页面重新登录");
+            const nodes = await res.json();
+            if (!res.ok) throw new Error(nodes.error || `HTTP ${res.status}`);
+            displayedNodes = nodes;
+            renderNodeTable(nodes);
+            updateStats(nodes);
+            if (region !== "all") { await updateAllNodesCache(); }
+            else { allNodesCache = nodes; populateRegionFilter(); updateSettingsRegionDropdown(); }
+            status.textContent = "✓ 完成";
+            setTimeout(() => { status.textContent = ""; }, 2000);
+        } catch(e) {
+            showMessage("获取节点列表失败", e.message, "danger");
+            status.textContent = "获取失败";
+            setTimeout(() => { status.textContent = ""; }, 2000);
+        } finally { btn.disabled = false; isRefreshing = false; }
+    }
+
+    document.getElementById("region-filter").addEventListener("change", refreshNodes);
+
+    // ========== Connect Node ==========
+    async function connectNode(ip, depth = 0) {
+        if (isConnecting && depth === 0) return;
+        const MAX_RETRIES = 3;
+        setConnecting(true);
+
+        if (depth === 0) {
+            modalVisible = true;
+            document.getElementById("modal-status-text").textContent = `正在连接 ${ip} ...`;
+            document.getElementById("modal-log-panel").innerHTML = "";
+            connectModalEl.classList.remove('hidden');
+        } else {
+            const tip = `>>> 连接失败，自动尝试下一个节点 (${ip}) ...`;
+            appendLogLine(logPanel, tip, "#fbbf24");
             if (modalVisible) {
-                appendLogLine(modalLogPanel, data.message);
-                modalLogPanel.scrollTop = modalLogPanel.scrollHeight;
+                appendLogLine(modalLogPanel, tip, "#fbbf24");
             }
-        });
-
-        async function updateStatus() {
-            try {
-                const res = await fetch("/api/status");
-                const data = await res.json();
-                document.getElementById("status-text").textContent = data.connected ? "已连接" : "未连接";
-                document.getElementById("node-name").textContent = data.node_info?.hostname || "-";
-                document.getElementById("node-ip").textContent = data.node_info?.ip || "-";
-                document.getElementById("node-location").textContent = data.node_info?.country_long || "-";
-                const socksLink = data.socks || "-";
-                document.getElementById("socks-link").textContent = socksLink;
-                const newConnectedSince = data.connected_since || null;
-                if (newConnectedSince !== connectedSince) {
-                    connectedSince = newConnectedSince;
-                    if (connectedSince) {
-                        startLocalTimer();
-                    } else {
-                        stopLocalTimer();
-                        document.getElementById("connected-duration").textContent = "-";
-                    }
-                }
-                const copyBtn = document.getElementById("copy-socks-btn");
-                copyBtn.disabled = !(data.connected && socksLink !== "-");
-                const ipInfo = document.getElementById("ip-info");
-                if (data.ip_info && Object.keys(data.ip_info).length > 0) {
-                    // 安全渲染 IP 信息：使用 textContent 防止 XSS
-                    ipInfo.innerHTML = "";
-                    Object.entries(data.ip_info).forEach(([k,v]) => {
-                        const p = document.createElement("p");
-                        const strong = document.createElement("strong");
-                        strong.textContent = k + ":";
-                        p.appendChild(strong);
-                        p.appendChild(document.createTextNode(" " + v));
-                        ipInfo.appendChild(p);
-                    });
-                } else {
-                    ipInfo.textContent = "暂无";
-                }
-            } catch(e) { console.error(e); }
+            document.getElementById("modal-status-text").textContent = `正在连接 ${ip} (第${depth+1}次尝试)...`;
+            modalLogPanel.innerHTML = "";
+            appendLogLine(modalLogPanel, tip, "#fbbf24");
         }
-        setInterval(updateStatus, 3000);
-        updateStatus();
 
-        document.getElementById("copy-socks-btn").addEventListener("click", () => {
-            const socks = document.getElementById("socks-link").textContent;
-            if (!socks || socks === "-") return;
-            const btn = document.getElementById("copy-socks-btn");
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(socks).then(() => {
-                    btn.textContent = "复制成功";
-                    setTimeout(() => { btn.textContent = "复制地址"; }, 2000);
-                }).catch(() => fallbackCopy(socks, btn));
+        try {
+            const res = await fetch("/api/connect", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ip })
+            });
+            if (res.status === 401 || res.redirected) throw new Error("登录已过期，请刷新页面重新登录");
+            const text = await res.text();
+            let data;
+            try { data = JSON.parse(text); } catch(e) { throw new Error("服务器返回异常，请刷新页面重新登录"); }
+            if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+            if (data.success) {
+                document.getElementById("modal-status-text").innerHTML = `✅ 已成功连接到 <strong>${ip}</strong>`;
+                setTimeout(closeModal, 2000);
+                updateStatus();
             } else {
-                fallbackCopy(socks, btn);
+                throw new Error(data.error || "连接失败");
             }
-        });
-
-        function startLocalTimer() {
-            stopLocalTimer();
-            if (!connectedSince) return;
-            localTimer = setInterval(() => {
-                const start = new Date(connectedSince);
-                const diff = Math.floor((new Date() - start) / 1000);
-                const h = Math.floor(diff / 3600);
-                const m = Math.floor((diff % 3600) / 60);
-                const s = diff % 60;
-                document.getElementById("connected-duration").textContent = `${h}时${m}分${s}秒`;
-            }, 1000);
-        }
-
-        function stopLocalTimer() {
-            if (localTimer) {
-                clearInterval(localTimer);
-                localTimer = null;
+        } catch(e) {
+            document.getElementById("modal-status-text").innerHTML = `❌ 连接 <strong>${ip}</strong> 失败: ${escapeHtml(e.message)}`;
+        } finally {
+            if (depth === MAX_RETRIES - 1 || !allNodesCache.some(n => n.ip !== ip && !sessionStorage.getItem("failed_"+n.ip))) {
+                setConnecting(false);
+                modalVisible = false;
             }
         }
+    }
 
-        function fallbackCopy(text, btn) {
-            const textarea = document.createElement("textarea");
-            textarea.value = text;
-            textarea.style.position = "fixed"; textarea.style.opacity = 0;
-            document.body.appendChild(textarea);
-            textarea.select();
+    function closeModal() {
+        connectModalEl.classList.add('hidden');
+        modalVisible = false;
+        setConnecting(false);
+        sessionStorage.clear();
+    }
+
+    document.getElementById("node-table").addEventListener("click", (e) => {
+        if (e.target.classList.contains("connect-btn")) {
+            const ip = e.target.getAttribute("data-ip");
+            if (ip) connectNode(ip);
+        }
+    });
+    document.getElementById("refresh-btn").addEventListener("click", refreshNodes);
+
+    // ========== Dashboard Buttons ==========
+    document.getElementById("disconnect-btn").addEventListener("click", () => {
+        showConfirm("断开连接", "确定要断开当前 VPN 连接吗？", async (confirmed) => {
+            if (!confirmed) return;
             try {
-                document.execCommand("copy");
-                btn.textContent = "复制成功";
-            } catch (err) {
-                showMessage("复制失败", "请手动复制：" + text, "danger");
-            } finally {
-                document.body.removeChild(textarea);
-                setTimeout(() => { btn.textContent = "复制地址"; }, 2000);
-            }
-        }
-
-        function buildRegionOptions(selectedVal = null) {
-            const regions = new Set();
-            allNodesCache.forEach(n => {
-                if (n.country_short) regions.add(JSON.stringify({short: n.country_short, long: n.country_long}));
-            });
-            const sorted = Array.from(regions).map(JSON.parse).sort((a,b) => a.short.localeCompare(b.short));
-            let html = '<option value="all">所有地区</option>';
-            sorted.forEach(r => {
-                const selAttr = selectedVal && selectedVal === r.short ? " selected" : "";
-                html += `<option value="${r.short}"${selAttr}>${r.long} (${r.short})</option>`;
-            });
-            return html;
-        }
-
-        function updateCurrentRegionText() {
-            const currentVal = configRegion || "all";
-            let displayText = "当前默认：";
-            if (currentVal === "all") {
-                displayText += "所有地区";
-            } else {
-                const node = allNodesCache.find(n => n.country_short === currentVal);
-                displayText += node ? `${node.country_long} (${node.country_short})` : currentVal;
-            }
-            document.getElementById("cfg-region-current").textContent = displayText;
-        }
-
-        function populateRegionFilter() {
-            const select = document.getElementById("region-filter");
-            const currentVal = select.value || localStorage.getItem("selectedRegion") || "all";
-            select.innerHTML = buildRegionOptions(currentVal);
-        }
-
-        function updateSettingsRegionDropdown() {
-            const select = document.getElementById("cfg-region");
-            const selVal = configRegion || "all";
-            select.innerHTML = buildRegionOptions(selVal);
-            updateCurrentRegionText();
-        }
-
-        // 安全转义 HTML，防止 XSS
-        function escapeHtml(str) {
-            if (!str) return "";
-            const div = document.createElement("div");
-            div.textContent = str;
-            return div.innerHTML;
-        }
-
-        function renderNodeTable(nodes) {
-            const tbody = document.getElementById("node-table");
-            let html = "";
-            nodes.forEach((n, idx) => {
-                html += `<tr id="node-row-${escapeHtml(n.ip)}">
-                    <td>${idx+1}</td>
-                    <td>${escapeHtml(n.country_long)} (${escapeHtml(n.country_short)})</td>
-                    <td>${escapeHtml(n.ip)}</td>
-                    <td>${escapeHtml(n.speed)} bps</td>
-                    <td>${escapeHtml(n.num_sessions)}</td>
-                    <td class="latency-cell" data-ip="${escapeHtml(n.ip)}">-</td>
-                    <td><button class="btn btn-sm btn-primary connect-btn" data-ip="${escapeHtml(n.ip)}" ${isConnecting ? 'disabled' : ''}>连接</button></td>
-                </tr>`;
-            });
-            tbody.innerHTML = html || "<tr><td colspan='7'>无节点数据</td></tr>";
-        }
-
-        function updateStats(nodes) {
-            const statsDiv = document.getElementById("node-stats");
-            if (!nodes.length) { statsDiv.textContent = ""; return; }
-            const total = nodes.length;
-            const countryCount = {};
-            nodes.forEach(n => {
-                const key = n.country_long + " (" + n.country_short + ")";
-                countryCount[key] = (countryCount[key] || 0) + 1;
-            });
-            const countryStr = Object.entries(countryCount).map(([k,v]) => `${k}: ${v}`).join(", ");
-            statsDiv.textContent = `总节点数: ${total} | ${countryStr}`;
-        }
-
-        function setConnecting(state) {
-            isConnecting = state;
-            document.querySelectorAll(".connect-btn").forEach(btn => { btn.disabled = state; });
-            document.querySelectorAll(".connect-btn-history").forEach(btn => { btn.disabled = state; });
-        }
-
-        async function updateAllNodesCache() {
-            try {
-                const res = await fetch("/api/nodes?region=all");
-                if (res.ok) {
-                    allNodesCache = await res.json();
-                    populateRegionFilter();
-                    updateSettingsRegionDropdown();
-                }
-            } catch(e) { console.error(e); }
-        }
-
-        function stopFetchTimer() {
-            if (fetchIntervalTimer) {
-                clearInterval(fetchIntervalTimer);
-                fetchIntervalTimer = null;
-            }
-        }
-
-        function startFetchTimer(intervalMinutes) {
-            stopFetchTimer();
-            const minutes = parseInt(intervalMinutes);
-            if (!minutes || minutes <= 0) return;
-            const ms = minutes * 60 * 1000;
-            fetchIntervalTimer = setInterval(async () => {
-                console.log("自动刷新全量节点缓存...");
-                await updateAllNodesCache();
-                const nodesTab = document.getElementById("nodes");
-                if (nodesTab.classList.contains("active")) {
-                    try {
-                        const region = document.getElementById("region-filter").value;
-                        const res = await fetch(`/api/nodes?region=${encodeURIComponent(region)}`);
-                        if (res.ok) {
-                            const nodes = await res.json();
-                            displayedNodes = nodes;
-                            renderNodeTable(nodes);
-                            updateStats(nodes);
-                        }
-                    } catch(e) {}
-                }
-            }, ms);
-        }
-
-        async function refreshNodes() {
-            if (isRefreshing) return;
-            const btn = document.getElementById("refresh-btn");
-            const status = document.getElementById("refresh-status");
-            btn.disabled = true;
-            isRefreshing = true;
-            status.textContent = "获取中...";
-            const region = document.getElementById("region-filter").value;
-            localStorage.setItem("selectedRegion", region);
-            try {
-                const res = await fetch(`/api/nodes?region=${encodeURIComponent(region)}`);
-                if (!res.ok) throw new Error((await res.json().catch(()=>{})).error || `HTTP ${res.status}`);
-                const nodes = await res.json();
-                displayedNodes = nodes;
-                renderNodeTable(nodes);
-                updateStats(nodes);
-                if (region !== "all") {
-                    await updateAllNodesCache();
-                } else {
-                    allNodesCache = nodes;
-                    populateRegionFilter();
-                    updateSettingsRegionDropdown();
-                }
-                status.textContent = "获取完成";
-                setTimeout(() => { status.textContent = ""; }, 2000);
-            } catch(e) {
-                showMessage("获取节点列表失败", e.message, "danger");
-                status.textContent = "获取失败";
-                setTimeout(() => { status.textContent = ""; }, 2000);
-            } finally {
-                btn.disabled = false;
-                isRefreshing = false;
-            }
-        }
-
-        document.getElementById("region-filter").addEventListener("change", refreshNodes);
-
-        // ---------- 连接节点（优化：重试耗尽后自动使用默认地区连接） ----------
-        async function connectNode(ip, depth = 0) {
-            if (isConnecting && depth === 0) return;
-            const MAX_RETRIES = 3;
-            setConnecting(true);
-
-            if (depth === 0) {
-                modalVisible = true;
-                document.getElementById("modal-status-text").textContent = `正在连接 ${ip} ...`;
-                document.getElementById("modal-log-panel").innerHTML = "";
-                document.getElementById("modal-close-btn").style.display = "none";
-                document.getElementById("modal-cancel-btn").style.display = "none";
-                connectModal.show();
-            } else {
-                const tip = `>>> 连接失败，自动尝试下一个节点 (${ip}) ...`;
-                appendLogLine(logPanel, tip, "#ff0");
-                if (modalVisible) {
-                    appendLogLine(modalLogPanel, tip, "#ff0");
-                }
-                document.getElementById("modal-status-text").textContent = `正在连接 ${ip} (第${depth+1}次尝试)...`;
-                modalLogPanel.innerHTML = "";
-                appendLogLine(modalLogPanel, tip, "#ff0");
-            }
-
-            try {
-                const res = await fetch("/api/connect", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ ip })
-                });
-                if (!res.ok) throw new Error((await res.json().catch(()=>{})).error || `HTTP ${res.status}`);
+                const res = await fetch("/api/disconnect", { method: "POST" });
                 const data = await res.json();
-                if (data.success) {
-                    document.getElementById("modal-status-text").textContent = `✅ 已成功连接到 ${ip}`;
-                    setTimeout(closeModal, 2000);
-                    updateStatus();
-                } else {
-                    throw new Error(data.error || "连接失败");
-                }
-            } catch(e) {
-                document.getElementById("modal-status-text").textContent = `❌ 连接 ${ip} 失败: ${e.message}`;
-                if (depth < MAX_RETRIES - 1) {
-                    const candidates = allNodesCache.filter(n => n.ip !== ip && !sessionStorage.getItem("failed_"+n.ip));
-                    const nextNode = candidates.length > 0 ? candidates[0] : null;
-                    if (nextNode) {
-                        sessionStorage.setItem("failed_"+ip, "1");
-                        document.getElementById("modal-status-text").textContent += "，正在自动尝试下一个节点...";
-                        setTimeout(() => connectNode(nextNode.ip, depth+1), 1500);
-                        return;
-                    }
-                }
-                document.getElementById("modal-status-text").textContent += " 所有尝试均失败。";
-                document.getElementById("modal-status-text").textContent += " 正在尝试使用默认连接地区自动连接...";
-                try {
-                    const autoRes = await fetch("/api/auto_connect", { method: "POST" });
-                    const autoData = await autoRes.json();
-                    if (autoData.success) {
-                        document.getElementById("modal-status-text").textContent += ` ✅ 已自动连接节点 ${autoData.node}`;
-                        updateStatus();
-                    } else {
-                        document.getElementById("modal-status-text").textContent += ` 自动连接失败: ${autoData.error || "未知错误"}`;
-                    }
-                } catch(autoErr) {
-                    document.getElementById("modal-status-text").textContent += ` 自动连接请求失败: ${autoErr.message}`;
-                }
-                document.getElementById("modal-cancel-btn").style.display = "inline-block";
-                document.getElementById("modal-close-btn").style.display = "inline-block";
-            } finally {
-                if (depth === MAX_RETRIES - 1 || !allNodesCache.some(n => n.ip !== ip && !sessionStorage.getItem("failed_"+n.ip))) {
-                    setConnecting(false);
-                    modalVisible = false;
-                    document.getElementById("modal-cancel-btn").style.display = "inline-block";
-                    document.getElementById("modal-close-btn").style.display = "inline-block";
-                }
-            }
-        }
-
-        function closeModal() {
-            connectModal.hide();
-            modalVisible = false;
-            setConnecting(false);
-            sessionStorage.clear();
-        }
-
-        document.getElementById("node-table").addEventListener("click", (e) => {
-            if (e.target.classList.contains("connect-btn")) {
-                const ip = e.target.getAttribute("data-ip");
-                if (ip) connectNode(ip);
-            }
-        });
-        document.getElementById("refresh-btn").addEventListener("click", refreshNodes);
-        document.getElementById("modal-cancel-btn").addEventListener("click", closeModal);
-        document.getElementById("modal-close-btn").addEventListener("click", closeModal);
-
-        // 仪表盘按钮
-        document.getElementById("disconnect-btn").addEventListener("click", () => {
-            showConfirm("断开连接", "确定要断开当前 VPN 连接吗？", async (confirmed) => {
-                if (!confirmed) return;
-                try {
-                    const res = await fetch("/api/disconnect", { method: "POST" });
-                    const data = await res.json();
-                    if (data.success) { updateStatus(); showMessage("操作成功", "已断开连接", "success"); }
-                    else showMessage("操作失败", "断开失败", "danger");
-                } catch(e) { showMessage("请求失败", e.message, "danger"); }
-            });
-        });
-        document.getElementById("connect-btn").addEventListener("click", async () => {
-            try {
-                const res = await fetch("/api/auto_connect", { method: "POST" });
-                const data = await res.json();
-                if (data.success) { updateStatus(); showMessage("连接请求已发送", `正在连接节点 ${data.node}，请查看日志`, "info"); }
-                else showMessage("连接失败", data.error || "未知错误", "danger");
+                if (data.success) { updateStatus(); showMessage("操作成功", "已断开连接", "success"); }
+                else showMessage("操作失败", "断开失败", "danger");
             } catch(e) { showMessage("请求失败", e.message, "danger"); }
         });
-        document.getElementById("reconnect-btn").addEventListener("click", () => {
-            showConfirm("重新连接", "确定要重新连接吗？", async (confirmed) => {
-                if (!confirmed) return;
-                try {
-                    await fetch("/api/disconnect", { method: "POST" });
-                    setTimeout(async () => {
-                        const res = await fetch("/api/auto_connect", { method: "POST" });
-                        const data = await res.json();
-                        if (data.success) { updateStatus(); showMessage("重新连接成功", `已重新连接到 ${data.node}`, "success"); }
-                        else showMessage("重新连接失败", data.error || "未知错误", "danger");
-                    }, 1500);
-                } catch(e) { showMessage("断开失败", e.message, "danger"); }
-            });
-        });
+    });
 
-        // 保存并重启按钮
-        document.getElementById("restart-btn").addEventListener("click", () => {
-            showConfirm("保存并重启服务", "将保存当前设置并重启服务，确定继续？", async (confirmed) => {
-                if (!confirmed) return;
-                const newCfg = buildConfigFromForm();
-                try {
-                    const saveRes = await fetch("/api/config", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newCfg) });
-                    const saveData = await saveRes.json();
-                    if (!saveData.success) { showMessage("保存失败", saveData.error || "未知错误", "danger"); return; }
-                    const restartRes = await fetch("/api/restart", { method: "POST" });
-                    const restartData = await restartRes.json();
-                    if (restartData.success) { showMessage("重启中", "设置已保存，服务正在重启，页面即将刷新", "info"); setTimeout(() => location.reload(), 3000); }
-                    else showMessage("重启失败", restartData.error || "未知错误", "danger");
-                } catch(e) { showMessage("请求失败", e.message, "danger"); }
-            });
-        });
+    document.getElementById("connect-btn").addEventListener("click", async () => {
+        try {
+            const res = await fetch("/api/auto_connect", { method: "POST" });
+            const data = await res.json();
+            if (data.success) { updateStatus(); showMessage("连接请求已发送", `正在连接节点 ${data.node}，请查看日志`, "info"); }
+            else showMessage("连接失败", data.error || "未知错误", "danger");
+        } catch(e) { showMessage("请求失败", e.message, "danger"); }
+    });
 
-        // 从表单构建配置对象（敏感字段留空表示不修改）
-        function buildConfigFromForm() {
-            const pwd = document.getElementById("cfg-password").value;
-            const vpnPass = document.getElementById("cfg-vpn-pass").value;
-            return {
-                web_password: pwd || "******",  // 留空时发送 ******，后端会保留原值
-                api_url: document.getElementById("cfg-api-url").value,
-                socks_port: parseInt(document.getElementById("cfg-socks-port").value),
-                web_port: parseInt(document.getElementById("cfg-web-port").value),
-                vpn_user: document.getElementById("cfg-vpn-user").value,
-                vpn_pass: vpnPass || "******",  // 留空时发送 ******，后端会保留原值
-                region: document.getElementById("cfg-region").value,
-                node_limit: parseInt(document.getElementById("cfg-node-limit").value),
-                check_limit: parseInt(document.getElementById("cfg-check-limit").value),
-                auto_update_interval: parseInt(document.getElementById("cfg-auto-update-interval").value) || 0,
-                health_fail_threshold: parseInt(document.getElementById("cfg-health-fail-threshold").value) || 3,
-                health_check_interval: parseInt(document.getElementById("cfg-health-check-interval").value) || 10,
-                log_retention_days: parseInt(document.getElementById("cfg-log-retention-days").value) || 3,
-                health_check_urls: document.getElementById("cfg-health-check-urls").value,
-                latency_check_target: document.getElementById("cfg-latency-check-target").value,
-                speedtest_url: document.getElementById("cfg-speedtest-url").value,
-                speedtest_retry: parseInt(document.getElementById("cfg-speedtest-retry").value) || 3,
-                prefer_same_subnet: document.getElementById("cfg-prefer-same-subnet").value === "true",
-                subnet_prefix_length: parseInt(document.getElementById("cfg-subnet-prefix-length").value) || 24,
-                health_check_timeout: parseInt(document.getElementById("cfg-health-check-timeout").value) || 8,
-                connection_history_retention_days: parseInt(document.getElementById("cfg-history-retention-days").value) || 30,
-                socks_max_connections: parseInt(document.getElementById("cfg-socks-max-connections").value) || 200,
-                reconnect_interval: parseInt(document.getElementById("cfg-reconnect-interval").value) || 30,
-            };
-        }
-
-        async function loadSettings() {
+    document.getElementById("reconnect-btn").addEventListener("click", () => {
+        showConfirm("重新连接", "确定要重新连接吗？", async (confirmed) => {
+            if (!confirmed) return;
             try {
-                const res = await fetch("/api/config");
-                const cfg = await res.json();
-                // 密码字段留空（后端返回 ****** 表示已设置，前端不填入输入框）
-                document.getElementById("cfg-password").value = "";
-                document.getElementById("cfg-api-url").value = cfg.api_url || "";
-                document.getElementById("cfg-socks-port").value = cfg.socks_port || 1080;
-                document.getElementById("cfg-web-port").value = cfg.web_port || 8080;
-                document.getElementById("cfg-vpn-user").value = cfg.vpn_user || "";
-                document.getElementById("cfg-vpn-pass").value = "";
-                document.getElementById("cfg-node-limit").value = cfg.node_limit || 200;
-                document.getElementById("cfg-check-limit").value = cfg.check_limit || 20;
-                document.getElementById("cfg-auto-update-interval").value = cfg.auto_update_interval || 0;
-                document.getElementById("cfg-health-fail-threshold").value = cfg.health_fail_threshold || 3;
-                document.getElementById("cfg-health-check-interval").value = cfg.health_check_interval || 10;
-                document.getElementById("cfg-log-retention-days").value = cfg.log_retention_days || 3;
-                document.getElementById("cfg-health-check-urls").value = cfg.health_check_urls || "";
-                document.getElementById("cfg-latency-check-target").value = cfg.latency_check_target || "";
-                document.getElementById("cfg-speedtest-url").value = cfg.speedtest_url || "http://cachefly.cachefly.net/1mb.test";
-                document.getElementById("cfg-speedtest-retry").value = cfg.speedtest_retry || 3;
-                document.getElementById("cfg-prefer-same-subnet").value = cfg.prefer_same_subnet === true ? "true" : "false";
-                document.getElementById("cfg-subnet-prefix-length").value = cfg.subnet_prefix_length || 24;
-                document.getElementById("cfg-health-check-timeout").value = cfg.health_check_timeout || 8;
-                document.getElementById("cfg-history-retention-days").value = cfg.connection_history_retention_days || 30;
-                document.getElementById("cfg-socks-max-connections").value = cfg.socks_max_connections || 200;
-                document.getElementById("cfg-reconnect-interval").value = cfg.reconnect_interval || 30;
-                configRegion = cfg.region || "all";
-                if (allNodesCache.length > 0) updateSettingsRegionDropdown();
-                else updateCurrentRegionText();
-                startFetchTimer(cfg.auto_update_interval || 0);
-            } catch(e) { console.error(e); }
-        }
+                await fetch("/api/disconnect", { method: "POST" });
+                setTimeout(async () => {
+                    const res = await fetch("/api/auto_connect", { method: "POST" });
+                    const data = await res.json();
+                    if (data.success) { updateStatus(); showMessage("重新连接成功", `已重新连接到 ${data.node}`, "success"); }
+                    else showMessage("重新连接失败", data.error || "未知错误", "danger");
+                }, 1500);
+            } catch(e) { showMessage("断开失败", e.message, "danger"); }
+        });
+    });
 
-        document.getElementById("settings-form").addEventListener("submit", async (e) => {
-            e.preventDefault();
+    // ========== Restart ==========
+    document.getElementById("restart-btn").addEventListener("click", () => {
+        showConfirm("保存并重启服务", "将保存当前设置并重启服务，确定继续？", async (confirmed) => {
+            if (!confirmed) return;
             const newCfg = buildConfigFromForm();
-            const msg = document.getElementById("settings-msg");
             try {
-                const res = await fetch("/api/config", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newCfg) });
-                const data = await res.json();
-                if (data.success) {
-                    configRegion = newCfg.region;
-                    updateCurrentRegionText();
-                    const interval = parseInt(document.getElementById("cfg-auto-update-interval").value) || 0;
-                    startFetchTimer(interval);
-                    msg.textContent = data.restart_needed ? "保存成功，部分设置需重启容器生效" : "保存成功";
-                    msg.className = "ms-3 text-success";
-                } else {
-                    msg.textContent = "保存失败: " + (data.error || "未知错误");
-                    msg.className = "ms-3 text-danger";
-                }
-            } catch(err) {
-                msg.textContent = "请求失败: " + err.message;
-                msg.className = "ms-3 text-danger";
-            }
-            setTimeout(() => { msg.textContent = ""; msg.className = "ms-3"; }, 2000);
+                const saveRes = await fetch("/api/config", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newCfg) });
+                const saveData = await saveRes.json();
+                if (!saveData.success) { showMessage("保存失败", saveData.error || "未知错误", "danger"); return; }
+                const restartRes = await fetch("/api/restart", { method: "POST" });
+                const restartData = await restartRes.json();
+                if (restartData.success) { showMessage("重启中", "设置已保存，服务正在重启，页面即将刷新", "info"); setTimeout(() => location.reload(), 3000); }
+                else showMessage("重启失败", restartData.error || "未知错误", "danger");
+            } catch(e) { showMessage("请求失败", e.message, "danger"); }
         });
+    });
 
-        async function loadSystemInfo() {
-            try {
-                const res = await fetch("/api/system");
-                if (!res.ok) throw new Error("HTTP " + res.status);
-                const data = await res.json();
-                const div = document.getElementById("system-info");
-                div.innerHTML = "";
-                Object.entries(data).forEach(([key, val]) => {
-                    const p = document.createElement("p");
-                    const strong = document.createElement("strong");
-                    strong.textContent = key + ":";
-                    p.appendChild(strong);
-                    p.appendChild(document.createTextNode(" " + val));
-                    div.appendChild(p);
-                });
-            } catch(e) {
-                document.getElementById("system-info").textContent = "加载系统信息失败: " + e.message;
+    // ========== Config Form ==========
+    function buildConfigFromForm() {
+        const pwd = document.getElementById("cfg-password").value;
+        const vpnPass = document.getElementById("cfg-vpn-pass").value;
+        return {
+            web_password: pwd || "******",
+            api_url: document.getElementById("cfg-api-url").value,
+            socks_port: parseInt(document.getElementById("cfg-socks-port").value),
+            web_port: parseInt(document.getElementById("cfg-web-port").value),
+            vpn_user: document.getElementById("cfg-vpn-user").value,
+            vpn_pass: vpnPass || "******",
+            region: document.getElementById("cfg-region").value,
+            node_limit: parseInt(document.getElementById("cfg-node-limit").value),
+            check_limit: parseInt(document.getElementById("cfg-check-limit").value),
+            auto_update_interval: parseInt(document.getElementById("cfg-auto-update-interval").value) || 0,
+            health_fail_threshold: parseInt(document.getElementById("cfg-health-fail-threshold").value) || 3,
+            health_check_interval: parseInt(document.getElementById("cfg-health-check-interval").value) || 10,
+            log_retention_days: parseInt(document.getElementById("cfg-log-retention-days").value) || 3,
+            health_check_urls: document.getElementById("cfg-health-check-urls").value,
+            latency_check_target: document.getElementById("cfg-latency-check-target").value,
+            speedtest_url: document.getElementById("cfg-speedtest-url").value,
+            speedtest_retry: parseInt(document.getElementById("cfg-speedtest-retry").value) || 3,
+            prefer_same_subnet: document.getElementById("cfg-prefer-same-subnet").value === "true",
+            subnet_prefix_length: parseInt(document.getElementById("cfg-subnet-prefix-length").value) || 24,
+            health_check_timeout: parseInt(document.getElementById("cfg-health-check-timeout").value) || 8,
+            connection_history_retention_days: parseInt(document.getElementById("cfg-history-retention-days").value) || 30,
+            socks_max_connections: parseInt(document.getElementById("cfg-socks-max-connections").value) || 200,
+            reconnect_interval: parseInt(document.getElementById("cfg-reconnect-interval").value) || 30,
+        };
+    }
+
+    async function loadSettings() {
+        try {
+            const res = await fetch("/api/config");
+            const cfg = await res.json();
+            document.getElementById("cfg-password").value = "";
+            document.getElementById("cfg-api-url").value = cfg.api_url || "";
+            document.getElementById("cfg-socks-port").value = cfg.socks_port || 1080;
+            document.getElementById("cfg-web-port").value = cfg.web_port || 8080;
+            document.getElementById("cfg-vpn-user").value = cfg.vpn_user || "";
+            document.getElementById("cfg-vpn-pass").value = "";
+            document.getElementById("cfg-node-limit").value = cfg.node_limit || 200;
+            document.getElementById("cfg-check-limit").value = cfg.check_limit || 20;
+            document.getElementById("cfg-auto-update-interval").value = cfg.auto_update_interval || 0;
+            document.getElementById("cfg-health-fail-threshold").value = cfg.health_fail_threshold || 3;
+            document.getElementById("cfg-health-check-interval").value = cfg.health_check_interval || 10;
+            document.getElementById("cfg-log-retention-days").value = cfg.log_retention_days || 3;
+            document.getElementById("cfg-health-check-urls").value = cfg.health_check_urls || "";
+            document.getElementById("cfg-latency-check-target").value = cfg.latency_check_target || "";
+            document.getElementById("cfg-speedtest-url").value = cfg.speedtest_url || "http://cachefly.cachefly.net/1mb.test";
+            document.getElementById("cfg-speedtest-retry").value = cfg.speedtest_retry || 3;
+            document.getElementById("cfg-prefer-same-subnet").value = cfg.prefer_same_subnet === true ? "true" : "false";
+            document.getElementById("cfg-subnet-prefix-length").value = cfg.subnet_prefix_length || 24;
+            document.getElementById("cfg-health-check-timeout").value = cfg.health_check_timeout || 8;
+            document.getElementById("cfg-history-retention-days").value = cfg.connection_history_retention_days || 30;
+            document.getElementById("cfg-socks-max-connections").value = cfg.socks_max_connections || 200;
+            document.getElementById("cfg-reconnect-interval").value = cfg.reconnect_interval || 30;
+            configRegion = cfg.region || "all";
+            if (allNodesCache.length > 0) updateSettingsRegionDropdown();
+            else updateCurrentRegionText();
+            startFetchTimer(cfg.auto_update_interval || 0);
+        } catch(e) { console.error(e); }
+    }
+
+    document.getElementById("settings-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const newCfg = buildConfigFromForm();
+        const msg = document.getElementById("settings-msg");
+        try {
+            const res = await fetch("/api/config", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newCfg) });
+            const data = await res.json();
+            if (data.success) {
+                configRegion = newCfg.region;
+                updateCurrentRegionText();
+                const interval = parseInt(document.getElementById("cfg-auto-update-interval").value) || 0;
+                startFetchTimer(interval);
+                msg.textContent = data.restart_needed ? "✓ 保存成功，部分设置需重启容器生效" : "✓ 保存成功";
+                msg.className = "text-sm ml-2 text-emerald-400";
+            } else {
+                msg.textContent = "保存失败: " + (data.error || "未知错误");
+                msg.className = "text-sm ml-2 text-rose-400";
             }
+        } catch(err) {
+            msg.textContent = "请求失败: " + err.message;
+            msg.className = "text-sm ml-2 text-rose-400";
         }
+        setTimeout(() => { msg.textContent = ""; msg.className = "text-sm ml-2"; }, 2500);
+    });
 
-        document.getElementById("latency-btn").addEventListener("click", async () => {
-            const btn = document.getElementById("latency-btn");
-            btn.disabled = true;
-            btn.textContent = "检测中...";
-            try {
-                const res = await fetch("/api/latency");
-                const data = await res.json();
-                const val = data.latency_ms !== null ? data.latency_ms : "超时";
-                document.getElementById("latency-value").textContent = val;
-                if (val !== "超时") {
-                    showMessage("延迟检测", `当前延迟：${val} ms`, "info");
-                } else {
-                    showMessage("延迟检测", "请求超时，请稍后再试", "warning");
-                }
-            } catch(e) {
-                showMessage("检测失败", e.message, "danger");
-            } finally {
-                btn.disabled = false;
-                btn.textContent = "检测延迟";
-            }
-        });
-
-        document.getElementById("speedtest-btn").addEventListener("click", async () => {
-            const btn = document.getElementById("speedtest-btn");
-            btn.disabled = true;
-            btn.textContent = "测速中...";
-            try {
-                const res = await fetch("/api/speedtest");
-                const data = await res.json();
-                const val = data.speed_mbps !== null ? data.speed_mbps : "失败";
-                document.getElementById("speed-value").textContent = val;
-                if (val !== "失败") {
-                    showMessage("测速完成", `下载速度：${val} Mbps`, "info");
-                } else {
-                    showMessage("测速失败", data.error || "未知错误", "danger");
-                }
-            } catch(e) {
-                showMessage("测速失败", e.message, "danger");
-            } finally {
-                btn.disabled = false;
-                btn.textContent = "测速";
-            }
-        });
-
-        document.getElementById("test-latency-btn").addEventListener("click", async () => {
-            const btn = document.getElementById("test-latency-btn");
-            btn.disabled = true;
-            btn.textContent = "测试中...";
-            const cells = document.querySelectorAll(".latency-cell");
-            const ips = Array.from(cells).map(cell => cell.getAttribute("data-ip"));
-            if (ips.length === 0) {
-                showMessage("提示", "当前没有节点可测", "warning");
-                btn.disabled = false;
-                btn.textContent = "测试所有节点延迟";
-                return;
-            }
-            try {
-                const res = await fetch("/api/nodes_latency", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ ips })
-                });
-                if (!res.ok) {
-                    const errData = await res.json().catch(() => ({}));
-                    throw new Error(errData.error || `HTTP ${res.status}`);
-                }
-                const data = await res.json();
-                const latencies = data.latencies || {};
-                cells.forEach(cell => {
-                    const ip = cell.getAttribute("data-ip");
-                    const lat = latencies[ip];
-                    if (lat !== undefined && lat !== null && lat >= 0) {
-                        cell.textContent = lat;
-                    } else {
-                        cell.textContent = "超时";
-                    }
-                });
-                showMessage("测试完成", "所有节点延迟已更新", "success");
-            } catch(e) {
-                showMessage("测试失败", e.message, "danger");
-            } finally {
-                btn.disabled = false;
-                btn.textContent = "测试所有节点延迟";
-            }
-        });
-
-        let preferredIps = [];
-
-        async function loadPreferredIps() {
-            try {
-                const res = await fetch("/api/preferred_nodes");
-                const data = await res.json();
-                preferredIps = data.preferred_ips || [];
-            } catch(e) { console.error(e); }
+    // ========== System Info ==========
+    async function loadSystemInfo() {
+        try {
+            const res = await fetch("/api/system");
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            const data = await res.json();
+            const div = document.getElementById("system-info");
+            div.innerHTML = "";
+            Object.entries(data).forEach(([key, val]) => {
+                const row = document.createElement("div");
+                row.className = "py-2 border-b border-gray-800/50 last:border-0";
+                row.innerHTML = `<div class="text-[11px] text-gray-500 uppercase tracking-wider mb-0.5">${escapeHtml(key)}</div><div class="text-gray-300 font-mono text-xs break-all">${escapeHtml(val)}</div>`;
+                div.appendChild(row);
+            });
+        } catch(e) {
+            document.getElementById("system-info").textContent = "加载失败: " + e.message;
         }
+    }
 
-        // ========== 连接历史分页状态 ==========
-        let historyCurrentPage = 1;
-        let historyCurrentSort = "start_time";
-        let historyCurrentOrder = "desc";
-        let historyTotalPages = 1;
-        let historyPerPage = 50;
+    // ========== Latency ==========
+    document.getElementById("latency-btn").addEventListener("click", async () => {
+        const btn = document.getElementById("latency-btn");
+        btn.disabled = true;
+        btn.textContent = "检测中...";
+        try {
+            const res = await fetch("/api/latency");
+            const data = await res.json();
+            const val = data.latency_ms !== null ? data.latency_ms : "超时";
+            document.getElementById("latency-value").textContent = val;
+            if (val !== "超时") showToast(`延迟：${val} ms`, "success");
+            else showToast("延迟检测超时", "warning");
+        } catch(e) { showToast("检测失败: " + e.message, "danger"); }
+        finally { btn.disabled = false; btn.textContent = "检测"; }
+    });
 
-        function renderHistoryTable(history) {
-            const tbody = document.getElementById("history-table");
-            let html = "";
-            const prefColors = ["btn-warning", "btn-info", "btn-success"];
-            const pageOffset = (historyCurrentPage - 1) * historyPerPage;
-            history.forEach((rec, idx) => {
-                const prefIndex = preferredIps.indexOf(rec.ip);
-                let prefBtnClass = "btn-outline-warning";
-                let action = "add";
-                let btnText = "设为优先连接";
-                let connectBtnHtml = "";
-                if (prefIndex >= 0 && prefIndex < prefColors.length) {
-                    prefBtnClass = prefColors[prefIndex];
-                    action = "remove";
-                    btnText = "取消优先连接";
-                    connectBtnHtml = `<button class="btn btn-sm btn-primary connect-btn-history" data-ip="${escapeHtml(rec.ip)}" ${isConnecting ? 'disabled' : ''}>连接</button>`;
+    // ========== Speedtest ==========
+    document.getElementById("speedtest-btn").addEventListener("click", async () => {
+        const btn = document.getElementById("speedtest-btn");
+        btn.disabled = true;
+        btn.textContent = "测速中...";
+        try {
+            const res = await fetch("/api/speedtest");
+            const data = await res.json();
+            const val = data.speed_mbps !== null ? data.speed_mbps : "失败";
+            document.getElementById("speed-value").textContent = val;
+            if (val !== "失败") showToast(`下载速度：${val} Mbps`, "success");
+            else showToast("测速失败: " + (data.error || "未知错误"), "danger");
+        } catch(e) { showToast("测速失败: " + e.message, "danger"); }
+        finally { btn.disabled = false; btn.textContent = "测速"; }
+    });
+
+    // ========== Test All Latency ==========
+    document.getElementById("test-latency-btn").addEventListener("click", async () => {
+        const btn = document.getElementById("test-latency-btn");
+        btn.disabled = true;
+        btn.textContent = "测试中...";
+        const cells = document.querySelectorAll(".latency-cell");
+        const ips = Array.from(cells).map(cell => cell.getAttribute("data-ip"));
+        if (ips.length === 0) {
+            showMessage("提示", "当前没有节点可测", "warning");
+            btn.disabled = false;
+            btn.textContent = "测试所有节点延迟";
+            return;
+        }
+        try {
+            const res = await fetch("/api/nodes_latency", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ips })
+            });
+            if (res.status === 401 || res.redirected) throw new Error("登录已过期，请刷新页面重新登录");
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+            const latencies = data.latencies || {};
+            cells.forEach(cell => {
+                const ip = cell.getAttribute("data-ip");
+                const lat = latencies[ip];
+                if (lat !== undefined && lat !== null && lat >= 0) {
+                    cell.textContent = lat;
+                    cell.className = `py-3 px-4 latency-cell font-mono text-xs ${latencyClass(lat)}`;
+                } else {
+                    cell.textContent = "超时";
+                    cell.className = "py-3 px-4 latency-cell font-mono text-xs text-gray-500";
                 }
-                html += `<tr>
-                    <td>${pageOffset + idx + 1}</td>
-                    <td>${escapeHtml(rec.hostname)}</td>
-                    <td>${escapeHtml(rec.ip)}</td>
-                    <td>${escapeHtml(rec.country)}</td>
-                    <td>${escapeHtml(rec.start_time) || "-"}</td>
-                    <td>${escapeHtml(rec.end_time) || "-"}</td>
-                    <td>${escapeHtml(rec.duration) || "-"}</td>
-                    <td>
+            });
+            showMessage("测试完成", "所有节点延迟已更新", "success");
+        } catch(e) { showMessage("测试失败", e.message, "danger"); }
+        finally { btn.disabled = false; btn.textContent = "测试所有节点延迟"; }
+    });
+
+    // ========== Preferred Nodes ==========
+    let preferredIps = [];
+    async function loadPreferredIps() {
+        try {
+            const res = await fetch("/api/preferred_nodes");
+            const data = await res.json();
+            preferredIps = data.preferred_ips || [];
+        } catch(e) { console.error(e); }
+    }
+
+    // ========== History ==========
+    let historyCurrentPage = 1;
+    let historyCurrentSort = "start_time";
+    let historyCurrentOrder = "desc";
+    let historyTotalPages = 1;
+    let historyPerPage = 50;
+
+    function renderHistoryTable(history) {
+        const tbody = document.getElementById("history-table");
+        let html = "";
+        const prefColors = ["bg-amber-500/80", "bg-sky-500/80", "bg-emerald-500/80"];
+        const pageOffset = (historyCurrentPage - 1) * historyPerPage;
+        history.forEach((rec, idx) => {
+            const prefIndex = preferredIps.indexOf(rec.ip);
+            let prefBtnClass = "bg-gray-700 hover:bg-gray-600 text-gray-400";
+            let action = "add";
+            let btnText = "设为优先";
+            let connectBtnHtml = "";
+            if (prefIndex >= 0 && prefIndex < prefColors.length) {
+                prefBtnClass = prefColors[prefIndex] + " text-white";
+                action = "remove";
+                btnText = "取消优先";
+                connectBtnHtml = `<button class="px-3 py-1 rounded-lg bg-emerald-600/80 hover:bg-emerald-500 text-white text-xs font-medium transition connect-btn-history" data-ip="${escapeHtml(rec.ip)}" ${isConnecting ? 'disabled' : ''}>连接</button>`;
+            }
+            const flag = countryFlag(rec.country === "日本" ? "JP" : rec.country === "美国" ? "US" : rec.country === "韩国" ? "KR" : rec.country === "新加坡" ? "SG" : rec.country === "香港" ? "HK" : rec.country === "台湾" ? "TW" : "");
+            html += `<tr class="row-hover transition">
+                <td class="py-3 px-4 text-gray-500 text-xs">${pageOffset + idx + 1}</td>
+                <td class="py-3 px-4 text-gray-300 text-xs">${escapeHtml(rec.hostname)}</td>
+                <td class="py-3 px-4 font-mono text-xs text-gray-400">${escapeHtml(rec.ip)}</td>
+                <td class="py-3 px-4 text-gray-400 text-xs">${escapeHtml(rec.country)}</td>
+                <td class="py-3 px-4 text-gray-400 text-xs font-mono">${escapeHtml(rec.start_time) || "-"}</td>
+                <td class="py-3 px-4 text-gray-400 text-xs font-mono">${escapeHtml(rec.end_time) || "-"}</td>
+                <td class="py-3 px-4 text-gray-400 text-xs font-mono">${escapeHtml(rec.duration) || "-"}</td>
+                <td class="py-3 px-4">
+                    <div class="flex items-center gap-1.5 flex-wrap">
                         ${connectBtnHtml}
-                        <button class="btn btn-sm ${prefBtnClass} pref-btn" data-ip="${escapeHtml(rec.ip)}" data-action="${action}">
-                            ${btnText}
-                        </button>
-                        <button class="btn btn-sm btn-danger del-btn" data-id="${escapeHtml(rec.id)}">删除</button>
-                    </td>
-                </tr>`;
+                        <button class="px-2 py-1 rounded-lg ${prefBtnClass} text-xs font-medium transition pref-btn" data-ip="${escapeHtml(rec.ip)}" data-action="${action}">${btnText}</button>
+                        <button class="px-2 py-1 rounded-lg bg-rose-600/60 hover:bg-rose-500 text-white text-xs font-medium transition del-btn" data-id="${escapeHtml(rec.id)}">删除</button>
+                    </div>
+                </td>
+            </tr>`;
+        });
+        tbody.innerHTML = html || `<tr><td colspan='8' class='py-8 text-center text-gray-600'>暂无记录</td></tr>`;
+    }
+
+    function updateHistoryPagination(data) {
+        historyTotalPages = data.total_pages || 1;
+        historyPerPage = data.per_page || 50;
+        document.getElementById("history-page-info").textContent = `共 ${data.total} 条，第 ${data.page}/${historyTotalPages} 页`;
+        document.getElementById("history-page-num").textContent = data.page;
+        document.getElementById("history-prev-btn").disabled = data.page <= 1;
+        document.getElementById("history-next-btn").disabled = data.page >= historyTotalPages;
+    }
+
+    async function loadHistory(sort, order, page) {
+        if (sort) historyCurrentSort = sort;
+        if (order) historyCurrentOrder = order;
+        if (page) historyCurrentPage = page;
+        const status = document.getElementById("history-refresh-status");
+        status.textContent = "加载中...";
+        const table = document.getElementById("history-table");
+        table.classList.add("loading");
+        try {
+            const res = await fetch(`/api/connection_history?sort=${historyCurrentSort}&order=${historyCurrentOrder}&page=${historyCurrentPage}&per_page=50`);
+            if (res.status === 401 || res.redirected) throw new Error("登录已过期，请刷新页面重新登录");
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || "HTTP " + res.status);
+            renderHistoryTable(data.records || []);
+            updateHistoryPagination(data);
+            status.textContent = "";
+        } catch(e) {
+            showMessage("加载失败", e.message, "danger");
+            status.textContent = "加载失败";
+            setTimeout(() => { status.textContent = ""; }, 2000);
+        } finally { table.classList.remove("loading"); }
+    }
+
+    document.getElementById("panel-history").addEventListener("click", (e) => {
+        if (e.target.classList.contains("sortable")) {
+            const sortField = e.target.getAttribute("data-sort");
+            const currentOrder = e.target.getAttribute("data-order") || "desc";
+            const newOrder = currentOrder === "desc" ? "asc" : "desc";
+            e.target.setAttribute("data-order", newOrder);
+            historyCurrentPage = 1;
+            loadHistory(sortField, newOrder);
+        }
+    });
+
+    document.getElementById("history-prev-btn").addEventListener("click", () => {
+        if (historyCurrentPage > 1) loadHistory(null, null, historyCurrentPage - 1);
+    });
+    document.getElementById("history-next-btn").addEventListener("click", () => {
+        if (historyCurrentPage < historyTotalPages) loadHistory(null, null, historyCurrentPage + 1);
+    });
+
+    document.getElementById("history-table").addEventListener("click", async (e) => {
+        if (e.target.classList.contains("connect-btn-history")) {
+            const ip = e.target.getAttribute("data-ip");
+            if (ip) connectNode(ip);
+            return;
+        }
+        if (e.target.classList.contains("pref-btn")) {
+            const ip = e.target.getAttribute("data-ip");
+            const action = e.target.getAttribute("data-action");
+            const res = await fetch("/api/preferred_nodes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ip, action })
             });
-            tbody.innerHTML = html || "<tr><td colspan='8'>暂无记录</td></tr>";
-        }
-
-        function updateHistoryPagination(data) {
-            historyTotalPages = data.total_pages || 1;
-            historyPerPage = data.per_page || 50;
-            document.getElementById("history-page-info").textContent =
-                `共 ${data.total} 条记录，第 ${data.page}/${historyTotalPages} 页`;
-            document.getElementById("history-page-num").textContent = data.page;
-            document.getElementById("history-prev-btn").disabled = data.page <= 1;
-            document.getElementById("history-next-btn").disabled = data.page >= historyTotalPages;
-        }
-
-        async function loadHistory(sort, order, page) {
-            if (sort) historyCurrentSort = sort;
-            if (order) historyCurrentOrder = order;
-            if (page) historyCurrentPage = page;
-
-            const status = document.getElementById("history-refresh-status");
-            status.textContent = "加载中...";
-            const table = document.getElementById("history-table");
-            table.classList.add("loading");
-            try {
-                const res = await fetch(`/api/connection_history?sort=${historyCurrentSort}&order=${historyCurrentOrder}&page=${historyCurrentPage}&per_page=50`);
-                if (!res.ok) throw new Error((await res.json().catch(()=>{})).error || "HTTP " + res.status);
-                const data = await res.json();
-                renderHistoryTable(data.records || []);
-                updateHistoryPagination(data);
-                status.textContent = "";
-            } catch(e) {
-                showMessage("加载失败", e.message, "danger");
-                status.textContent = "加载失败";
-                setTimeout(() => { status.textContent = ""; }, 2000);
-            } finally {
-                table.classList.remove("loading");
+            const data = await res.json();
+            if (data.success) {
+                await loadPreferredIps();
+                loadHistory();
+                showMessage("操作成功", action === "add" ? "已设为优先连接" : "已取消优先连接", "success");
+            } else {
+                showMessage("操作失败", data.error || "未知错误", "danger");
             }
-        }
-
-        // 排序点击
-        document.getElementById("history").addEventListener("click", (e) => {
-            if (e.target.classList.contains("sortable")) {
-                const sortField = e.target.getAttribute("data-sort");
-                const currentOrder = e.target.getAttribute("data-order") || "desc";
-                const newOrder = currentOrder === "desc" ? "asc" : "desc";
-                e.target.setAttribute("data-order", newOrder);
-                historyCurrentPage = 1;  // 排序变化时回到第一页
-                loadHistory(sortField, newOrder);
-            }
-        });
-
-        // 分页按钮
-        document.getElementById("history-prev-btn").addEventListener("click", () => {
-            if (historyCurrentPage > 1) loadHistory(null, null, historyCurrentPage - 1);
-        });
-        document.getElementById("history-next-btn").addEventListener("click", () => {
-            if (historyCurrentPage < historyTotalPages) loadHistory(null, null, historyCurrentPage + 1);
-        });
-
-        // 操作按钮事件（委托）
-        document.getElementById("history-table").addEventListener("click", async (e) => {
-            if (e.target.classList.contains("connect-btn-history")) {
-                const ip = e.target.getAttribute("data-ip");
-                if (ip) connectNode(ip);
-                return;
-            }
-            if (e.target.classList.contains("pref-btn")) {
-                const ip = e.target.getAttribute("data-ip");
-                const action = e.target.getAttribute("data-action");
-                const res = await fetch("/api/preferred_nodes", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ ip, action })
-                });
-                const data = await res.json();
-                if (data.success) {
-                    await loadPreferredIps();
-                    loadHistory();
-                    showMessage("操作成功", action === "add" ? "已设为优先连接" : "已取消优先连接", "success");
-                } else {
-                    showMessage("操作失败", data.error || "未知错误", "danger");
-                }
-            } else if (e.target.classList.contains("del-btn")) {
-                const recordId = e.target.getAttribute("data-id");
-                showConfirm("删除记录", "确定要删除该记录吗？", async (confirmed) => {
-                    if (!confirmed) return;
-                    const res = await fetch(`/api/connection_history/${recordId}`, { method: "DELETE" });
-                    if (res.ok) {
-                        loadHistory();
-                    } else {
-                        showMessage("删除失败", "请稍后再试", "danger");
-                    }
-                });
-            }
-        });
-
-        document.getElementById("refresh-history-btn").addEventListener("click", () => loadHistory());
-
-        document.addEventListener("DOMContentLoaded", () => {
-            loadSettings();
-            loadHistoricalLogs();
-            updateAllNodesCache().then(() => refreshNodes());
-            loadSystemInfo();
-            loadPreferredIps();
-            loadHistory();
-
-            document.querySelectorAll('#mainTab button[data-bs-toggle="tab"]').forEach(tabEl => {
-                tabEl.addEventListener('shown.bs.tab', (event) => {
-                    const targetId = event.target.getAttribute('data-bs-target');
-                    if (targetId === '#nodes') {
-                        refreshNodes();
-                    } else if (targetId === '#history') {
-                        loadHistory();
-                    }
-                });
+        } else if (e.target.classList.contains("del-btn")) {
+            const recordId = e.target.getAttribute("data-id");
+            showConfirm("删除记录", "确定要删除该记录吗？", async (confirmed) => {
+                if (!confirmed) return;
+                const res = await fetch(`/api/connection_history/${recordId}`, { method: "DELETE" });
+                if (res.ok) loadHistory();
+                else showMessage("删除失败", "请稍后再试", "danger");
             });
-        });
+        }
+    });
+
+    document.getElementById("refresh-history-btn").addEventListener("click", () => loadHistory());
+
+    // ========== Init ==========
+    document.addEventListener("DOMContentLoaded", () => {
+        loadSettings();
+        loadHistoricalLogs();
+        updateAllNodesCache().then(() => refreshNodes());
+        loadSystemInfo();
+        loadPreferredIps();
+        loadHistory();
+    });
     </script>
 </body>
 </html>
