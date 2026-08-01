@@ -95,13 +95,7 @@ docker compose up -d
 
 > 基于 Tailwind CSS 的暗色主题仪表盘，Space Grotesk 字体，玻璃拟态卡片设计。
 
-| 仪表盘 | 节点列表 |
-|:---:|:---:|
-| ![仪表盘](images/1.png) | ![节点列表](images/2.png) |
-
-| 连接记录 | 设置 |
-|:---:|:---:|
-| ![连接记录](images/3.png) | ![设置](images/4.png) |
+![界面预览](images/screenshot.png)
 
 ---
 
