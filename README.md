@@ -389,10 +389,6 @@ docker compose up -d
 
 ---
 
-## 联系方式
-
-邮箱：239972420@qq.com
-
 ## 致谢
 
 - **[xiaowen-king](https://github.com/xiaowen-king)** — 项目原作者，提供了完整的 VPN 代理网关核心架构
